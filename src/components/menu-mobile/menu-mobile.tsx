@@ -1,3 +1,37 @@
+import { MENU_MOBILE } from '@/constant/mockup-menu-mobile'
+import { useSidebar } from '@/lib/store/management-sidebar'
+import { Link } from 'react-router-dom'
+
 export const MenuMobile = () => {
-    return <div>MENU MOBILE</div>
+    const { keyword, updateKeyword, toggleMenu, updateToggleMenu } = useSidebar()
+
+    return (
+        <div className='flex items-center justify-around gap-5 px-5 py-4'>
+            {MENU_MOBILE?.map((item) => {
+                return (
+                    <Link key={item.key} to={item.key} target='_self'>
+                        <img
+                            key={item.key}
+                            src={item.icon}
+                            alt={item.key}
+                            className={`cursor-pointer hover-green-icon transition-all duration-200 ${
+                                keyword === item.key ? 'filter-green-icon' : 'filter-gray-icon'
+                            }`}
+                            width={28}
+                            height={28}
+                            onClick={() => updateKeyword(item.key)}
+                        />
+                    </Link>
+                )
+            })}
+            <img
+                src='/images/sidebar/icon-burger.png'
+                alt='Icon'
+                className='hover-green-icon cursor-pointer filter-gray-icon'
+                width={18}
+                height={19}
+                onClick={() => updateToggleMenu(!toggleMenu)}
+            />
+        </div>
+    )
 }

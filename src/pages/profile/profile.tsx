@@ -1,3 +1,3 @@
 export const Profile = () => {
-    return <div>PROFILE</div>
+    return <div className='dark:bg-black h-screen dark:text-white'>PROFILE</div>
 }

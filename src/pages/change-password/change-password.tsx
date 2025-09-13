@@ -1,3 +1,3 @@
 export const ChangePassword = () => {
-    return <div>Change Password</div>
+    return <div className='dark:bg-black h-screen dark:text-white'>Change Password</div>
 }

@@ -1,3 +1,3 @@
 export const Settings = () => {
-    return <div>SETTINGS</div>
+    return <div className='dark:bg-black h-screen dark:text-white'>SETTINGS</div>
 }

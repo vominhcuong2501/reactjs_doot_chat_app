@@ -1,3 +1,3 @@
 export const Contacts = () => {
-    return <div>CONTACTS</div>
+    return <div className='dark:bg-black h-screen dark:text-white'>CONTACTS</div>
 }

@@ -1,17 +1,10 @@
 import { Suspense } from 'react'
 import './App.css'
-import { ButtonTheme } from './components/button-theme/button-theme'
 import useRouteElements from './route'
 
 function App() {
-    const routeElements = useRouteElements()
-
-    return (
-        <Suspense fallback={<div />}>
-            {routeElements}
-            <ButtonTheme />
-        </Suspense>
-    )
+    const routes = useRouteElements()
+    return <Suspense fallback={<div>Loading...</div>}>{routes}</Suspense>
 }
 
 export default App
