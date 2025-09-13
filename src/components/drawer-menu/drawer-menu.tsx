@@ -1,19 +1,21 @@
 import { SIDEBAR } from '@/constant/mockup-sidebar'
-import { useSidebar } from '@/lib/store/management-sidebar'
 import { ButtonTheme } from '../button-theme'
 import { Link } from 'react-router-dom'
+import { useContext } from 'react'
+import { AppContext } from '@/contexts/app.context'
 
 export const DrawerMenu = () => {
-    const { keyword, updateKeyword, updateToggleMenu, toggleMenu } = useSidebar()
+    const { isOpen, setIsOpen, keyword: keywordContext, setKeyword: setKeywordContext } = useContext(AppContext)
 
-    const handleCloseMenu = () => {
-        updateToggleMenu(false)
+    const handleClick = (value: string) => {
+        setIsOpen(false)
+        setKeywordContext(value)
     }
 
     return (
         <div
-            className={`absolute top-0 transition-all duration-300 cursor-default w-full h-dvh bg-white dark:bg-black-1 z-50
-                ${toggleMenu ? 'visible left-0' : 'invisible -left-full'}`}
+            className={`absolute top-0 transition-all duration-300 cursor-default w-full h-dvh bg-white dark:bg-black-3 z-50
+                ${isOpen ? 'visible left-0' : 'invisible -left-full'}`}
         >
             <div className='h-screen w-full flex flex-col items-center'>
                 <div className='flex justify-between items-center gap-5 w-full pl-5 shadow-md'>
@@ -31,7 +33,7 @@ export const DrawerMenu = () => {
                         <ButtonTheme />
                         <p
                             className='p-4 border border-green-1 bg-green-1 text-white cursor-pointer'
-                            onClick={() => updateToggleMenu(false)}
+                            onClick={() => setIsOpen(false)}
                         >
                             <img
                                 src='/images/sidebar/icon-close.png'
@@ -49,23 +51,24 @@ export const DrawerMenu = () => {
                             <Link
                                 key={item.key}
                                 className={`hover-white-icon flex items-center gap-4 px-5 py-3 cursor-pointer group hover:bg-green-1 ${
-                                    keyword === item.key ? 'bg-green-1' : ''
+                                    keywordContext === item.key ? 'bg-green-1' : ''
                                 }`}
                                 to={item.key}
                                 target='_self'
-                                onClick={handleCloseMenu}
+                                onClick={() => handleClick(item.key)}
                             >
                                 <img
                                     src={item.icon}
                                     alt={item.key}
                                     width={28}
                                     height={28}
-                                    onClick={() => updateKeyword(item.key)}
-                                    className={`${keyword === item.key ? 'filter-white-icon' : 'filter-gray-icon'}`}
+                                    className={`${
+                                        keywordContext === item.key ? 'filter-white-icon' : 'filter-gray-icon'
+                                    }`}
                                 />
                                 <p
                                     className={`capitalize font-medium text-20 group-hover:text-white dark:text-white ${
-                                        keyword === item.key ? 'text-white' : 'text-black-1'
+                                        keywordContext === item.key ? 'text-white' : 'text-black-1'
                                     }`}
                                 >
                                     {item.name}

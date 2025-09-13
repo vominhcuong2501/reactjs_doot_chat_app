@@ -1,9 +1,10 @@
 import { MENU_MOBILE } from '@/constant/mockup-menu-mobile'
-import { useSidebar } from '@/lib/store/management-sidebar'
+import { AppContext } from '@/contexts/app.context'
+import { useContext } from 'react'
 import { Link } from 'react-router-dom'
 
 export const MenuMobile = () => {
-    const { keyword, updateKeyword, toggleMenu, updateToggleMenu } = useSidebar()
+    const { isOpen, setIsOpen, keyword: keywordContext, setKeyword: setKeywordContext } = useContext(AppContext)
 
     return (
         <div className='flex items-center justify-around gap-5 px-5 py-4'>
@@ -15,11 +16,11 @@ export const MenuMobile = () => {
                             src={item.icon}
                             alt={item.key}
                             className={`cursor-pointer hover-green-icon transition-all duration-200 ${
-                                keyword === item.key ? 'filter-green-icon' : 'filter-gray-icon'
+                                keywordContext === item.key ? 'filter-green-icon' : 'filter-gray-icon'
                             }`}
                             width={28}
                             height={28}
-                            onClick={() => updateKeyword(item.key)}
+                            onClick={() => setKeywordContext(item.key)}
                         />
                     </Link>
                 )
@@ -30,7 +31,7 @@ export const MenuMobile = () => {
                 className='hover-green-icon cursor-pointer filter-gray-icon'
                 width={18}
                 height={19}
-                onClick={() => updateToggleMenu(!toggleMenu)}
+                onClick={() => setIsOpen(!isOpen)}
             />
         </div>
     )

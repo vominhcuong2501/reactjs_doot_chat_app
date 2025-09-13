@@ -1,10 +1,10 @@
 import { useDarkMode } from '@/hooks'
 
 export const ButtonTheme = ({ className }: { className?: string }) => {
-    const { isDark, toggleTheme } = useDarkMode()
+    const { isDark, toggle } = useDarkMode()
 
     return (
-        <button onClick={toggleTheme} aria-label='Toggle dark mode'>
+        <button onClick={toggle} aria-label='Toggle dark mode'>
             <span className='size-4' aria-hidden>
                 {isDark ? (
                     <img

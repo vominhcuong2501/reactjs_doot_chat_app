@@ -1,8 +1,8 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useCallback, useEffect, useRef, useState } from 'react'
-import { useClient } from '../use-client'
 
+// Throttle function to limit how often a function can run
 const throttle = (func: (...args: any[]) => void, limit: number) => {
     let lastFunc: ReturnType<typeof setTimeout>
     let lastRan: number
@@ -13,22 +13,18 @@ const throttle = (func: (...args: any[]) => void, limit: number) => {
             lastRan = Date.now()
         } else {
             clearTimeout(lastFunc)
-            lastFunc = setTimeout(
-                () => {
-                    if (Date.now() - lastRan >= limit) {
-                        func(...args)
-                        lastRan = Date.now()
-                    }
-                },
-                limit - (Date.now() - lastRan)
-            )
+            lastFunc = setTimeout(() => {
+                if (Date.now() - lastRan >= limit) {
+                    func(...args)
+                    lastRan = Date.now()
+                }
+            }, limit - (Date.now() - lastRan))
         }
     }
 }
 
 export const useDisplay = (param?: number) => {
     const [isMobile, setIsMobile] = useState<boolean>(false)
-    const isClient = useClient()
     const innerWidth = useRef(typeof window !== 'undefined' ? window.innerWidth : 0)
 
     const handleResize = useCallback(
@@ -49,7 +45,7 @@ export const useDisplay = (param?: number) => {
 
             return () => window.removeEventListener('resize', handleResize)
         }
-    }, [handleResize, isClient])
+    }, [handleResize])
 
     return isMobile
 }
