@@ -1,16 +1,23 @@
-import { SIDEBAR } from '@/constant/mockup-sidebar'
 import { ButtonTheme } from '../button-theme'
 import { Link } from 'react-router-dom'
 import { useContext } from 'react'
 import { AppContext } from '@/contexts/app.context'
+import { SIDEBAR } from '@/constant'
 
 export const SidebarDesktop = () => {
     const { keyword: keywordContext, setKeyword: setKeywordContext } = useContext(AppContext)
 
     return (
-        <div className='h-screen bg-black-2 flex flex-col items-center justify-between py-5'>
+        <div className='fixed top-0 left-0 h-screen bg-black-2 flex flex-col items-center justify-between py-5'>
             <div className='flex flex-col items-center justify-between gap-10'>
-                <img src='/images/sidebar/bxs-message-alt-detail.png' alt='Doot' width={28} height={28} />
+                <img
+                    src='/images/sidebar/bxs-message-alt-detail.png'
+                    alt='Doot'
+                    title='Doot'
+                    width={28}
+                    height={28}
+                    loading='lazy'
+                />
                 {SIDEBAR?.map((item) => {
                     return (
                         <Link
@@ -28,11 +35,13 @@ export const SidebarDesktop = () => {
                                 key={item.key}
                                 src={item.icon}
                                 alt={item.key}
+                                title={item.key}
                                 className={`hover-green-icon mx-auto cursor-pointer transition-all duration-200 ${
                                     keywordContext === item.key ? 'filter-green-icon' : 'filter-gray-icon'
                                 }`}
                                 width={28}
                                 height={28}
+                                loading='lazy'
                             />
                         </Link>
                     )
@@ -40,7 +49,7 @@ export const SidebarDesktop = () => {
             </div>
             <div className='flex flex-col items-center gap-9'>
                 <ButtonTheme />
-                <img src='/images/sidebar/img-user.png' alt='Name' width={36} height={36} />
+                <img src='/images/sidebar/img-user.png' alt='User' title='User' width={36} height={36} loading='lazy' />
             </div>
         </div>
     )

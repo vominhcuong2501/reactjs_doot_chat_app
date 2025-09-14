@@ -1,3 +1,14 @@
+import { ProfileAttachedFile, ProfileDetail, ProfileMedia, ProfileUser } from './components'
+
 export const Profile = () => {
-    return <div className='dark:bg-black-3 h-screen dark:text-white'>PROFILE</div>
+    return (
+        <div className='text-black-1'>
+            <ProfileUser />
+            <div className='p-4 lg:p-6'>
+                <ProfileDetail />
+                <ProfileMedia />
+                <ProfileAttachedFile />
+            </div>
+        </div>
+    )
 }

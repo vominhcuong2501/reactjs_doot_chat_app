@@ -7,12 +7,18 @@ export default function MainLayout() {
     const isMobile = useDisplay(768)
 
     return (
-        <div className='md:flex items-start h-screen'>
+        <div className='md:flex items-start mb-[60px] md:mb-0'>
             {!isMobile && <SidebarDesktop />}
-            <Outlet />
-            <div className='flex-1'>{!isMobile && <Message />}</div>
-            <div className='fixed bottom-0 w-full inset-shadow-sm'>{isMobile && <MenuMobile />}</div>
-            {isMobile && <DrawerMenu />}
+            <div className='md:ml-[75px] md:max-w-[300px] w-full dark:bg-black-3 dark:text-white'>
+                <Outlet />
+            </div>
+            {!isMobile && <Message />}
+            {isMobile && (
+                <>
+                    <MenuMobile />
+                    <DrawerMenu />
+                </>
+            )}
         </div>
     )
 }

@@ -19,10 +19,13 @@
   --color-green-1: #4EAC6D;
   --color-green-2: #4EAC6D33;
   --color-green-3: #4EAC6D3A;
+  --color-green-4: #4EAC6D19;
 
   --color-white-1: #fff;
   --color-white-2: #FFFFFFCC;
   --color-white-3: #F6F6F93F;
+  --color-white-4: #343A40B2;
+
 
   /* Font sizes – dùng --text-* */
   --text-xs: 12px;
@@ -39,6 +42,7 @@
   --text-16: 16px;
   --text-18: 18px;
   --text-20: 20px;
+  --text-21: 21px;
   --text-22: 22px;
   --text-24: 24px;
   --text-26: 26px;

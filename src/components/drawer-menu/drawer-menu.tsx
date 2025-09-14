@@ -1,8 +1,8 @@
-import { SIDEBAR } from '@/constant/mockup-sidebar'
 import { ButtonTheme } from '../button-theme'
 import { Link } from 'react-router-dom'
 import { useContext } from 'react'
 import { AppContext } from '@/contexts/app.context'
+import { SIDEBAR } from '@/constant'
 
 export const DrawerMenu = () => {
     const { isOpen, setIsOpen, keyword: keywordContext, setKeyword: setKeywordContext } = useContext(AppContext)
@@ -14,17 +14,19 @@ export const DrawerMenu = () => {
 
     return (
         <div
-            className={`absolute top-0 transition-all duration-300 cursor-default w-full h-dvh bg-white dark:bg-black-3 z-50
+            className={`fixed inset-0 transition-all duration-300 cursor-default w-full h-full bg-white dark:bg-black-3 z-50
                 ${isOpen ? 'visible left-0' : 'invisible -left-full'}`}
         >
-            <div className='h-screen w-full flex flex-col items-center'>
+            <div className='w-full flex flex-col items-center'>
                 <div className='flex justify-between items-center gap-5 w-full pl-5 shadow-md'>
                     <div className='flex items-center gap-2'>
                         <img
                             src='/images/sidebar/bxs-message-alt-detail.png'
-                            alt='Name'
                             width={26}
                             height={26}
+                            loading='lazy'
+                            alt='Doot'
+                            title='Doot'
                             className='filter-green-icon'
                         />
                         <h1 className='font-bold text-xl text-green-1'>Doot</h1>
@@ -37,9 +39,11 @@ export const DrawerMenu = () => {
                         >
                             <img
                                 src='/images/sidebar/icon-close.png'
-                                alt='Name'
+                                alt='Close'
+                                title='Close'
                                 width={14}
                                 height={14}
+                                loading='lazy'
                                 className='filter-white-icon'
                             />
                         </p>
@@ -60,8 +64,10 @@ export const DrawerMenu = () => {
                                 <img
                                     src={item.icon}
                                     alt={item.key}
+                                    title={item.key}
                                     width={28}
                                     height={28}
+                                    loading='lazy'
                                     className={`${
                                         keywordContext === item.key ? 'filter-white-icon' : 'filter-gray-icon'
                                     }`}

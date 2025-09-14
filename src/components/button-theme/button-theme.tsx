@@ -10,17 +10,21 @@ export const ButtonTheme = ({ className }: { className?: string }) => {
                     <img
                         src='/images/sidebar/bx-moon.png'
                         alt='Dark mode'
+                        title='Dark mode'
                         width={24}
                         height={24}
                         className={className}
+                        loading='lazy'
                     />
                 ) : (
                     <img
                         src='/images/sidebar/bx-sun.png'
                         alt='Light mode'
+                        title='Light mode'
                         width={24}
                         height={24}
                         className={className}
+                        loading='lazy'
                     />
                 )}
             </span>
