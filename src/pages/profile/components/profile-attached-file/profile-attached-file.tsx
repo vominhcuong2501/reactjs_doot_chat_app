@@ -13,7 +13,7 @@ export const ProfileAttachedFile = () => {
                             className='px-3 py-2.5 border border-gray-5 dark:border-black-2 flex items-center gap-4 justify-between rounded transition-all duration-200 hover:border-green-1'
                         >
                             <div className='flex items-center gap-4'>
-                                {file.fileType === 'zip' ? (
+                                {file.fileType === 'document' && (
                                     <img
                                         src='/images/profile/icon-file.svg'
                                         width={29}
@@ -22,7 +22,8 @@ export const ProfileAttachedFile = () => {
                                         title={file?.fileName}
                                         loading='lazy'
                                     />
-                                ) : (
+                                )}
+                                {file.fileType === 'image' && (
                                     <img
                                         src='/images/profile/icon-image.svg'
                                         width={29}

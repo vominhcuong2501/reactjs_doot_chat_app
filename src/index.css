@@ -10,8 +10,6 @@
   --color-black-4: #343A40;
   --color-black-5: #2E2E2E3F;
   
-  
-
   --color-gray-1: #797C8C;
   --color-gray-2: #9093A0;
   --color-gray-3: #ADB5BD;
@@ -21,18 +19,22 @@
   --color-gray-7: #5A636C;
   --color-gray-8: #343A402D;
   --color-gray-9: #8F91982D;
+  --color-gray-10: #F6F6F9B2;
+  --color-gray-11: #F0F0F5;
 
 
   --color-green-1: #4EAC6D;
   --color-green-2: #4EAC6D33;
   --color-green-3: #4EAC6D3A;
   --color-green-4: #4EAC6D19;
+  --color-green-5: #06D6A0;
 
   --color-white-1: #fff;
   --color-white-2: #FFFFFFCC;
   --color-white-3: #F6F6F93F;
   --color-white-4: #343A40B2;
 
+  --color-pink-1: #EF476F;
 
   /* Font sizes – dùng --text-* */
   --text-xs: 12px;
@@ -105,7 +107,7 @@
   filter: brightness(0) saturate(100%) invert(59%) sepia(1%) saturate(4248%) hue-rotate(195deg) brightness(92%) contrast(83%);
 }
 
-.hover-white-icon:hover  img {
+.hover-white-icon:hover  .icon-hover {
   -webkit-filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(7500%) hue-rotate(66deg) brightness(108%) contrast(98%);
   filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(7500%) hue-rotate(66deg) brightness(108%) contrast(98%);
 }

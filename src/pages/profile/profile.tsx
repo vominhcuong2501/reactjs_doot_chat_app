@@ -3,7 +3,7 @@ import { ProfileAttachedFile, ProfileDetail, ProfileMedia, ProfileUser } from '.
 export const Profile = () => {
     return (
         <div className='text-black-1'>
-            <ProfileUser />
+            <ProfileUser name='Adam Zampa' position='Front end Developer' title='My Profile' />
             <div className='p-4 lg:p-6'>
                 <ProfileDetail />
                 <ProfileMedia />

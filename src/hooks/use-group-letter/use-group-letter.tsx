@@ -34,9 +34,11 @@ export const compareAZ = (a = '', b = '') => {
     return 0
 }
 
+// Nhóm người dùng theo chữ cái đầu
 export function groupUsersByFirstLetter(users: ContactProps[]) {
     const map = new Map<string, ContactProps[]>()
 
+    // Tạo map { letter: string, listUser: ContactProps[] }
     for (const u of users) {
         const key = getLetter(u.name)
         if (!map.has(key)) map.set(key, [])

@@ -35,7 +35,7 @@ export const ListContact = ({ keySearch }: { keySearch?: string }) => {
                                 return (
                                     <div
                                         key={contact?.id}
-                                        className={`px-4 lg:px-6 py-[5px] flex items-center justify-between gap-3 cursor-pointer hover:bg-green-1 transition-all duration-200 group ${
+                                        className={`px-4 lg:px-6 py-[5px] flex items-center justify-between gap-3 cursor-pointer hover:bg-green-1 transition-all duration-200 group hover-white-icon ${
                                             isActive ? 'bg-green-1 text-white' : ''
                                         }`}
                                     >
@@ -43,7 +43,6 @@ export const ListContact = ({ keySearch }: { keySearch?: string }) => {
                                             className='flex items-center gap-2'
                                             onClick={() => contact?.id && setIdChat(contact?.id)}
                                         >
-                                            {isActive}
                                             {contact?.avatar ? (
                                                 <img
                                                     src={contact?.avatar}
@@ -70,7 +69,7 @@ export const ListContact = ({ keySearch }: { keySearch?: string }) => {
                                             width={15}
                                             height={15}
                                             loading='lazy'
-                                            className='cursor-pointer filter-white-icon'
+                                            className='cursor-pointer icon-hover'
                                         />
                                     </div>
                                 )
