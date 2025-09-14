@@ -7,3 +7,5 @@ export * from './menu-mobile'
 export * from './drawer-menu'
 
 export * from './input-search'
+
+export * from './input'
