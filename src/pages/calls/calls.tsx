@@ -1,21 +1,20 @@
 import { LIST_CALLS } from '@/constant'
-import { AppContext } from '@/contexts/app.context'
 import { getInitials } from '@/hooks'
-import { useContext } from 'react'
+import { useIdUser } from '@/store/management-user-id'
 
 export const Calls = () => {
-    const { setIdChat } = useContext(AppContext)
+    const { updateUserId } = useIdUser()
 
     return (
         <div className='py-4 lg:py-6'>
             <h1 className='px-4 lg:px-6 text-21 font-medium text-black-1 dark:text-gray-3'>Calls</h1>
             <div className='mt-4 flex flex-col'>
-                {LIST_CALLS?.map((user) => {
+                {LIST_CALLS?.map((user, index) => {
                     return (
                         <div
-                            key={user?.id}
+                            key={`${user?.id}-${index}`}
                             className='px-4 lg:px-6 py-3 flex items-center justify-between gap-3 cursor-pointer hover:bg-green-1 transition-all duration-200 group dark:text-gray-3 text-gray-7 text-14 border-b border-gray-5 dark:border-black-2 last:border-0 hover-white-icon'
-                            onClick={() => user?.id && setIdChat(user?.id)}
+                            onClick={() => user?.id && updateUserId(user?.id)}
                         >
                             <div className='flex items-center gap-2'>
                                 {user?.avatar ? (

@@ -1,5 +1,6 @@
 /* src/index.css (hoặc file CSS bạn import vào app) */
 @import "tailwindcss";
+
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
@@ -10,7 +11,6 @@
   --color-black-4: #343A40;
   --color-black-5: #2E2E2E3F;
   --color-black-6: #212529;
-
   
   --color-gray-1: #797C8C;
   --color-gray-2: #9093A0;
@@ -24,7 +24,6 @@
   --color-gray-10: #F6F6F9B2;
   --color-gray-11: #F0F0F5;
 
-
   --color-green-1: #4EAC6D;
   --color-green-2: #4EAC6D33;
   --color-green-3: #4EAC6D3A;
@@ -32,13 +31,11 @@
   --color-green-5: #06D6A0;
   --color-green-6: #4EAC6DE5;
 
-
   --color-white-1: #fff;
   --color-white-2: #FFFFFFCC;
   --color-white-3: #F6F6F93F;
   --color-white-4: #343A40B2;
   --color-white-5: #FFFFFF7F;
-
 
   --color-pink-1: #EF476F;
 
@@ -113,7 +110,7 @@
   filter: brightness(0) saturate(100%) invert(59%) sepia(1%) saturate(4248%) hue-rotate(195deg) brightness(92%) contrast(83%);
 }
 
-.hover-white-icon:hover  .icon-hover {
+.hover-white-icon:hover .icon-hover {
   -webkit-filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(7500%) hue-rotate(66deg) brightness(108%) contrast(98%);
   filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(7500%) hue-rotate(66deg) brightness(108%) contrast(98%);
 }
@@ -121,4 +118,9 @@
 .filter-white-icon {
   -webkit-filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(7500%) hue-rotate(66deg) brightness(108%) contrast(98%);
   filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(7500%) hue-rotate(66deg) brightness(108%) contrast(98%);
+}
+
+.dark .icon-dark-mode {
+  -webkit-filter: brightness(0) saturate(100%) invert(67%) sepia(9%) saturate(211%) hue-rotate(189deg) brightness(85%) contrast(85%);
+  filter: brightness(0) saturate(100%) invert(67%) sepia(9%) saturate(211%) hue-rotate(189deg) brightness(85%) contrast(85%);
 }

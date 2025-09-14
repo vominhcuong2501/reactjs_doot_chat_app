@@ -1,11 +1,10 @@
 import { ButtonTheme } from '../button-theme'
 import { Link } from 'react-router-dom'
-import { useContext } from 'react'
-import { AppContext } from '@/contexts/app.context'
 import { SIDEBAR } from '@/constant'
+import { useSidebar } from '@/store'
 
 export const SidebarDesktop = () => {
-    const { keyword: keywordContext, setKeyword: setKeywordContext } = useContext(AppContext)
+    const { keyword, updateKeyword } = useSidebar()
 
     return (
         <div className='fixed top-0 left-0 h-screen bg-black-2 dark:bg-black-3 flex flex-col items-center justify-between py-5'>
@@ -25,11 +24,9 @@ export const SidebarDesktop = () => {
                             to={item.key}
                             target='_self'
                             className={`relative w-[75px] block before:content-[''] before:absolute before:top-0 before:right-0 before:h-full before:w-1 before:bg-green-1 before:transition-all before:duration-200 ${
-                                keywordContext === item.key
-                                    ? 'before:opacity-100'
-                                    : 'before:opacity-0 hover:before:opacity-30'
+                                keyword === item.key ? 'before:opacity-100' : 'before:opacity-0 hover:before:opacity-30'
                             }`}
-                            onClick={() => setKeywordContext(item.key)}
+                            onClick={() => updateKeyword(item.key)}
                         >
                             <img
                                 key={item.key}
@@ -37,7 +34,7 @@ export const SidebarDesktop = () => {
                                 alt={item.key}
                                 title={item.key}
                                 className={`hover-green-icon mx-auto cursor-pointer transition-all duration-200 ${
-                                    keywordContext === item.key ? 'filter-green-icon' : 'filter-gray-icon'
+                                    keyword === item.key ? 'filter-green-icon' : 'filter-gray-icon'
                                 }`}
                                 width={28}
                                 height={28}

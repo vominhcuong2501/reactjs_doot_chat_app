@@ -1,13 +1,16 @@
 import { MENU_MOBILE } from '@/constant'
 import { AppContext } from '@/contexts/app.context'
+import { useSidebar } from '@/store'
 import { useContext } from 'react'
 import { Link } from 'react-router-dom'
 
 export const MenuMobile = () => {
-    const { isOpen, setIsOpen, keyword: keywordContext, setKeyword: setKeywordContext } = useContext(AppContext)
+    const { isOpen, setIsOpen } = useContext(AppContext)
+
+    const { keyword, updateKeyword } = useSidebar()
 
     return (
-        <div className='fixed bottom-0 w-full inset-shadow-sm flex items-center justify-around gap-5 px-5 py-4 bg-white dark:bg-black-1'>
+        <div className='fixed bottom-0 w-full inset-shadow-sm flex items-center justify-around gap-5 px-5 py-4 bg-white dark:bg-black-3'>
             {MENU_MOBILE?.map((item) => {
                 return (
                     <Link key={item.key} to={item.key} target='_self'>
@@ -16,11 +19,11 @@ export const MenuMobile = () => {
                             src={item.icon}
                             alt={item.key}
                             className={`cursor-pointer hover-green-icon transition-all duration-200 ${
-                                keywordContext === item.key ? 'filter-green-icon' : 'filter-gray-icon'
+                                keyword === item.key ? 'filter-green-icon' : 'filter-gray-icon '
                             }`}
                             width={28}
                             height={28}
-                            onClick={() => setKeywordContext(item.key)}
+                            onClick={() => updateKeyword(item.key)}
                             loading='lazy'
                         />
                     </Link>

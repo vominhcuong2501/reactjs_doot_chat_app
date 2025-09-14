@@ -5,14 +5,14 @@ export const changePasswordSchema = () =>
         current_password: yup
             .string()
             .trim()
-            .required('Please enter current password!')
+            .required('Please enter old password!')
             .min(6, 'Format password invalid!')
             .max(20, 'Format password invalid!')
             .matches(
                 /^[^\sáàảãạăắằẳẵặâấầẩẩậéèẻẽẹêếềểễệíìỉĩịóòỏõọôốồổỗộơớờởỡợúùủũụưứừửữựýỳỷỹỵ]+$/,
                 'Format password invalid!'
             )
-            .label('Current Password'),
+            .label('Old Password'),
         new_password: yup
             .string()
             .trim()
@@ -27,9 +27,9 @@ export const changePasswordSchema = () =>
         confirm_password: yup
             .string()
             .trim()
-            .required('Please enter connfirm password')
+            .required('Please enter connfirm new password')
             .min(6, 'Format password invalid!')
             .max(20, 'Format password invalid!')
-            .oneOf([yup.ref('new_password')], 'Confirm password not match!')
-            .label('Confirm Password')
+            .oneOf([yup.ref('new_password')], 'Confirm new password not match!')
+            .label('Confirm New Password')
     })

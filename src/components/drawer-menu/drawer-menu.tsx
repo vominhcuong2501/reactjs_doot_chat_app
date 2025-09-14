@@ -3,13 +3,16 @@ import { Link } from 'react-router-dom'
 import { useContext } from 'react'
 import { AppContext } from '@/contexts/app.context'
 import { SIDEBAR } from '@/constant'
+import { useSidebar } from '@/store'
 
 export const DrawerMenu = () => {
-    const { isOpen, setIsOpen, keyword: keywordContext, setKeyword: setKeywordContext } = useContext(AppContext)
+    const { isOpen, setIsOpen } = useContext(AppContext)
+
+    const { keyword, updateKeyword } = useSidebar()
 
     const handleClick = (value: string) => {
         setIsOpen(false)
-        setKeywordContext(value)
+        updateKeyword(value)
     }
 
     return (
@@ -55,7 +58,7 @@ export const DrawerMenu = () => {
                             <Link
                                 key={item.key}
                                 className={`hover-white-icon flex items-center gap-4 px-5 py-3 cursor-pointer group hover:bg-green-1 ${
-                                    keywordContext === item.key ? 'bg-green-1' : ''
+                                    keyword === item.key ? 'bg-green-1' : ''
                                 }`}
                                 to={item.key}
                                 target='_self'
@@ -69,12 +72,12 @@ export const DrawerMenu = () => {
                                     height={28}
                                     loading='lazy'
                                     className={`${
-                                        keywordContext === item.key ? 'filter-white-icon' : 'filter-gray-icon'
+                                        keyword === item.key ? 'filter-white-icon' : 'filter-gray-icon icon-hover'
                                     }`}
                                 />
                                 <p
-                                    className={`capitalize font-medium text-20 group-hover:text-white dark:text-white ${
-                                        keywordContext === item.key ? 'text-white' : 'text-black-1'
+                                    className={`capitalize font-medium text-20 group-hover:text-white  ${
+                                        keyword === item.key ? 'text-white' : 'text-gray-1'
                                     }`}
                                 >
                                     {item.name}

@@ -61,7 +61,7 @@ export const Bookmark = () => {
                                 alt={file?.fileName}
                                 title={file?.fileName}
                                 loading='lazy'
-                                className='cursor-pointer icon-hover'
+                                className='cursor-pointer icon-hover icon-dark-mode'
                             />
                         </div>
                     )

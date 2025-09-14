@@ -47,6 +47,7 @@ export const ProfileAttachedFile = () => {
                                         alt={file?.fileName}
                                         title={file?.fileName}
                                         loading='lazy'
+                                        className='icon-dark-mode'
                                     />
                                 </a>
                                 <img
@@ -56,7 +57,7 @@ export const ProfileAttachedFile = () => {
                                     alt={file?.fileName}
                                     title={file?.fileName}
                                     loading='lazy'
-                                    className='cursor-pointer'
+                                    className='cursor-pointer icon-dark-mode'
                                 />
                             </div>
                         </div>

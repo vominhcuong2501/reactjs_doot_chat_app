@@ -25,7 +25,7 @@ export const ToggleItem = ({ title, icon, children }: { title?: string; icon?: s
                         loading='lazy'
                         width='14'
                         height='14'
-                        className='icon-hover'
+                        className='icon-hover icon-dark-mode'
                     />
                     <h3 className='group-hover:text-white dark:text-gray-3'>{title}</h3>
                 </div>
@@ -36,7 +36,9 @@ export const ToggleItem = ({ title, icon, children }: { title?: string; icon?: s
                     loading='lazy'
                     width='12'
                     height='12'
-                    className={`transition-all duration-200 icon-hover fill-white ${openStates ? 'rotate-180' : ''}`}
+                    className={`transition-all duration-200 icon-hover icon-dark-mode ${
+                        openStates ? 'rotate-180' : ''
+                    }`}
                 />
             </div>
             <div

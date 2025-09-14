@@ -13,7 +13,6 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
     id?: string
     nameLabel?: string
     classNameLabel?: string
-    classNameTooltip?: string
 }
 
 enum INPUT_TYPES {
@@ -29,7 +28,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
         errorMessage,
         className,
         classNameInput,
-        classNameError = 'absolute -bottom-5 left-0',
+        classNameError = 'absolute -bottom-4 left-0 text-12',
         classNameIcon = 'absolute top-10 right-3 cursor-pointer',
         id,
         placeholder,
@@ -46,9 +45,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
         return value.replace(/[^\d.]/g, '')
     }
 
-    const toggleVisible = () => {
-        setVisible((prev) => !prev)
-    }
+    const toggleVisible = () => setVisible((prev) => !prev)
 
     const handleType = () => {
         if (type === INPUT_TYPES.password) {
@@ -65,15 +62,13 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
     }
 
     return (
-        <div className={`${className} text-14`}>
-            <div className='flex flex-col relative gap-2'>
+        <div className={`${className}`}>
+            <div className='flex flex-col relative gap-2 lg:gap-2.5'>
                 {nameLabel && (
-                    <div className='flex gap-1 w-fit'>
+                    <div className='flex w-fit'>
                         <label
                             htmlFor={id}
-                            className={`font-semibold text-black ${
-                                restParams.required && 'label-required'
-                            } ${classNameLabel}`}
+                            className={`font-medium text-black-1 ${classNameLabel}`}
                             dangerouslySetInnerHTML={{ __html: nameLabel || '' }}
                         ></label>
                     </div>
@@ -87,19 +82,34 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
                         }
                     }}
                     type={handleType()}
-                    className={`text-md text-black border-gray-6 h-13 w-full appearance-none rounded-xl border px-2.5 placeholder:text-md placeholder:text-placeholder focus:outline-none focus:ring-0 ${
-                        errorMessage && 'border-primary'
-                    } ${classNameInput}`}
+                    className={`text-14 text-gray-1 border border-gray-6 h-[39px] w-full appearance-none rounded px-2.5 placeholder:text-14 placeholder:text-gray-1 focus:outline-none focus:ring-0 bg-white ${classNameInput} ${
+                        errorMessage ? 'border-red-500' : 'border-gray-6'
+                    }`}
                     placeholder={placeholder}
                     {...restParams}
                 />
 
+                <style>
+                    {`
+                        input::-webkit-outer-spin-button,
+                        input::-webkit-inner-spin-button {
+                            -webkit-appearance: none;
+                            margin: 0;
+                        }
+
+                        input[type='number'] {
+                            -moz-appearance: textfield;
+                        }
+                    `}
+                </style>
+
                 {errorMessage && (
                     <div
-                        className={`text-primary ${classNameError}`}
+                        className={`text-red-500 ${classNameError}`}
                         dangerouslySetInnerHTML={{ __html: errorMessage }}
-                    ></div>
+                    />
                 )}
+
                 {type === INPUT_TYPES.password &&
                     (visible ? (
                         <ViewIcon onClick={toggleVisible} className={classNameIcon} />

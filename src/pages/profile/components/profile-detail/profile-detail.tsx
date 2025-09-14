@@ -16,6 +16,7 @@ export const ProfileDetail = () => {
                         alt='Adam Zampa'
                         title='Adam Zampa'
                         loading='lazy'
+                        className='icon-dark-mode'
                     />
                     Adam Zampa
                 </p>
@@ -32,6 +33,7 @@ export const ProfileDetail = () => {
                         alt='adc@123.com'
                         title='adc@123.com'
                         loading='lazy'
+                        className='icon-dark-mode'
                     />
                     adc@123.com
                 </a>
@@ -43,6 +45,7 @@ export const ProfileDetail = () => {
                         alt='California, USA'
                         title='California, USA'
                         loading='lazy'
+                        className='icon-dark-mode'
                     />
                     California, USA
                 </p>

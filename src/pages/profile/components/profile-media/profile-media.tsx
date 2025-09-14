@@ -12,6 +12,7 @@ export const ProfileMedia = () => {
                     if (index < 2) {
                         return (
                             <img
+                                key={item}
                                 src={item}
                                 width={148}
                                 height={99}

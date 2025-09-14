@@ -9,3 +9,5 @@ export * from './drawer-menu'
 export * from './input-search'
 
 export * from './input'
+
+export * from './button'

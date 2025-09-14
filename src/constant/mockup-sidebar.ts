@@ -1,7 +1,7 @@
 import { BOOKMARK, CALLS, CHATS, CONTACTS, PROFILE, SETTINGS } from './keywork'
 
 export const SIDEBAR = [
-    { name: PROFILE, key: '/', icon: '/images/sidebar/bx-user-circle.png' },
+    { name: PROFILE, key: '', icon: '/images/sidebar/bx-user-circle.png' },
     {
         name: CHATS,
         key: CHATS,

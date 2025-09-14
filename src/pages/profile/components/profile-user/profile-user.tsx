@@ -54,7 +54,7 @@ export const ProfileUser = ({
                     loading='lazy'
                 />
                 {name && <h2 className='text-16 font-medium dark:text-gray-3 mt-[15px]'>{name}</h2>}
-                {position && <p className='text-14 text-gray-1 dark:text-gray-4 mt-[5px]'></p>}
+                {position && <p className='text-14 text-gray-1 dark:text-gray-4 mt-[5px]'>{position}</p>}
                 {displayStatus && (
                     <div
                         className='relative flex items-center gap-2 cursor-pointer mt-5'
@@ -69,7 +69,7 @@ export const ProfileUser = ({
                             width={15}
                             height={15}
                             loading='lazy'
-                            className={`${isStatus && 'rotate-180'} transition-all duration-200`}
+                            className={`${isStatus && 'rotate-180'} transition-all duration-200 icon-dark-mode`}
                         />
                         {isStatus && (
                             <div className='absolute top-[350%] left-1/2 -translate-1/2 shadow-2xl bg-white border border-gray-6 min-w-[150px] rounded'>

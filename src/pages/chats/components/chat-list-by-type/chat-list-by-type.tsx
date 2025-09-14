@@ -1,7 +1,7 @@
-import { AppContext } from '@/contexts/app.context'
 import { getInitials } from '@/hooks'
+import { useIdUser } from '@/store'
 import { ChatsProps } from '@/types'
-import { useContext, useMemo } from 'react'
+import { useMemo } from 'react'
 
 const PRIORITY: Array<'favourite' | 'direct' | 'channel'> = ['favourite', 'direct', 'channel']
 
@@ -21,7 +21,7 @@ type Props = {
 }
 
 export const ChatListByType = ({ title, add, listChat = [], typeChat, keySearch = '' }: Props) => {
-    const { idChat, setIdChat } = useContext(AppContext)
+    const { updateUserId, userId } = useIdUser()
 
     const keyword = keySearch?.trim()?.toLowerCase()
 
@@ -52,7 +52,7 @@ export const ChatListByType = ({ title, add, listChat = [], typeChat, keySearch 
 
             <div className='flex flex-col gap-1 dark:text-gray-3 text-gray-7 text-14 mt-4'>
                 {data.map((chat) => {
-                    const isActive = idChat === chat?.id
+                    const isActive = userId === chat?.id
                     const isChannel = typeChat === 'channel'
                     const hasImgAvatar = !!chat?.avatar && chat?.avatar !== '#'
 
@@ -62,11 +62,11 @@ export const ChatListByType = ({ title, add, listChat = [], typeChat, keySearch 
                             className={`px-4 lg:px-6 py-[5px] flex items-center justify-between gap-3 cursor-pointer hover:bg-green-1 transition-all duration-200 group ${
                                 isActive ? 'bg-green-1 text-white' : ''
                             }`}
-                            onClick={() => chat?.id && setIdChat(chat?.id)}
+                            onClick={() => chat?.id && updateUserId(chat?.id)}
                         >
                             <div className='flex items-center gap-2'>
                                 {isChannel ? (
-                                    <p className='w-[29px] h-[29px] rounded-full flex items-center justify-center text-black-4 text-14 font-semibold dark:bg-black-5 dark:text-white'>
+                                    <p className='w-[29px] h-[29px] rounded-full flex items-center justify-center text-black-4 text-14 font-semibold dark:bg-black-5 dark:text-white hover:text-white'>
                                         {chat?.avatar || '#'}
                                     </p>
                                 ) : hasImgAvatar ? (
