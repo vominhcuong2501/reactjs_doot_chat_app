@@ -8,7 +8,7 @@ export const SidebarDesktop = () => {
     const { keyword: keywordContext, setKeyword: setKeywordContext } = useContext(AppContext)
 
     return (
-        <div className='fixed top-0 left-0 h-screen bg-black-2 flex flex-col items-center justify-between py-5'>
+        <div className='fixed top-0 left-0 h-screen bg-black-2 dark:bg-black-3 flex flex-col items-center justify-between py-5'>
             <div className='flex flex-col items-center justify-between gap-10'>
                 <img
                     src='/images/sidebar/bxs-message-alt-detail.png'

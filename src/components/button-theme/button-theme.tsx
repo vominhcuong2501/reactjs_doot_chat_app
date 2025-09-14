@@ -4,7 +4,7 @@ export const ButtonTheme = ({ className }: { className?: string }) => {
     const { isDark, toggle } = useDarkMode()
 
     return (
-        <button onClick={toggle} aria-label='Toggle dark mode'>
+        <button onClick={toggle} aria-label='Toggle dark mode' className='cursor-pointer hover-green-icon'>
             <span className='size-4' aria-hidden>
                 {isDark ? (
                     <img

@@ -7,6 +7,9 @@
   --color-black-1: #495057;
   --color-black-2: #2E2E2E;
   --color-black-3: #262626;
+  --color-black-4: #343A40;
+  --color-black-5: #2E2E2E3F;
+  
   
 
   --color-gray-1: #797C8C;
@@ -15,6 +18,10 @@
   --color-gray-4: #8F9198;
   --color-gray-5: #F6F6F9;
   --color-gray-6: #CFD4D8;
+  --color-gray-7: #5A636C;
+  --color-gray-8: #343A402D;
+  --color-gray-9: #8F91982D;
+
 
   --color-green-1: #4EAC6D;
   --color-green-2: #4EAC6D33;
@@ -98,7 +105,7 @@
   filter: brightness(0) saturate(100%) invert(59%) sepia(1%) saturate(4248%) hue-rotate(195deg) brightness(92%) contrast(83%);
 }
 
-.hover-white-icon:hover > img {
+.hover-white-icon:hover  img {
   -webkit-filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(7500%) hue-rotate(66deg) brightness(108%) contrast(98%);
   filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(7500%) hue-rotate(66deg) brightness(108%) contrast(98%);
 }
