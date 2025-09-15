@@ -4,6 +4,10 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
+  --breakpoint-2xl: 1360px;
+  --breakpoint-3xl: 1480px;
+  --breakpoint-4xl: 1600px;
+
   /* Custom colors – di chuyển từ config JS sang đây */
   --color-black-1: #495057;
   --color-black-2: #2E2E2E;

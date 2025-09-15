@@ -3,7 +3,7 @@ interface Props {
 }
 export default function FormLayout({ children }: Props) {
     return (
-        <div className='bg-green-1 min-h-screen'>
+        <div className='bg-green-1 h-[100dvh] lg:min-h-screen lg:h-full'>
             <div className='max-w-[1920px] mx-auto py-4 px-4 lg:pl-12 lg:pt-12 lg:pr-6 relative'>
                 <div className=''>
                     <div className='flex items-center gap-4'>
@@ -18,7 +18,7 @@ export default function FormLayout({ children }: Props) {
                     </div>
                     <p className='text-white-5 text-16 lg:mt-3'>Responsive Bootstrap 5 Chat App</p>
                 </div>
-                <div className='max-w-[1392px] ml-auto bg-white 2xl:min-h-[832px] rounded-md lg:rounded-2xl mt-4 p-4 xl:p-6'>
+                <div className='max-w-[500px] 3xl:max-w-[1392px] mx-auto lg:ml-auto bg-white 2xl:min-h-[832px] rounded-md lg:rounded-2xl mt-4 p-4 xl:p-6'>
                     {children}
                     <p className='flex items-center gap-1 justify-center text-15 text-gray-1  relative z-[2]'>
                         © 2021 Doot. Crafted with
