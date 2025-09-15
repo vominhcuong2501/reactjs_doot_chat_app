@@ -1,4 +1,4 @@
-import { BOOKMARK, CALLS, CHATS, CONTACTS, PROFILE, SETTINGS } from './keywork'
+import { BOOKMARK, CALLS, CHANGE_PASSWORD, CHATS, CONTACTS, PROFILE, SETTINGS } from './keywork'
 
 export const SIDEBAR = [
     { name: PROFILE, key: '', icon: '/images/sidebar/bx-user-circle.png' },
@@ -26,5 +26,11 @@ export const SIDEBAR = [
         name: SETTINGS,
         key: SETTINGS,
         icon: '/images/sidebar/bx-settings.png'
+    }
+    ,
+    {
+        name: CHANGE_PASSWORD,
+        key: CHANGE_PASSWORD,
+        icon: '/images/profile/bxs-lock.svg'
     }
 ]

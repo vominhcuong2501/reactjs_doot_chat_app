@@ -1,7 +1,11 @@
-// import { useParams } from 'react-router-dom'
+import { MessageDetail, MessageFooter, MessageHeader } from './components'
 
 export const Message = () => {
-    // const params = useParams()
-
-    return <div className='flex-1 dark:bg-black-3 h-screen dark:text-white'>MESSAGE</div>
+    return (
+        <div className='flex-1 bg-[url(/images/message/bg-message-light.jpg)] dark:bg-[url(/images/message/bg-message-dark.jpg)] bg-center bg-cover bg-no-repeat'>
+            <MessageHeader />
+            <MessageDetail />
+            <MessageFooter />
+        </div>
+    )
 }

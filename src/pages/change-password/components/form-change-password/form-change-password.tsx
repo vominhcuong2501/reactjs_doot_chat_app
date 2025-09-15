@@ -5,9 +5,12 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { DataFormChangePassword } from '@/types'
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
+import { useSidebar } from '@/store'
 
 export const FormChangePassword = () => {
     const [isLoading, setIsLoading] = useState(false)
+
+    const { updateKeyword } = useSidebar()
 
     const navigate = useNavigate()
 
@@ -90,7 +93,13 @@ export const FormChangePassword = () => {
                 >
                     Save
                 </Button>
-                <Button className='text-black-6 text-15 rounded h-10 w-full bg-gray-5 border border-transparent hover:border-gray-1 transition-all duration-200 text-center cursor-pointer'>
+                <Button
+                    className='text-black-6 text-15 rounded h-10 w-full bg-gray-5 border border-transparent hover:border-gray-1 transition-all duration-200 text-center cursor-pointer'
+                    onClick={() => {
+                        navigate('/')
+                        updateKeyword('')
+                    }}
+                >
                     Cancel
                 </Button>
             </div>

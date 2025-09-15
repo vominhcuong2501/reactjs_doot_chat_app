@@ -1,5 +1,5 @@
-import { getInitials } from '@/hooks'
-import { useIdUser } from '@/store'
+import { getInitials, useClickUser } from '@/hooks'
+import { useDataUser } from '@/store'
 import { ChatsProps } from '@/types'
 import { useMemo } from 'react'
 
@@ -21,7 +21,9 @@ type Props = {
 }
 
 export const ChatListByType = ({ title, add, listChat = [], typeChat, keySearch = '' }: Props) => {
-    const { updateUserId, userId } = useIdUser()
+    const { userData } = useDataUser()
+
+    const handleClickUser = useClickUser()
 
     const keyword = keySearch?.trim()?.toLowerCase()
 
@@ -52,7 +54,7 @@ export const ChatListByType = ({ title, add, listChat = [], typeChat, keySearch 
 
             <div className='flex flex-col gap-1 dark:text-gray-3 text-gray-7 text-14 mt-4'>
                 {data.map((chat) => {
-                    const isActive = userId === chat?.id
+                    const isActive = userData?.id === chat?.id
                     const isChannel = typeChat === 'channel'
                     const hasImgAvatar = !!chat?.avatar && chat?.avatar !== '#'
 
@@ -62,7 +64,7 @@ export const ChatListByType = ({ title, add, listChat = [], typeChat, keySearch 
                             className={`px-4 lg:px-6 py-[5px] flex items-center justify-between gap-3 cursor-pointer hover:bg-green-1 transition-all duration-200 group ${
                                 isActive ? 'bg-green-1 text-white' : ''
                             }`}
-                            onClick={() => chat?.id && updateUserId(chat?.id)}
+                            onClick={() => handleClickUser(chat)}
                         >
                             <div className='flex items-center gap-2'>
                                 {isChannel ? (

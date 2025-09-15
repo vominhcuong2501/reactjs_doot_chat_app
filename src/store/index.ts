@@ -1,3 +1,3 @@
 export * from './management-sidebar'
 
-export * from './management-user-id'
+export * from './management-user'

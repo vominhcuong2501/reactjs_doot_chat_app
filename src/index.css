@@ -15,7 +15,8 @@
   --color-black-4: #343A40;
   --color-black-5: #2E2E2E3F;
   --color-black-6: #212529;
-  
+  --color-black-7: #333333;
+
   --color-gray-1: #797C8C;
   --color-gray-2: #9093A0;
   --color-gray-3: #ADB5BD;
@@ -27,6 +28,8 @@
   --color-gray-9: #8F91982D;
   --color-gray-10: #F6F6F9B2;
   --color-gray-11: #F0F0F5;
+  --color-gray-12: #EAEAF1;
+
 
   --color-green-1: #4EAC6D;
   --color-green-2: #4EAC6D33;
@@ -127,4 +130,28 @@
 .dark .icon-dark-mode {
   -webkit-filter: brightness(0) saturate(100%) invert(67%) sepia(9%) saturate(211%) hue-rotate(189deg) brightness(85%) contrast(85%);
   filter: brightness(0) saturate(100%) invert(67%) sepia(9%) saturate(211%) hue-rotate(189deg) brightness(85%) contrast(85%);
+}
+
+.no-scrollbar {
+    -ms-overflow-style: none; 
+    scrollbar-width: none; 
+}
+
+.no-scrollbar::-webkit-scrollbar {
+    display: none; 
+}
+
+.scrollbar::-webkit-scrollbar-track {
+    background-color: '#FFFFFF';
+    border-radius: 20px;
+}
+
+.scrollbar::-webkit-scrollbar {
+    width: 6px;
+    height: 2px;
+}
+
+.scrollbar::-webkit-scrollbar-thumb {
+    background-color: #CED4DA;
+    border-radius: 20px;
 }

@@ -1,10 +1,12 @@
 import { LIST_CONTACTS } from '@/constant'
-import { getInitials, groupUsersByFirstLetter, normalizeName } from '@/hooks'
-import { useIdUser } from '@/store'
+import { getInitials, groupUsersByFirstLetter, normalizeName, useClickUser } from '@/hooks'
+import { useDataUser } from '@/store'
 import { useMemo } from 'react'
 
 export const ListContact = ({ keySearch }: { keySearch?: string }) => {
-    const { updateUserId, userId } = useIdUser()
+    const { userData } = useDataUser()
+
+    const handleClickUser = useClickUser()
 
     const keyword = normalizeName(keySearch)
 
@@ -30,7 +32,7 @@ export const ListContact = ({ keySearch }: { keySearch?: string }) => {
 
                         <div className='flex flex-col gap-1 dark:text-gray-3 text-gray-7 text-14 mt-4'>
                             {item?.listUser?.map((contact) => {
-                                const isActive = userId === contact?.id
+                                const isActive = userData?.id === contact?.id
 
                                 return (
                                     <div
@@ -41,7 +43,7 @@ export const ListContact = ({ keySearch }: { keySearch?: string }) => {
                                     >
                                         <div
                                             className='flex items-center gap-2'
-                                            onClick={() => contact?.id && updateUserId(contact?.id)}
+                                            onClick={() => contact?.id && handleClickUser(contact)}
                                         >
                                             {contact?.avatar ? (
                                                 <img

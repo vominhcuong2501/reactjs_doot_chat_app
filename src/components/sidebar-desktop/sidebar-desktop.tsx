@@ -1,13 +1,15 @@
 import { ButtonTheme } from '../button-theme'
-import { Link } from 'react-router-dom'
-import { SIDEBAR } from '@/constant'
+import { Link, useNavigate } from 'react-router-dom'
+import { CHANGE_PASSWORD, SIDEBAR } from '@/constant'
 import { useSidebar } from '@/store'
 
 export const SidebarDesktop = () => {
     const { keyword, updateKeyword } = useSidebar()
 
+    const navigate = useNavigate()
+
     return (
-        <div className='fixed top-0 left-0 h-screen bg-black-2 dark:bg-black-3 flex flex-col items-center justify-between py-5'>
+        <div className='fixed top-0 left-0 min-h-screen bg-black-2 dark:bg-black-3 flex flex-col items-center justify-between py-5'>
             <div className='flex flex-col items-center justify-between gap-10'>
                 <img
                     src='/images/sidebar/bxs-message-alt-detail.png'
@@ -46,7 +48,18 @@ export const SidebarDesktop = () => {
             </div>
             <div className='flex flex-col items-center gap-9'>
                 <ButtonTheme />
-                <img src='/images/sidebar/img-user.png' alt='User' title='User' width={36} height={36} loading='lazy' />
+                <img
+                    src='/images/sidebar/img-user.png'
+                    alt='Change Password'
+                    title='Change Password'
+                    width={36}
+                    height={36}
+                    loading='lazy'
+                    onClick={() => {
+                        navigate(`/${CHANGE_PASSWORD}`)
+                        updateKeyword(CHANGE_PASSWORD)
+                    }}
+                />
             </div>
         </div>
     )

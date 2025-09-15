@@ -1,9 +1,9 @@
 import { LIST_CALLS } from '@/constant'
 import { getInitials } from '@/hooks'
-import { useIdUser } from '@/store/management-user-id'
+import { useClickUser } from '@/hooks/use-click-user'
 
 export const Calls = () => {
-    const { updateUserId } = useIdUser()
+    const handleClickUser = useClickUser()
 
     return (
         <div className='py-4 lg:py-6'>
@@ -14,7 +14,7 @@ export const Calls = () => {
                         <div
                             key={`${user?.id}-${index}`}
                             className='px-4 lg:px-6 py-3 flex items-center justify-between gap-3 cursor-pointer hover:bg-green-1 transition-all duration-200 group dark:text-gray-3 text-gray-7 text-14 border-b border-gray-5 dark:border-black-2 last:border-0 hover-white-icon'
-                            onClick={() => user?.id && updateUserId(user?.id)}
+                            onClick={() => handleClickUser(user)}
                         >
                             <div className='flex items-center gap-2'>
                                 {user?.avatar ? (
