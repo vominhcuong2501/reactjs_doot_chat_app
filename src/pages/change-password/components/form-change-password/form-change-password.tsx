@@ -4,9 +4,12 @@ import { MouseEvent, useState } from 'react'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { DataFormChangePassword } from '@/types'
 import { useForm } from 'react-hook-form'
+import { useNavigate } from 'react-router-dom'
 
 export const FormChangePassword = () => {
     const [isLoading, setIsLoading] = useState(false)
+
+    const navigate = useNavigate()
 
     const {
         handleSubmit,
@@ -26,12 +29,12 @@ export const FormChangePassword = () => {
     const onSubmit = handleSubmit(async () => {
         setIsLoading(true)
 
-        const isSucces = setTimeout(() => {
+        const isSuccess = setTimeout(() => {
             setIsLoading(false)
 
-            clearInterval(isSucces)
+            clearInterval(isSuccess)
 
-            window.location.href = '/logout'
+            navigate('/logout')
         }, 3000)
     })
 
