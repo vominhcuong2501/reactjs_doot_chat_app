@@ -33,7 +33,7 @@ export const ProfileAttachedFile = () => {
                                         loading='lazy'
                                     />
                                 )}
-                                <div className='flex-1 text-gray-1 dark:text-gray-4s'>
+                                <div className='flex-1 text-gray-1 dark:text-gray-4'>
                                     <p className='text-14 font-medium'>{file?.fileName}</p>
                                     <p className='text-13'>{file?.fileSize}</p>
                                 </div>
