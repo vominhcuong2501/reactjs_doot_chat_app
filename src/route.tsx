@@ -6,7 +6,8 @@ import { ChangePassword } from './pages/change-password'
 import { Message } from './pages/message'
 import { Bookmark, Calls, Chats, Contacts, Profile, Settings } from './pages'
 import { useDisplay } from './hooks'
-import { BOOKMARK, CALLS, CHATS, CONTACTS, MESSAGE, SETTINGS } from './constant'
+import { BOOKMARK, CALLS, CHANGE_PASSWORD, CHATS, CONTACTS, LOGOUT, MESSAGE, SETTINGS } from './constant'
+import type { RouteObject } from 'react-router-dom'
 
 const MainLayout = lazy(() => import('./layouts/MainLayout'))
 const FormLayout = lazy(() => import('./layouts/FormLayout'))
@@ -14,8 +15,7 @@ const FormLayout = lazy(() => import('./layouts/FormLayout'))
 export default function useRouteElements() {
     const isMobile = useDisplay(768)
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const mainChildren: any[] = [
+    const mainChildren: RouteObject[] = [
         { index: true, element: <Profile /> },
         { path: CHATS, element: <Chats /> },
         { path: CONTACTS, element: <Contacts /> },
@@ -35,20 +35,12 @@ export default function useRouteElements() {
             children: mainChildren
         },
         {
-            path: '/change-password',
-            element: (
-                <FormLayout>
-                    <ChangePassword />
-                </FormLayout>
-            )
-        },
-        {
-            path: '/logout',
-            element: (
-                <FormLayout>
-                    <Logout />
-                </FormLayout>
-            )
+            path: '/',
+            element: <FormLayout />,
+            children: [
+                { path: CHANGE_PASSWORD, element: <ChangePassword /> },
+                { path: LOGOUT, element: <Logout /> }
+            ]
         }
     ])
 }

@@ -1,9 +1,7 @@
 import { useEffect } from 'react'
+import { Outlet } from 'react-router-dom'
 
-interface Props {
-    children?: React.ReactNode
-}
-export default function FormLayout({ children }: Props) {
+export default function FormLayout() {
     useEffect(() => {
         document.body.classList.add('bg-green-1')
         return () => {
@@ -22,7 +20,7 @@ export default function FormLayout({ children }: Props) {
             </div>
             <div className='max-w-[1920px] mx-auto lg:pr-6 relative w-full'>
                 <div className='max-w-[500px] 2xl:max-w-[1392px] mx-auto 2xl:ml-auto 2xl:mr-0 bg-white 2xl:min-h-[832px] rounded-md lg:rounded-2xl mt-4 px-4 pb-14 pt-5 flex flex-col items-center justify-center w-full relative'>
-                    {children}
+                    <Outlet />
                     <p className='flex items-center gap-1 justify-center text-12 sm:text-15 text-gray-1 absolute bottom-4 2xl:bottom-6 left-1/2 -translate-x-1/2 w-full flex-wrap'>
                         © 2021 Doot. Crafted with
                         <img
