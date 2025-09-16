@@ -1,7 +1,8 @@
 import { ButtonTheme } from '../button-theme'
 import { Link, useNavigate } from 'react-router-dom'
-import { CHANGE_PASSWORD, SIDEBAR } from '@/constant'
+import { CHANGE_PASSWORD } from '@/constant'
 import { useSidebar } from '@/store'
+import { SIDEBAR } from '@/mockup'
 
 export const SidebarDesktop = () => {
     const { keyword, updateKeyword } = useSidebar()

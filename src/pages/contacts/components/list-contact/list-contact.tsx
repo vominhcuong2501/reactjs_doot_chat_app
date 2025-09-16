@@ -1,5 +1,5 @@
-import { LIST_CONTACTS } from '@/constant'
 import { getInitials, groupUsersByFirstLetter, normalizeName, useClickUser } from '@/hooks'
+import { LIST_CONTACTS } from '@/mockup'
 import { useDataUser } from '@/store'
 import { useMemo } from 'react'
 
@@ -22,7 +22,7 @@ export const ListContact = ({ keySearch }: { keySearch?: string }) => {
     const listContact = useMemo(() => groupUsersByFirstLetter(filtered), [filtered])
 
     return (
-        <div className='mt-6 lg:mt-[47px] flex flex-col gap-5 lg:gap-[30px]'>
+        <div className='pb-4 lg:pb-6 flex flex-col gap-5 lg:gap-[30px]'>
             {listContact?.map((item) => {
                 return (
                     <div key={item?.letter}>

@@ -11,3 +11,5 @@ export * from './input-search'
 export * from './input'
 
 export * from './button'
+
+export * from './image-popup'

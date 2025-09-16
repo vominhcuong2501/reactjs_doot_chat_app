@@ -7,7 +7,7 @@ export default function MainLayout() {
     const isMobile = useDisplay(768)
 
     return (
-        <div className='md:flex items-start h-[100dvh] dark:bg-black-3 dark:text-white leading-[110%]'>
+        <div className='flex flex-col md:flex-row items-start justify-between h-[100dvh] dark:bg-black-3 dark:text-white leading-[110%]'>
             {!isMobile && <SidebarDesktop />}
             <div className='md:ml-[75px] md:max-w-[300px] w-full overflow-y-scroll max-h-screen no-scrollbar'>
                 <Outlet />

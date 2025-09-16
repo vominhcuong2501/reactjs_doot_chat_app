@@ -1,4 +1,4 @@
-import { CALLS, CHATS, CONTACTS } from './keywork'
+import { CALLS, CHATS, CONTACTS } from '../constant/keywork'
 
 export const MENU_MOBILE = [
     {

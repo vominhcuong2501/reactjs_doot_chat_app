@@ -1,14 +1,17 @@
-import { LIST_CALLS } from '@/constant'
+import { CALLS } from '@/constant'
 import { getInitials } from '@/hooks'
 import { useClickUser } from '@/hooks/use-click-user'
+import { LIST_CALLS } from '@/mockup'
 
 export const Calls = () => {
     const handleClickUser = useClickUser()
 
     return (
-        <div className='py-4 lg:py-6'>
-            <h1 className='px-4 lg:px-6 text-21 font-medium text-black-1 dark:text-gray-3'>Calls</h1>
-            <div className='mt-4 flex flex-col'>
+        <>
+            <h1 className='p-4 lg:p-6 text-21 font-medium text-black-1 dark:text-gray-3 sticky top-0 bg-white dark:bg-black-3 z-[3] capitalize'>
+                {CALLS}
+            </h1>
+            <div className='flex flex-col pb-4 lg:pb-6'>
                 {LIST_CALLS?.map((user, index) => {
                     return (
                         <div
@@ -84,6 +87,6 @@ export const Calls = () => {
                     )
                 })}
             </div>
-        </div>
+        </>
     )
 }

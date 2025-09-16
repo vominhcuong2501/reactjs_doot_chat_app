@@ -1,3 +1,4 @@
+import { ImagePopup } from '@/components'
 import { getInitials } from '@/hooks'
 import { useDataUser } from '@/store'
 
@@ -143,46 +144,8 @@ export const MessageDetail = () => {
                     )}
                     <div>
                         <div className='flex items-center gap-2.5'>
-                            <div className='relative'>
-                                <img
-                                    src='/images/profile/image-1.jpg'
-                                    alt={userData?.name}
-                                    title={userData?.name}
-                                    width={148}
-                                    height={99}
-                                    loading='lazy'
-                                    className='rounded'
-                                />
-                                <img
-                                    src='/images/message/icon-dots.svg'
-                                    alt={userData?.name}
-                                    title={userData?.name}
-                                    width={26}
-                                    height={24}
-                                    loading='lazy'
-                                    className='absolute right-2 bottom-3 cursor-pointer '
-                                />
-                            </div>
-                            <div className='relative'>
-                                <img
-                                    src='/images/profile/image-2.jpg'
-                                    alt={userData?.name}
-                                    title={userData?.name}
-                                    width={148}
-                                    height={99}
-                                    loading='lazy'
-                                    className='rounded'
-                                />
-                                <img
-                                    src='/images/message/icon-dots.svg'
-                                    alt={userData?.name}
-                                    title={userData?.name}
-                                    width={26}
-                                    height={24}
-                                    loading='lazy'
-                                    className='absolute right-2 bottom-3 cursor-pointer '
-                                />
-                            </div>
+                            <ImagePopup src='/images/profile/image-1.jpg' alt={userData?.name} />
+                            <ImagePopup src='/images/profile/image-2.jpg' alt={userData?.name} />
                         </div>
                         <p className='text-12 font-medium text-gray-1 dark:text-gray-4 mt-2'>10:15 am</p>
                     </div>
@@ -207,7 +170,11 @@ export const MessageDetail = () => {
                                 </div>
                             </div>
                             <div className='flex items-center gap-4'>
-                                <a href='#' className='cursor-pointer'>
+                                <a
+                                    href='/images/profile/bxs-download.svg'
+                                    className='cursor-pointer'
+                                    download='bxs-download.svg'
+                                >
                                     <img
                                         src='/images/profile/bxs-download.svg'
                                         width={15}

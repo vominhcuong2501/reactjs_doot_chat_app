@@ -1,4 +1,4 @@
-import { LIST_STATUS } from '@/constant'
+import { LIST_STATUS } from '@/mockup'
 import { useState } from 'react'
 
 export const ProfileUser = ({
@@ -19,7 +19,7 @@ export const ProfileUser = ({
     const idxStatus = LIST_STATUS?.find((item) => item?.text === status)
 
     return (
-        <div className='pb-4 md:pb-[26px] border-b border-gray-5 dark:border-black-2'>
+        <div className='pb-4 md:pb-[26px] border-b border-gray-5 dark:border-black-2 sticky top-0 bg-white dark:bg-black-3 z-[3]'>
             <div className='relative z-[1]'>
                 <img
                     src='/images/profile/bg-profile.jpg'
@@ -31,7 +31,7 @@ export const ProfileUser = ({
                     loading='lazy'
                 />
                 <div className='flex items-center justify-between gap-5 absolute top-[15px] left-4 right-4'>
-                    <h1 className='text-18 font-medium text-white'>{title}</h1>
+                    <h1 className='text-18 font-medium text-white capitalize'>{title}</h1>
                     <img
                         src='/images/profile/bx-dots-vertical-rounded.svg'
                         alt='Icon'

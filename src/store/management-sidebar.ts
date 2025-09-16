@@ -1,4 +1,3 @@
-import { PROFILE } from '@/constant/keywork'
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 
@@ -10,7 +9,7 @@ interface SidebarData {
 export const useSidebar = create<SidebarData>()(
     persist(
         (set) => ({
-            keyword: PROFILE,
+            keyword: '',
             updateKeyword: (value) => set({ keyword: value })
         }),
         {

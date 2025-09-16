@@ -1,8 +1,38 @@
 import { Button, Input } from '@/components'
+import { LIST_MOJI } from '@/mockup'
+import { useEffect, useRef, useState } from 'react'
 
 export const MessageFooter = () => {
+    const [showPicker, setShowPicker] = useState(false)
+
+    const [inputValue, setInputValue] = useState('')
+
+    const pickerRef = useRef<HTMLDivElement>(null)
+
+    const addEmoji = (emoji: string) => {
+        setInputValue((prev) => prev + emoji)
+    }
+
+    useEffect(() => {
+        const handleClickOutside = (event: MouseEvent) => {
+            if (pickerRef.current && !pickerRef.current.contains(event.target as Node)) {
+                setShowPicker(false)
+            }
+        }
+
+        if (showPicker) {
+            document.addEventListener('mousedown', handleClickOutside)
+        } else {
+            document.removeEventListener('mousedown', handleClickOutside)
+        }
+
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside)
+        }
+    }, [showPicker])
+
     return (
-        <form className='lg:max-h-[93px] lg:h-full p-2 lg:p-6 border-t border-gray-12 dark:border-black-7 flex item-center gap-2 lg:gap-4'>
+        <form className='lg:max-h-[93px] lg:h-full p-2 lg:p-6 border-t border-gray-12 dark:border-black-7 flex item-center gap-2 lg:gap-4 relative'>
             <img
                 src='/images/message/bx-dots-horizontal-rounded.svg'
                 alt='Options'
@@ -19,9 +49,12 @@ export const MessageFooter = () => {
                 width={22}
                 height={22}
                 loading='lazy'
-                className='cursor-pointer hover-green-icon icon-dark-mode'
+                className={`cursor-pointer hover-green-icon icon-dark-mode ${showPicker && 'filter-green-icon'}`}
+                onClick={() => setShowPicker(!showPicker)}
             />
             <Input
+                value={inputValue}
+                onChange={(e) => setInputValue(e.target.value)}
                 type='text'
                 name='message'
                 placeholder='Type your message...'
@@ -48,6 +81,18 @@ export const MessageFooter = () => {
                     className='cursor-pointer w-7 h-7 lg:w-[43px] lg:h-[43px] rounded'
                 />
             </Button>
+            {showPicker && (
+                <div
+                    className='scrollbar absolute bottom-20 left-4 lg:left-6 bg-white p-2 rounded-md max-w-[250px] max-h-[200px] w-full overflow-y-auto grid grid-cols-6 gap-1 gap-y-2 shadow-sm z-[3] text-center'
+                    ref={pickerRef}
+                >
+                    {LIST_MOJI?.map((emoji, index) => (
+                        <p key={index} style={{ fontSize: '20px', cursor: 'pointer' }} onClick={() => addEmoji(emoji)}>
+                            {emoji}
+                        </p>
+                    ))}
+                </div>
+            )}
         </form>
     )
 }

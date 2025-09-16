@@ -1,10 +1,13 @@
-import { LIST_BOOKMARK } from '@/constant'
+import { BOOKMARK } from '@/constant'
+import { LIST_BOOKMARK } from '@/mockup'
 
 export const Bookmark = () => {
     return (
-        <div className='py-4 lg:py-6'>
-            <h1 className='px-4 lg:px-6 text-21 font-medium text-black-1 dark:text-gray-3'>Bookmark</h1>
-            <div className='mt-4 flex flex-col'>
+        <>
+            <h1 className='p-4 lg:p-6 text-21 font-medium text-black-1 dark:text-gray-3 sticky top-0 bg-white dark:bg-black-3 capitalize'>
+                {BOOKMARK}
+            </h1>
+            <div className='flex flex-col pb-4 lg:pb-6'>
                 {LIST_BOOKMARK?.map((file) => {
                     return (
                         <div
@@ -67,6 +70,6 @@ export const Bookmark = () => {
                     )
                 })}
             </div>
-        </div>
+        </>
     )
 }

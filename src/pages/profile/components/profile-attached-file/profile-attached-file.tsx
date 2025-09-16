@@ -1,4 +1,4 @@
-import { LIST_ATTACHED_FILES } from '@/constant'
+import { LIST_ATTACHED_FILES } from '@/mockup'
 import { Fragment } from 'react'
 
 export const ProfileAttachedFile = () => {
@@ -39,7 +39,11 @@ export const ProfileAttachedFile = () => {
                                 </div>
                             </div>
                             <div className='flex items-center gap-4'>
-                                <a href='#' download={file?.fileName} className='cursor-pointer'>
+                                <a
+                                    href='/images/profile/image-1.jpg'
+                                    download={file?.fileName}
+                                    className='cursor-pointer'
+                                >
                                     <img
                                         src='/images/profile/bxs-download.svg'
                                         width={15}

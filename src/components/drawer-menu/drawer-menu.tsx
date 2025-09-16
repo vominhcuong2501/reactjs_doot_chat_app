@@ -2,8 +2,8 @@ import { ButtonTheme } from '../button-theme'
 import { Link } from 'react-router-dom'
 import { useContext } from 'react'
 import { AppContext } from '@/contexts/app.context'
-import { SIDEBAR } from '@/constant'
 import { useSidebar } from '@/store'
+import { SIDEBAR } from '@/mockup'
 
 export const DrawerMenu = () => {
     const { isOpen, setIsOpen } = useContext(AppContext)

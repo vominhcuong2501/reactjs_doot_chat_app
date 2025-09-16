@@ -1,5 +1,5 @@
-import { MENU_MOBILE } from '@/constant'
 import { AppContext } from '@/contexts/app.context'
+import { MENU_MOBILE } from '@/mockup'
 import { useSidebar } from '@/store'
 import { useContext } from 'react'
 import { Link } from 'react-router-dom'
