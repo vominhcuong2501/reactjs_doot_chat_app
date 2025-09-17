@@ -14,7 +14,6 @@
         "jsx": "preserve",
         "incremental": true,
         "downlevelIteration": true,
-        "types": ["node"],
         "plugins": [
             {
                 "name": "next"
@@ -24,14 +23,7 @@
             "@/*": ["./src/*"]
         }
     },
-    "files": ["src/types/index.d.ts"],
-    "include": [
-        "next-env.d.ts",
-        "**/*.ts",
-        "**/*.tsx",
-        ".next/types/**/*.ts",
-        "next.config.mjs",
-        "src/types/index.d.ts"
-    ],
+    "files": [""],
+    "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "next.config.mjs"],
     "exclude": ["node_modules"]
 }

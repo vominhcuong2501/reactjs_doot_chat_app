@@ -27,9 +27,9 @@ export const ProfileMedia = () => {
                         return (
                             <div className='relative rounded h-full' key={`${item}-${index}`}>
                                 <ImagePopup
-                                    src={item}
+                                    source={item}
                                     alt={IMAGE_TYPE}
-                                    className='w-full md:w-[76px] md:h-[76px] object-cover object-center'
+                                    className='w-full md:w-[76px] md:h-[76px] object-cover object-center rounded-lg'
                                 />
                                 {!isToggleMedia && LIMITS === index && (
                                     <p className='absolute top-0 left-0 w-full h-full flex items-center justify-center text-15 text-white bg-white-4 rounded'>

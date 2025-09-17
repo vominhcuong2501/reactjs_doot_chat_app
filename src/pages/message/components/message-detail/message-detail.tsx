@@ -1,6 +1,4 @@
 import { ImagePopup } from '@/components'
-import { OTHER_TYPE } from '@/constant'
-import { getInitials } from '@/hooks'
 import { useDataUser } from '@/store'
 
 export const MessageDetail = () => {
@@ -10,32 +8,15 @@ export const MessageDetail = () => {
         <div className='max-h-[calc(100dvh-175px)] lg:max-h-[calc(100dvh-179px)] h-[100dvh] flex-1 overflow-y-scroll scrollbar p-4 lg:p-6'>
             <div className='flex flex-col gap-6'>
                 <div className='flex items-end gap-4'>
-                    {(userData?.avatar === OTHER_TYPE || !userData?.avatar) && (
-                        <div className='relative flex-shrink-0'>
-                            <p className='w-8 h-8 rounded-full bg-green-1 grid place-items-center text-white text-14 font-semibold'>
-                                {!userData?.avatar ? getInitials(userData?.name) : userData?.avatar}
-                            </p>
-                            <span className='absolute bottom-0 right-0 p-0.5 bg-white rounded-full w-2.5 h-2.5 grid place-items-center'>
-                                <span className='w-1.5 h-1.5 rounded-full bg-green-1' />
-                            </span>
-                        </div>
-                    )}
-                    {userData?.avatar && userData?.avatar !== OTHER_TYPE && (
-                        <div className='relative flex-shrink-0'>
-                            <img
-                                src={userData?.avatar}
-                                alt={userData?.name}
-                                title={userData?.name}
-                                width={38}
-                                height={38}
-                                loading='lazy'
-                                className='cursor-pointer rounded-full w-8 h-8'
-                            />
-                            <span className='absolute bottom-0 right-0 p-0.5 bg-white rounded-full w-2.5 h-2.5 grid place-items-center'>
-                                <span className='w-1.5 h-1.5 rounded-full bg-green-1' />
-                            </span>
-                        </div>
-                    )}
+                    <ImagePopup
+                        source={userData?.avatar}
+                        width={38}
+                        height={38}
+                        alt={userData?.name}
+                        className='cursor-pointer rounded-full w-8 h-8 lg:w-[38px] lg:h-[38px] object-contain object-center'
+                        isStatus
+                        classNameTextAvatar='w-8 h-8 lg:w-[38px] lg:h-[38px]'
+                    />
 
                     <div className='flex flex-col gap-2'>
                         <p className='bg-white dark:bg-gray-13 shadow-sm py-3 px-4 text-black-1 dark:text-white-2 rounded'>
@@ -62,32 +43,14 @@ export const MessageDetail = () => {
                     </p>
                 </div>
                 <div className='flex items-end gap-4'>
-                    {(userData?.avatar === OTHER_TYPE || !userData?.avatar) && (
-                        <div className='relative flex-shrink-0'>
-                            <p className='w-8 h-8 rounded-full bg-green-1 grid place-items-center text-white text-14 font-semibold'>
-                                {!userData?.avatar ? getInitials(userData?.name) : userData?.avatar}
-                            </p>
-                            <span className='absolute bottom-0 right-0 p-0.5 bg-white rounded-full w-2.5 h-2.5 grid place-items-center'>
-                                <span className='w-1.5 h-1.5 rounded-full bg-green-1' />
-                            </span>
-                        </div>
-                    )}
-                    {userData?.avatar && userData?.avatar !== OTHER_TYPE && (
-                        <div className='relative flex-shrink-0'>
-                            <img
-                                src={userData?.avatar}
-                                alt={userData?.name}
-                                title={userData?.name}
-                                width={38}
-                                height={38}
-                                loading='lazy'
-                                className='cursor-pointer rounded-full w-8 h-8'
-                            />
-                            <span className='absolute bottom-0 right-0 p-0.5 bg-white rounded-full w-2.5 h-2.5 grid place-items-center'>
-                                <span className='w-1.5 h-1.5 rounded-full bg-green-1' />
-                            </span>
-                        </div>
-                    )}
+                    <ImagePopup
+                        source={userData?.avatar}
+                        width={38}
+                        height={38}
+                        alt={userData?.name}
+                        className='cursor-pointer rounded-full w-8 h-8 lg:w-[38px] lg:h-[38px] object-contain object-center'
+                        isStatus
+                    />
                     <div>
                         <p className='bg-white dark:bg-gray-13 shadow-sm py-3 px-4 text-black-1 dark:text-white-2 rounded inline-block'>
                             Yeah everything is fine. Our next meeting tomorrow at 10.00 AM
@@ -117,36 +80,28 @@ export const MessageDetail = () => {
                     </p>
                 </div>
                 <div className='flex items-end gap-4'>
-                    {(userData?.avatar === OTHER_TYPE || !userData?.avatar) && (
-                        <div className='relative flex-shrink-0'>
-                            <p className='w-8 h-8 rounded-full bg-green-1 grid place-items-center text-white text-14 font-semibold'>
-                                {!userData?.avatar ? getInitials(userData?.name) : userData?.avatar}
-                            </p>
-                            <span className='absolute bottom-0 right-0 p-0.5 bg-white rounded-full w-2.5 h-2.5 grid place-items-center'>
-                                <span className='w-1.5 h-1.5 rounded-full bg-green-1' />
-                            </span>
-                        </div>
-                    )}
-                    {userData?.avatar && userData?.avatar !== OTHER_TYPE && (
-                        <div className='relative flex-shrink-0'>
-                            <img
-                                src={userData?.avatar}
-                                alt={userData?.name}
-                                title={userData?.name}
-                                width={38}
-                                height={38}
-                                loading='lazy'
-                                className='cursor-pointer rounded-full w-8 h-8'
-                            />
-                            <span className='absolute bottom-0 right-0 p-0.5 bg-white rounded-full w-2.5 h-2.5 grid place-items-center'>
-                                <span className='w-1.5 h-1.5 rounded-full bg-green-1' />
-                            </span>
-                        </div>
-                    )}
+                    <ImagePopup
+                        source={userData?.avatar}
+                        width={38}
+                        height={38}
+                        alt={userData?.name}
+                        className='cursor-pointer rounded-full w-8 h-8 lg:w-[38px] lg:h-[38px] object-contain object-center'
+                        isStatus
+                    />
                     <div>
                         <div className='flex items-center gap-2.5'>
-                            <ImagePopup isDot src='/images/profile/image-1.jpg' alt={userData?.name} />
-                            <ImagePopup isDot src='/images/profile/image-2.jpg' alt={userData?.name} />
+                            <ImagePopup
+                                isDot
+                                source='/images/profile/image-1.jpg'
+                                alt={userData?.name}
+                                className='rounded-lg'
+                            />
+                            <ImagePopup
+                                isDot
+                                source='/images/profile/image-2.jpg'
+                                alt={userData?.name}
+                                className='rounded-lg'
+                            />
                         </div>
                         <p className='text-12 font-medium text-gray-1 dark:text-gray-4 mt-2'>10:15 am</p>
                     </div>

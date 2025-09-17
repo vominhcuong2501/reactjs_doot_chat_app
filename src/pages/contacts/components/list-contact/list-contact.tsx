@@ -1,9 +1,10 @@
+import { ImagePopup } from '@/components'
 import { getInitials, groupUsersByFirstLetter, normalizeName, useClickUser } from '@/hooks'
 import { LIST_CONTACTS } from '@/mockup'
 import { useDataUser } from '@/store'
 import { useMemo } from 'react'
 
-export const ListContact = ({ keySearch }: { keySearch?: string }) => {
+export const ListContact = ({ keySearch, isShowdot = true }: { keySearch?: string; isShowdot?: boolean }) => {
     const { userData } = useDataUser()
 
     const handleClickUser = useClickUser()
@@ -42,37 +43,32 @@ export const ListContact = ({ keySearch }: { keySearch?: string }) => {
                                         }`}
                                     >
                                         <div
-                                            className='flex items-center gap-2'
+                                            className='flex items-center gap-2 flex-1'
                                             onClick={() => contact?.id && handleClickUser(contact)}
                                         >
-                                            {contact?.avatar ? (
-                                                <img
-                                                    src={contact?.avatar}
-                                                    alt={contact?.name}
-                                                    title={contact?.name}
-                                                    width={29}
-                                                    height={29}
-                                                    loading='lazy'
-                                                    className='cursor-pointer rounded-full'
-                                                />
-                                            ) : (
-                                                <p className='w-[29px] h-[29px] rounded-full bg-green-1 grid place-items-center text-white text-14 font-semibold'>
-                                                    {getInitials(contact?.name)}
-                                                </p>
-                                            )}
+                                            <ImagePopup
+                                                source={contact?.avatar}
+                                                width={29}
+                                                height={29}
+                                                alt={contact?.name}
+                                                isStatus
+                                                className='rounded-full'
+                                            />
                                             <p className='capitalize group-hover:text-white font-medium'>
                                                 {contact?.name}
                                             </p>
                                         </div>
-                                        <img
-                                            src='/images/chats/bx-dots-vertical-rounded.svg'
-                                            alt='Icon'
-                                            title='Icon'
-                                            width={15}
-                                            height={15}
-                                            loading='lazy'
-                                            className='cursor-pointer icon-hover icon-dark-mode'
-                                        />
+                                        {isShowdot && (
+                                            <img
+                                                src='/images/chats/bx-dots-vertical-rounded.svg'
+                                                alt='Icon'
+                                                title='Icon'
+                                                width={15}
+                                                height={15}
+                                                loading='lazy'
+                                                className='cursor-pointer icon-hover icon-dark-mode'
+                                            />
+                                        )}
                                     </div>
                                 )
                             })}

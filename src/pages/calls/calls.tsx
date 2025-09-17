@@ -1,5 +1,5 @@
+import { ImagePopup } from '@/components'
 import { CALLS_PAGE } from '@/constant'
-import { getInitials } from '@/hooks'
 import { useClickUser } from '@/hooks/use-click-user'
 import { LIST_CALLS } from '@/mockup'
 
@@ -20,21 +20,13 @@ export const Calls = () => {
                             onClick={() => handleClickUser(user)}
                         >
                             <div className='flex items-center gap-2'>
-                                {user?.avatar ? (
-                                    <img
-                                        src={user?.avatar}
-                                        alt={user?.name}
-                                        title={user?.name}
-                                        width={29}
-                                        height={29}
-                                        loading='lazy'
-                                        className='cursor-pointer rounded-full'
-                                    />
-                                ) : (
-                                    <p className='w-[29px] h-[29px] rounded-full bg-pink-1 grid place-items-center text-white text-14 font-semibold'>
-                                        {getInitials(user?.name)}
-                                    </p>
-                                )}
+                                <ImagePopup
+                                    source={user?.avatar}
+                                    width={29}
+                                    height={29}
+                                    alt={user?.name}
+                                    className='rounded-full'
+                                />
                                 <div>
                                     <p className='capitalize group-hover:text-white font-medium'>{user?.name}</p>
                                     <p className='flex items-center gap-1 line-clamp-1 text-12 text-gray-1 dark:text-gray-4 group-hover:text-white'>

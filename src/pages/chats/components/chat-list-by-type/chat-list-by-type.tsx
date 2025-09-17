@@ -1,5 +1,7 @@
+import { ImagePopup } from '@/components'
+import { AddNewChat } from '@/components/add-new-chat'
 import { CHANNEL_CHAT, DIRECT_CHAT, FAVOURITE_CHAT, OTHER_TYPE } from '@/constant'
-import { getInitials, useClickUser } from '@/hooks'
+import { useClickUser } from '@/hooks'
 import { useDataUser } from '@/store'
 import { ChatsProps } from '@/types'
 import { useMemo } from 'react'
@@ -41,28 +43,18 @@ export const ChatListByType = ({ title, add, listChat = [], typeChat, keySearch 
         <div>
             <div className='flex items-center justify-between gap-5 px-4 lg:px-6'>
                 <h2 className='uppercase'>{title}</h2>
-                {add && (
-                    <img
-                        src='/images/chats/icon-plus.svg'
-                        alt='Add'
-                        width={31}
-                        height={30}
-                        loading='lazy'
-                        className='cursor-pointer'
-                    />
-                )}
+                {add && <AddNewChat />}
             </div>
 
             <div className='flex flex-col gap-1 dark:text-gray-3 text-gray-7 text-14 mt-4'>
                 {data.map((chat) => {
                     const isActive = userData?.id === chat?.id
                     const isChannel = typeChat === 'channel'
-                    const hasImgAvatar = !!chat?.avatar && chat?.avatar !== OTHER_TYPE
 
                     return (
                         <div
                             key={chat?.id}
-                            className={`px-4 lg:px-6 py-[5px] flex items-center justify-between gap-3 cursor-pointer hover:bg-green-1 transition-all duration-200 group ${
+                            className={`px-4 lg:px-6 py-[5px] flex items-center justify-between gap-3 cursor-pointer hover:bg-green-1 transition-all duration-200 group flex-1 ${
                                 isActive ? 'bg-green-1 text-white' : ''
                             }`}
                             onClick={() => handleClickUser(chat)}
@@ -72,36 +64,16 @@ export const ChatListByType = ({ title, add, listChat = [], typeChat, keySearch 
                                     <p className='w-[29px] h-[29px] rounded-full flex items-center justify-center text-black-4 text-14 font-semibold dark:bg-black-5 dark:text-white hover:text-white'>
                                         {chat?.avatar || OTHER_TYPE}
                                     </p>
-                                ) : hasImgAvatar ? (
-                                    <div className='relative'>
-                                        <img
-                                            src={chat?.avatar}
-                                            alt={chat?.name}
-                                            title={chat?.name}
-                                            width={29}
-                                            height={29}
-                                            loading='lazy'
-                                            className='cursor-pointer rounded-full'
-                                        />
-                                        {chat?.active && (
-                                            <span className='absolute bottom-0 right-0 p-0.5 bg-white rounded-full w-2.5 h-2.5 grid place-items-center'>
-                                                <span className='w-1.5 h-1.5 rounded-full bg-green-1' />
-                                            </span>
-                                        )}
-                                    </div>
                                 ) : (
-                                    <div className='relative'>
-                                        <p className='w-[29px] h-[29px] rounded-full bg-green-1 grid place-items-center text-white text-14 font-semibold'>
-                                            {getInitials(chat?.name)}
-                                        </p>
-                                        {chat?.active && (
-                                            <span className='absolute bottom-0 right-0 p-0.5 bg-white rounded-full w-2.5 h-2.5 grid place-items-center'>
-                                                <span className='w-1.5 h-1.5 rounded-full bg-green-1' />
-                                            </span>
-                                        )}
-                                    </div>
+                                    <ImagePopup
+                                        source={chat?.avatar}
+                                        width={29}
+                                        height={29}
+                                        alt={chat?.name}
+                                        isStatus
+                                        className='rounded-full'
+                                    />
                                 )}
-
                                 <p
                                     className={`capitalize group-hover:text-white ${
                                         chat?.message && chat?.message > 0 ? 'font-medium' : ''
