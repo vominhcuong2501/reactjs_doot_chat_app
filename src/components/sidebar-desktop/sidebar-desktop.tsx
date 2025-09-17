@@ -1,6 +1,6 @@
 import { ButtonTheme } from '../button-theme'
 import { Link, useNavigate } from 'react-router-dom'
-import { CHANGE_PASSWORD } from '@/constant'
+import { CHANGE_PASSWORD_PAGE } from '@/constant'
 import { useSidebar } from '@/store'
 import { SIDEBAR } from '@/mockup'
 
@@ -57,8 +57,8 @@ export const SidebarDesktop = () => {
                     height={36}
                     loading='lazy'
                     onClick={() => {
-                        navigate(`/${CHANGE_PASSWORD}`)
-                        updateKeyword(CHANGE_PASSWORD)
+                        navigate(`/${CHANGE_PASSWORD_PAGE}`)
+                        updateKeyword(CHANGE_PASSWORD_PAGE)
                     }}
                 />
             </div>

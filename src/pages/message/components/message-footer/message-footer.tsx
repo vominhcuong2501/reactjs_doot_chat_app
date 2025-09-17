@@ -87,7 +87,7 @@ export const MessageFooter = () => {
                     ref={pickerRef}
                 >
                     {LIST_MOJI?.map((emoji, index) => (
-                        <p key={index} style={{ fontSize: '20px', cursor: 'pointer' }} onClick={() => addEmoji(emoji)}>
+                        <p key={index} className='text-20 cursor-pointer' onClick={() => addEmoji(emoji)}>
                             {emoji}
                         </p>
                     ))}

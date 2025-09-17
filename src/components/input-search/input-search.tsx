@@ -13,7 +13,7 @@ export const InputSearch = ({
         <div className={className}>
             <input
                 type='text'
-                placeholder='Search here..'
+                placeholder='Search here...'
                 className={`w-full bg-gray-5 dark:bg-black-2 dark:text-gray-4 dark:placeholder:text-gray-4 text-14 text-gray-1 placeholder:text-gray-1 placeholder:text-14 focus:outline-0 px-4 py-2.5 ${classNameInput}`}
                 onChange={(e) => setKeySearch?.(e.target.value)}
             />

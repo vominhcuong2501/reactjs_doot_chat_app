@@ -1,3 +1,4 @@
+import { OTHER_TYPE } from '@/constant'
 import { ContactProps } from '@/types/contact'
 
 // Get initials from name for avatar display
@@ -19,10 +20,10 @@ export const normalizeName = (s = '') =>
         ?.replace(/Đ/g, 'D')
         ?.toLowerCase()
 
-// Get the first letter, if not A-Z then return '#'
+// Get the first letter, if not A-Z then return OTHER_TYPE
 export const getLetter = (name = '') => {
     const first = normalizeName(name)?.trim()?.charAt(0)?.toUpperCase()
-    return /[A-Z]/.test(first) ? first : '#'
+    return /[A-Z]/.test(first) ? first : OTHER_TYPE
 }
 
 // Compare A-Z, accent/uppercase-insensitive
@@ -45,11 +46,11 @@ export function groupUsersByFirstLetter(users: ContactProps[]) {
         map.get(key)!.push(u)
     }
 
-    // Sort groups A-Z, '#' at the end
+    // Sort groups A-Z, OTHER_TYPE at the end
     const letters = [...map.keys()].sort((a, b) => {
-        if (a === '#' && b === '#') return 0
-        if (a === '#') return 1
-        if (b === '#') return -1
+        if (a === OTHER_TYPE && b === OTHER_TYPE) return 0
+        if (a === OTHER_TYPE) return 1
+        if (b === OTHER_TYPE) return -1
         return a < b ? -1 : a > b ? 1 : 0
     })
 

@@ -1,11 +1,11 @@
-import { BOOKMARK } from '@/constant'
+import { BOOKMARK_PAGE, DOCUMENT_TYPE, IMAGE_TYPE, WEBSITE_TYPE } from '@/constant'
 import { LIST_BOOKMARK } from '@/mockup'
 
 export const Bookmark = () => {
     return (
         <>
             <h1 className='p-4 lg:p-6 text-21 font-medium text-black-1 dark:text-gray-3 sticky top-0 bg-white dark:bg-black-3 capitalize'>
-                {BOOKMARK}
+                {BOOKMARK_PAGE}
             </h1>
             <div className='flex flex-col pb-4 lg:pb-6'>
                 {LIST_BOOKMARK?.map((file) => {
@@ -15,7 +15,7 @@ export const Bookmark = () => {
                             className='px-4 lg:px-6 py-3 flex items-center justify-between gap-3 cursor-pointer hover:bg-green-1 transition-all duration-200 group dark:text-gray-3 text-gray-7 text-14 border-b border-gray-5 dark:border-black-2 last:border-0 hover-white-icon'
                         >
                             <div className='flex items-center gap-4'>
-                                {file.fileType === 'document' && (
+                                {file.fileType === DOCUMENT_TYPE && (
                                     <img
                                         src='/images/profile/icon-file.svg'
                                         width={29}
@@ -26,7 +26,7 @@ export const Bookmark = () => {
                                         className='icon-hover'
                                     />
                                 )}
-                                {file.fileType === 'image' && (
+                                {file.fileType === IMAGE_TYPE && (
                                     <img
                                         src='/images/profile/icon-image.svg'
                                         width={29}
@@ -37,7 +37,7 @@ export const Bookmark = () => {
                                         className='icon-hover'
                                     />
                                 )}
-                                {file.fileType === 'website' && (
+                                {file.fileType === WEBSITE_TYPE && (
                                     <img
                                         src='/images/profile/icon-pin.svg'
                                         width={29}

@@ -6,26 +6,36 @@ import { ChangePassword } from './pages/change-password'
 import { Message } from './pages/message'
 import { Bookmark, Calls, Chats, Contacts, Profile, Settings } from './pages'
 import { useDisplay } from './hooks'
-import { BOOKMARK, CALLS, CHANGE_PASSWORD, CHATS, CONTACTS, LOGOUT, MESSAGE, SETTINGS } from './constant'
+import {
+    BOOKMARK_PAGE,
+    CALLS_PAGE,
+    CHANGE_PASSWORD_PAGE,
+    CHATS_PAGE,
+    CONTACTS_PAGE,
+    LOGOUT_PAGE,
+    MESSAGE_PAGE,
+    MOBILE_SCREEN,
+    SETTINGS_PAGE
+} from './constant'
 import type { RouteObject } from 'react-router-dom'
 
 const MainLayout = lazy(() => import('./layouts/MainLayout'))
 const FormLayout = lazy(() => import('./layouts/FormLayout'))
 
 export default function useRouteElements() {
-    const isMobile = useDisplay(768)
+    const isMobile = useDisplay(MOBILE_SCREEN)
 
     const mainChildren: RouteObject[] = [
         { index: true, element: <Profile /> },
-        { path: CHATS, element: <Chats /> },
-        { path: CONTACTS, element: <Contacts /> },
-        { path: CALLS, element: <Calls /> },
-        { path: BOOKMARK, element: <Bookmark /> },
-        { path: SETTINGS, element: <Settings /> }
+        { path: CHATS_PAGE, element: <Chats /> },
+        { path: CONTACTS_PAGE, element: <Contacts /> },
+        { path: CALLS_PAGE, element: <Calls /> },
+        { path: BOOKMARK_PAGE, element: <Bookmark /> },
+        { path: SETTINGS_PAGE, element: <Settings /> }
     ]
 
     if (isMobile) {
-        mainChildren.push({ path: `${MESSAGE}/:id`, element: <Message /> })
+        mainChildren.push({ path: `${MESSAGE_PAGE}/:id`, element: <Message /> })
     }
 
     return useRoutes([
@@ -38,8 +48,8 @@ export default function useRouteElements() {
             path: '/',
             element: <FormLayout />,
             children: [
-                { path: CHANGE_PASSWORD, element: <ChangePassword /> },
-                { path: LOGOUT, element: <Logout /> }
+                { path: CHANGE_PASSWORD_PAGE, element: <ChangePassword /> },
+                { path: LOGOUT_PAGE, element: <Logout /> }
             ]
         }
     ])

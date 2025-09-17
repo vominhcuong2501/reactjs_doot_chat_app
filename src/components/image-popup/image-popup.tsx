@@ -5,9 +5,11 @@ interface ImagePopupProps {
     alt?: string
     width?: number
     height?: number
+    className?: string
+    isDot?: boolean
 }
 
-export const ImagePopup = ({ src, alt = '', width = 500, height = 500 }: ImagePopupProps) => {
+export const ImagePopup = ({ src, alt = '', width, height, className, isDot = false }: ImagePopupProps) => {
     const [isOpen, setIsOpen] = useState(false)
 
     return (
@@ -18,18 +20,20 @@ export const ImagePopup = ({ src, alt = '', width = 500, height = 500 }: ImagePo
                     alt={alt}
                     width='148'
                     height='99'
-                    className='cursor-pointer rounded-lg'
+                    className={`cursor-pointer rounded-lg ${className}`}
                     onClick={() => setIsOpen(true)}
                 />
-                <img
-                    src='/images/message/icon-dots.svg'
-                    alt='Icon'
-                    title='Icon'
-                    width={26}
-                    height={24}
-                    loading='lazy'
-                    className='absolute right-2 bottom-3 cursor-pointer '
-                />
+                {isDot && (
+                    <img
+                        src='/images/message/icon-dots.svg'
+                        alt='Icon'
+                        title='Icon'
+                        width={26}
+                        height={24}
+                        loading='lazy'
+                        className='absolute right-2 bottom-3 cursor-pointer '
+                    />
+                )}
             </div>
 
             {isOpen && (

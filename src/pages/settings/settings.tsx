@@ -1,11 +1,11 @@
 import { ToggleItem } from '@/components/toggle-item'
 import { ProfileUser } from '../profile/components'
-import { SETTINGS } from '@/constant'
+import { SETTINGS_PAGE } from '@/constant'
 
 export const Settings = () => {
     return (
         <div className='text-black-1'>
-            <ProfileUser title={SETTINGS} displayStatus />
+            <ProfileUser title={SETTINGS_PAGE} displayStatus />
             <ToggleItem title='Personal Info' icon='/images/profile/bxs-user.svg'>
                 <div className='flex flex-col gap-4 lg:gap-6 p-4 lg:p-5'>
                     <div className='flex items-start justify-between'>

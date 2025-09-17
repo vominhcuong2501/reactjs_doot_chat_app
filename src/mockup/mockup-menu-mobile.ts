@@ -1,19 +1,19 @@
-import { CALLS, CHATS, CONTACTS } from '../constant/keywork'
+import { CALLS_PAGE, CHATS_PAGE, CONTACTS_PAGE } from '../constant/keywork'
 
 export const MENU_MOBILE = [
     {
-        name: CHATS,
-        key: CHATS,
+        name: CHATS_PAGE,
+        key: CHATS_PAGE,
         icon: '/images/sidebar/bx-conversation.png'
     },
     {
-        name: CALLS,
-        key: CALLS,
+        name: CALLS_PAGE,
+        key: CALLS_PAGE,
         icon: '/images/sidebar/bx-phone-call.png'
     },
     {
-        name: CONTACTS,
-        key: CONTACTS,
+        name: CONTACTS_PAGE,
+        key: CONTACTS_PAGE,
         icon: '/images/sidebar/bxs-user-detail.png'
     }
 ]

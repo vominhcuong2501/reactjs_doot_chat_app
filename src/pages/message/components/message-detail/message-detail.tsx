@@ -1,4 +1,5 @@
 import { ImagePopup } from '@/components'
+import { OTHER_TYPE } from '@/constant'
 import { getInitials } from '@/hooks'
 import { useDataUser } from '@/store'
 
@@ -9,7 +10,7 @@ export const MessageDetail = () => {
         <div className='max-h-[calc(100dvh-175px)] lg:max-h-[calc(100dvh-179px)] h-[100dvh] flex-1 overflow-y-scroll scrollbar p-4 lg:p-6'>
             <div className='flex flex-col gap-6'>
                 <div className='flex items-end gap-4'>
-                    {(userData?.avatar === '#' || !userData?.avatar) && (
+                    {(userData?.avatar === OTHER_TYPE || !userData?.avatar) && (
                         <div className='relative flex-shrink-0'>
                             <p className='w-8 h-8 rounded-full bg-green-1 grid place-items-center text-white text-14 font-semibold'>
                                 {!userData?.avatar ? getInitials(userData?.name) : userData?.avatar}
@@ -19,7 +20,7 @@ export const MessageDetail = () => {
                             </span>
                         </div>
                     )}
-                    {userData?.avatar && userData?.avatar !== '#' && (
+                    {userData?.avatar && userData?.avatar !== OTHER_TYPE && (
                         <div className='relative flex-shrink-0'>
                             <img
                                 src={userData?.avatar}
@@ -61,7 +62,7 @@ export const MessageDetail = () => {
                     </p>
                 </div>
                 <div className='flex items-end gap-4'>
-                    {(userData?.avatar === '#' || !userData?.avatar) && (
+                    {(userData?.avatar === OTHER_TYPE || !userData?.avatar) && (
                         <div className='relative flex-shrink-0'>
                             <p className='w-8 h-8 rounded-full bg-green-1 grid place-items-center text-white text-14 font-semibold'>
                                 {!userData?.avatar ? getInitials(userData?.name) : userData?.avatar}
@@ -71,7 +72,7 @@ export const MessageDetail = () => {
                             </span>
                         </div>
                     )}
-                    {userData?.avatar && userData?.avatar !== '#' && (
+                    {userData?.avatar && userData?.avatar !== OTHER_TYPE && (
                         <div className='relative flex-shrink-0'>
                             <img
                                 src={userData?.avatar}
@@ -116,7 +117,7 @@ export const MessageDetail = () => {
                     </p>
                 </div>
                 <div className='flex items-end gap-4'>
-                    {(userData?.avatar === '#' || !userData?.avatar) && (
+                    {(userData?.avatar === OTHER_TYPE || !userData?.avatar) && (
                         <div className='relative flex-shrink-0'>
                             <p className='w-8 h-8 rounded-full bg-green-1 grid place-items-center text-white text-14 font-semibold'>
                                 {!userData?.avatar ? getInitials(userData?.name) : userData?.avatar}
@@ -126,7 +127,7 @@ export const MessageDetail = () => {
                             </span>
                         </div>
                     )}
-                    {userData?.avatar && userData?.avatar !== '#' && (
+                    {userData?.avatar && userData?.avatar !== OTHER_TYPE && (
                         <div className='relative flex-shrink-0'>
                             <img
                                 src={userData?.avatar}
@@ -144,8 +145,8 @@ export const MessageDetail = () => {
                     )}
                     <div>
                         <div className='flex items-center gap-2.5'>
-                            <ImagePopup src='/images/profile/image-1.jpg' alt={userData?.name} />
-                            <ImagePopup src='/images/profile/image-2.jpg' alt={userData?.name} />
+                            <ImagePopup isDot src='/images/profile/image-1.jpg' alt={userData?.name} />
+                            <ImagePopup isDot src='/images/profile/image-2.jpg' alt={userData?.name} />
                         </div>
                         <p className='text-12 font-medium text-gray-1 dark:text-gray-4 mt-2'>10:15 am</p>
                     </div>

@@ -1,3 +1,5 @@
+import { CHANNEL_CHAT, DIRECT_CHAT, FAVOURITE_CHAT, OTHER_TYPE } from '@/constant'
+
 export const LIST_CHATS = [
     {
         id: 1,
@@ -5,7 +7,7 @@ export const LIST_CHATS = [
         avatar: '/images/chats/img-bella-cote.png',
         active: true,
         message: 18,
-        typeChat: 'favourite'
+        typeChat: FAVOURITE_CHAT
     },
     {
         id: 2,
@@ -13,7 +15,7 @@ export const LIST_CHATS = [
         avatar: '/images/chats/img-steven-jury.png',
         active: true,
         message: 0,
-        typeChat: ['favourite', 'direct']
+        typeChat: [FAVOURITE_CHAT, DIRECT_CHAT]
     },
     {
         id: 3,
@@ -21,7 +23,7 @@ export const LIST_CHATS = [
         avatar: '',
         active: true,
         message: 0,
-        typeChat: 'favourite'
+        typeChat: FAVOURITE_CHAT
     },
     {
         id: 4,
@@ -29,7 +31,7 @@ export const LIST_CHATS = [
         avatar: '/images/chats/img-alissa-richards.png',
         active: true,
         message: 18,
-        typeChat: 'favourite'
+        typeChat: FAVOURITE_CHAT
     },
     {
         id: 5,
@@ -37,7 +39,7 @@ export const LIST_CHATS = [
         avatar: '/images/chats/img-nicholas-staten.png',
         active: true,
         message: 0,
-        typeChat: 'direct'
+        typeChat: DIRECT_CHAT
     },
     {
         id: 6,
@@ -45,7 +47,7 @@ export const LIST_CHATS = [
         avatar: '/images/chats/img-kathryn-swarey.png',
         active: true,
         message: 8,
-        typeChat: 'direct'
+        typeChat: DIRECT_CHAT
     },
     {
         id: 7,
@@ -53,7 +55,7 @@ export const LIST_CHATS = [
         avatar: '/images/chats/img-robert-ledonne.png',
         active: true,
         message: 0,
-        typeChat: 'direct'
+        typeChat: DIRECT_CHAT
     },
     {
         id: 8,
@@ -61,7 +63,7 @@ export const LIST_CHATS = [
         avatar: '',
         active: true,
         message: 0,
-        typeChat: 'direct'
+        typeChat: DIRECT_CHAT
     },
     {
         id: 9,
@@ -69,7 +71,7 @@ export const LIST_CHATS = [
         avatar: '/images/chats/img-john-foss.png',
         active: true,
         message: 5,
-        typeChat: 'direct'
+        typeChat: DIRECT_CHAT
     },
     {
         id: 10,
@@ -77,38 +79,38 @@ export const LIST_CHATS = [
         avatar: '/images/chats/img-gloria-underhill.png',
         active: true,
         message: 0,
-        typeChat: 'direct'
+        typeChat: DIRECT_CHAT
     },
     {
         id: 11,
         name: 'Landing Design',
-        avatar: '#',
+        avatar: OTHER_TYPE,
         active: false,
         message: 12,
-        typeChat: 'channel'
+        typeChat: CHANNEL_CHAT
     },
     {
         id: 12,
         name: 'Design Phase 2',
-        avatar: '#',
+        avatar: OTHER_TYPE,
         active: false,
         message: 0,
-        typeChat: 'channel'
+        typeChat: CHANNEL_CHAT
     },
     {
         id: 13,
         name: 'Brand Suggestion',
-        avatar: '#',
+        avatar: OTHER_TYPE,
         active: false,
         message: 85,
-        typeChat: 'channel'
+        typeChat: CHANNEL_CHAT
     },
     {
         id: 14,
         name: 'Reporting',
-        avatar: '#',
+        avatar: OTHER_TYPE,
         active: false,
         message: 0,
-        typeChat: 'channel'
+        typeChat: CHANNEL_CHAT
     }
 ]

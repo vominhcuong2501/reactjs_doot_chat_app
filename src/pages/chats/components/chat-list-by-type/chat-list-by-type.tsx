@@ -1,9 +1,10 @@
+import { CHANNEL_CHAT, DIRECT_CHAT, FAVOURITE_CHAT, OTHER_TYPE } from '@/constant'
 import { getInitials, useClickUser } from '@/hooks'
 import { useDataUser } from '@/store'
 import { ChatsProps } from '@/types'
 import { useMemo } from 'react'
 
-const PRIORITY: Array<'favourite' | 'direct' | 'channel'> = ['favourite', 'direct', 'channel']
+const PRIORITY: Array<'favourite' | 'direct' | 'channel'> = [FAVOURITE_CHAT, DIRECT_CHAT, CHANNEL_CHAT]
 
 // Get effective type from array or single value
 const getEffectiveType = (t: ChatsProps['typeChat']) => {
@@ -56,7 +57,7 @@ export const ChatListByType = ({ title, add, listChat = [], typeChat, keySearch 
                 {data.map((chat) => {
                     const isActive = userData?.id === chat?.id
                     const isChannel = typeChat === 'channel'
-                    const hasImgAvatar = !!chat?.avatar && chat?.avatar !== '#'
+                    const hasImgAvatar = !!chat?.avatar && chat?.avatar !== OTHER_TYPE
 
                     return (
                         <div
@@ -69,7 +70,7 @@ export const ChatListByType = ({ title, add, listChat = [], typeChat, keySearch 
                             <div className='flex items-center gap-2'>
                                 {isChannel ? (
                                     <p className='w-[29px] h-[29px] rounded-full flex items-center justify-center text-black-4 text-14 font-semibold dark:bg-black-5 dark:text-white hover:text-white'>
-                                        {chat?.avatar || '#'}
+                                        {chat?.avatar || OTHER_TYPE}
                                     </p>
                                 ) : hasImgAvatar ? (
                                     <div className='relative'>

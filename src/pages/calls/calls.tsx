@@ -1,4 +1,4 @@
-import { CALLS } from '@/constant'
+import { CALLS_PAGE } from '@/constant'
 import { getInitials } from '@/hooks'
 import { useClickUser } from '@/hooks/use-click-user'
 import { LIST_CALLS } from '@/mockup'
@@ -9,7 +9,7 @@ export const Calls = () => {
     return (
         <>
             <h1 className='p-4 lg:p-6 text-21 font-medium text-black-1 dark:text-gray-3 sticky top-0 bg-white dark:bg-black-3 z-[3] capitalize'>
-                {CALLS}
+                {CALLS_PAGE}
             </h1>
             <div className='flex flex-col pb-4 lg:pb-6'>
                 {LIST_CALLS?.map((user, index) => {

@@ -1,3 +1,4 @@
+import { OTHER_TYPE } from '@/constant'
 import { getInitials } from '@/hooks'
 import { useDataUser } from '@/store'
 
@@ -8,7 +9,7 @@ export const MessageHeader = () => {
         <div className='lg:max-h-[93px] lg:h-full p-4 lg:p-6 border-b border-gray-12 dark:border-black-7'>
             <div className='flex items-center justify-between gap-3'>
                 <div className='flex items-center gap-2 lg:gap-4'>
-                    {(userData?.avatar === '#' || !userData?.avatar) && (
+                    {(userData?.avatar === OTHER_TYPE || !userData?.avatar) && (
                         <div className='relative'>
                             <p className='w-8 h-8 lg:w-[38px] lg:h-[38px] rounded-full bg-green-1 grid place-items-center text-white text-14 font-semibold'>
                                 {!userData?.avatar ? getInitials(userData?.name) : userData?.avatar}
@@ -18,7 +19,7 @@ export const MessageHeader = () => {
                             </span>
                         </div>
                     )}
-                    {userData?.avatar && userData?.avatar !== '#' && (
+                    {userData?.avatar && userData?.avatar !== OTHER_TYPE && (
                         <div className='relative'>
                             <img
                                 src={userData?.avatar}
