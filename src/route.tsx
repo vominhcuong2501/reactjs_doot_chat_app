@@ -6,36 +6,26 @@ import { ChangePassword } from './pages/change-password'
 import { Message } from './pages/message'
 import { Bookmark, Calls, Chats, Contacts, Profile, Settings } from './pages'
 import { useDisplay } from './hooks'
-import {
-    BOOKMARK_PAGE,
-    CALLS_PAGE,
-    CHANGE_PASSWORD_PAGE,
-    CHATS_PAGE,
-    CONTACTS_PAGE,
-    LOGOUT_PAGE,
-    MESSAGE_PAGE,
-    MOBILE_SCREEN,
-    SETTINGS_PAGE
-} from './constant'
 import type { RouteObject } from 'react-router-dom'
+import { PAGE_KEYWORD, SCREEN_DEVICE } from './constant'
 
 const MainLayout = lazy(() => import('./layouts/MainLayout'))
 const FormLayout = lazy(() => import('./layouts/FormLayout'))
 
 export default function useRouteElements() {
-    const isMobile = useDisplay(MOBILE_SCREEN)
+    const isMobile = useDisplay(SCREEN_DEVICE.MOBILE)
 
     const mainChildren: RouteObject[] = [
         { index: true, element: <Profile /> },
-        { path: CHATS_PAGE, element: <Chats /> },
-        { path: CONTACTS_PAGE, element: <Contacts /> },
-        { path: CALLS_PAGE, element: <Calls /> },
-        { path: BOOKMARK_PAGE, element: <Bookmark /> },
-        { path: SETTINGS_PAGE, element: <Settings /> }
+        { path: PAGE_KEYWORD.CHATS, element: <Chats /> },
+        { path: PAGE_KEYWORD.CONTACTS, element: <Contacts /> },
+        { path: PAGE_KEYWORD.CALLS, element: <Calls /> },
+        { path: PAGE_KEYWORD.BOOKMARK, element: <Bookmark /> },
+        { path: PAGE_KEYWORD.SETTINGS, element: <Settings /> }
     ]
 
     if (isMobile) {
-        mainChildren.push({ path: `${MESSAGE_PAGE}/:id`, element: <Message /> })
+        mainChildren.push({ path: `${PAGE_KEYWORD.MESSAGE}/:id`, element: <Message /> })
     }
 
     return useRoutes([
@@ -48,8 +38,8 @@ export default function useRouteElements() {
             path: '/',
             element: <FormLayout />,
             children: [
-                { path: CHANGE_PASSWORD_PAGE, element: <ChangePassword /> },
-                { path: LOGOUT_PAGE, element: <Logout /> }
+                { path: PAGE_KEYWORD.CHANGE_PASSWORD, element: <ChangePassword /> },
+                { path: PAGE_KEYWORD.LOGOUT, element: <Logout /> }
             ]
         }
     ])

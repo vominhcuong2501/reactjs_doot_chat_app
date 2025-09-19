@@ -4,6 +4,7 @@ import { useContext } from 'react'
 import { AppContext } from '@/contexts/app.context'
 import { useSidebar } from '@/store'
 import { SIDEBAR } from '@/mockup'
+import { LOGO } from '@/constant'
 
 export const DrawerMenu = () => {
     const { isOpen, setIsOpen } = useContext(AppContext)
@@ -24,15 +25,15 @@ export const DrawerMenu = () => {
                 <div className='flex justify-between items-center gap-5 w-full pl-5 shadow-md'>
                     <div className='flex items-center gap-2'>
                         <img
-                            src='/images/sidebar/bxs-message-alt-detail.png'
+                            src={LOGO.IMAGE}
                             width={26}
                             height={26}
                             loading='lazy'
-                            alt='Doot'
-                            title='Doot'
+                            alt={LOGO.NAME}
+                            title={LOGO.NAME}
                             className='filter-green-icon'
                         />
-                        <h1 className='font-bold text-xl text-green-1'>Doot</h1>
+                        <h1 className='font-bold text-xl text-green-1'>{LOGO.NAME}</h1>
                     </div>
                     <div className='flex items-center gap-5'>
                         <ButtonTheme />

@@ -1,12 +1,12 @@
-import { ImagePopup } from '@/components'
+import { ImageAvatar } from '@/components'
 import { AddNewChat } from '@/components/add-new-chat'
-import { CHANNEL_CHAT, DIRECT_CHAT, FAVOURITE_CHAT, OTHER_TYPE } from '@/constant'
+import { TYPE_CHAT, TYPE_DOCUMENT } from '@/constant'
+import { AppContext } from '@/contexts/app.context'
 import { useClickUser } from '@/hooks'
-import { useDataUser } from '@/store'
 import { ChatsProps } from '@/types'
-import { useMemo } from 'react'
+import { useContext, useMemo } from 'react'
 
-const PRIORITY: Array<'favourite' | 'direct' | 'channel'> = [FAVOURITE_CHAT, DIRECT_CHAT, CHANNEL_CHAT]
+const PRIORITY = [TYPE_CHAT.FAVORITE, TYPE_CHAT.DIRECT, TYPE_CHAT.CHANNEL]
 
 // Get effective type from array or single value
 const getEffectiveType = (t: ChatsProps['typeChat']) => {
@@ -19,12 +19,12 @@ type Props = {
     title?: string
     add?: boolean
     listChat?: ChatsProps[]
-    typeChat: 'favourite' | 'direct' | 'channel'
+    typeChat: string
     keySearch?: string
 }
 
 export const ChatListByType = ({ title, add, listChat = [], typeChat, keySearch = '' }: Props) => {
-    const { userData } = useDataUser()
+    const { userData } = useContext(AppContext)
 
     const handleClickUser = useClickUser()
 
@@ -62,15 +62,16 @@ export const ChatListByType = ({ title, add, listChat = [], typeChat, keySearch 
                             <div className='flex items-center gap-2'>
                                 {isChannel ? (
                                     <p className='w-[29px] h-[29px] rounded-full flex items-center justify-center text-black-4 text-14 font-semibold dark:bg-black-5 dark:text-white hover:text-white'>
-                                        {chat?.avatar || OTHER_TYPE}
+                                        {chat?.avatar || TYPE_DOCUMENT.OTHER}
                                     </p>
                                 ) : (
-                                    <ImagePopup
+                                    <ImageAvatar
                                         source={chat?.avatar}
                                         width={29}
                                         height={29}
                                         alt={chat?.name}
                                         isStatus
+                                        isShowAvatar={false}
                                         className='rounded-full'
                                     />
                                 )}

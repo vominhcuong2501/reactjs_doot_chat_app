@@ -1,4 +1,5 @@
-import { ImagePopup } from '@/components'
+import { ImageAvatar } from '@/components'
+import { DATA_ACCOUNT } from '@/constant'
 import { LIST_STATUS } from '@/mockup'
 import { useState } from 'react'
 
@@ -45,13 +46,7 @@ export const ProfileUser = ({
                 </div>
             </div>
             <div className='-mt-10 relative z-[2] text-center flex flex-col items-center justify-center'>
-                <ImagePopup
-                    source='/images/profile/img-avatar-user.png'
-                    width={80}
-                    height={80}
-                    alt={name}
-                    className='rounded-full'
-                />
+                <ImageAvatar source={DATA_ACCOUNT.AVATAR} width={80} height={80} alt={name} className='rounded-full' />
                 {name && <h2 className='text-16 font-medium dark:text-gray-3 mt-[15px]'>{name}</h2>}
                 {position && <p className='text-14 text-gray-1 dark:text-gray-4 mt-[5px]'>{position}</p>}
                 {displayStatus && (

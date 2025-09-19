@@ -1,20 +1,22 @@
-import { ImagePopup } from '@/components'
-import { useDataUser } from '@/store'
+import { ImageAvatar } from '@/components'
+import { AppContext } from '@/contexts/app.context'
+import { useContext } from 'react'
 
 export const MessageDetail = () => {
-    const { userData } = useDataUser()
+    const { userData } = useContext(AppContext)
 
     return (
         <div className='max-h-[calc(100dvh-175px)] lg:max-h-[calc(100dvh-179px)] h-[100dvh] flex-1 overflow-y-scroll scrollbar p-4 lg:p-6'>
             <div className='flex flex-col gap-6'>
                 <div className='flex items-end gap-4'>
-                    <ImagePopup
+                    <ImageAvatar
                         source={userData?.avatar}
                         width={38}
                         height={38}
                         alt={userData?.name}
                         className='cursor-pointer rounded-full w-8 h-8 lg:w-[38px] lg:h-[38px] object-contain object-center'
                         isStatus
+                        isShowAvatar
                         classNameTextAvatar='w-8 h-8 lg:w-[38px] lg:h-[38px]'
                     />
 
@@ -43,13 +45,15 @@ export const MessageDetail = () => {
                     </p>
                 </div>
                 <div className='flex items-end gap-4'>
-                    <ImagePopup
+                    <ImageAvatar
                         source={userData?.avatar}
                         width={38}
                         height={38}
                         alt={userData?.name}
                         className='cursor-pointer rounded-full w-8 h-8 lg:w-[38px] lg:h-[38px] object-contain object-center'
                         isStatus
+                        isShowAvatar
+                        classNameTextAvatar='w-8 h-8 lg:w-[38px] lg:h-[38px]'
                     />
                     <div>
                         <p className='bg-white dark:bg-gray-13 shadow-sm py-3 px-4 text-black-1 dark:text-white-2 rounded inline-block'>
@@ -80,23 +84,25 @@ export const MessageDetail = () => {
                     </p>
                 </div>
                 <div className='flex items-end gap-4'>
-                    <ImagePopup
+                    <ImageAvatar
                         source={userData?.avatar}
                         width={38}
                         height={38}
                         alt={userData?.name}
                         className='cursor-pointer rounded-full w-8 h-8 lg:w-[38px] lg:h-[38px] object-contain object-center'
                         isStatus
+                        isShowAvatar
+                        classNameTextAvatar='w-8 h-8 lg:w-[38px] lg:h-[38px]'
                     />
                     <div>
                         <div className='flex items-center gap-2.5'>
-                            <ImagePopup
+                            <ImageAvatar
                                 isDot
                                 source='/images/profile/image-1.jpg'
                                 alt={userData?.name}
                                 className='rounded-lg'
                             />
-                            <ImagePopup
+                            <ImageAvatar
                                 isDot
                                 source='/images/profile/image-2.jpg'
                                 alt={userData?.name}

@@ -1,4 +1,4 @@
-import { DOCUMENT_TYPE, IMAGE_TYPE } from '@/constant'
+import { TYPE_DOCUMENT } from '@/constant'
 import { LIST_ATTACHED_FILES } from '@/mockup'
 import { Fragment } from 'react'
 
@@ -14,7 +14,7 @@ export const ProfileAttachedFile = () => {
                             className='px-3 py-2.5 border border-gray-5 dark:border-black-2 flex items-center gap-4 justify-between rounded transition-all duration-200 hover:border-green-1'
                         >
                             <div className='flex items-center gap-4'>
-                                {file.fileType === DOCUMENT_TYPE && (
+                                {file.fileType === TYPE_DOCUMENT.DOCUMENT && (
                                     <img
                                         src='/images/profile/icon-file.svg'
                                         width={29}
@@ -24,7 +24,7 @@ export const ProfileAttachedFile = () => {
                                         loading='lazy'
                                     />
                                 )}
-                                {file.fileType === IMAGE_TYPE && (
+                                {file.fileType === TYPE_DOCUMENT.IMAGE && (
                                     <img
                                         src='/images/profile/icon-image.svg'
                                         width={29}

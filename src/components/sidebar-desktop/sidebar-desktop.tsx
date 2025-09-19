@@ -2,6 +2,7 @@ import { ButtonTheme } from '../button-theme'
 import { Link, useNavigate } from 'react-router-dom'
 import { useSidebar } from '@/store'
 import { SIDEBAR } from '@/mockup'
+import { LOGO, PAGE_NAME } from '@/constant'
 
 export const SidebarDesktop = () => {
     const { keyword, updateKeyword } = useSidebar()
@@ -11,14 +12,7 @@ export const SidebarDesktop = () => {
     return (
         <div className='fixed top-0 left-0 min-h-screen bg-black-2 dark:bg-black-3 flex flex-col items-center justify-between py-5'>
             <div className='flex flex-col items-center justify-between gap-10'>
-                <img
-                    src='/images/sidebar/bxs-message-alt-detail.png'
-                    alt='Doot'
-                    title='Doot'
-                    width={28}
-                    height={28}
-                    loading='lazy'
-                />
+                <img src={LOGO.IMAGE} alt={LOGO.NAME} title={LOGO.NAME} width={28} height={28} loading='lazy' />
                 {SIDEBAR?.map((item) => {
                     return (
                         <Link
@@ -50,8 +44,8 @@ export const SidebarDesktop = () => {
                 <ButtonTheme />
                 <img
                     src='/images/sidebar/img-user.png'
-                    alt='Change Password'
-                    title='Change Password'
+                    alt={PAGE_NAME.CHANGE_PASSWORD}
+                    title={PAGE_NAME.CHANGE_PASSWORD}
                     width={36}
                     height={36}
                     loading='lazy'

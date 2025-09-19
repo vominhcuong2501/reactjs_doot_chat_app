@@ -1,8 +1,9 @@
-import { ACTIVE_STATUS, BUSY_STATUS, OFF_STATUS, OTHER_TYPE } from '@/constant'
 import { getInitials } from '@/hooks'
 import React, { useState } from 'react'
+import { Modal } from '../modal'
+import { STATUS, TYPE_DOCUMENT } from '@/constant'
 
-interface ImagePopupProps {
+interface ImageAvatarProps {
     source?: string
     alt?: string
     width?: number
@@ -12,9 +13,10 @@ interface ImagePopupProps {
     isStatus?: boolean
     typeStatus?: string
     classNameTextAvatar?: string
+    isShowAvatar?: boolean
 }
 
-export const ImagePopup = ({
+export const ImageAvatar = ({
     source,
     alt = '',
     width,
@@ -23,22 +25,29 @@ export const ImagePopup = ({
     isDot = false,
     isStatus = false,
     typeStatus,
-    classNameTextAvatar = 'w-[29px] h-[29px]'
-}: ImagePopupProps) => {
+    classNameTextAvatar = 'w-[29px] h-[29px]',
+    isShowAvatar = true
+}: ImageAvatarProps) => {
     const [isOpen, setIsOpen] = useState(false)
 
     return (
         <>
             <div className='relative'>
-                {source && source !== OTHER_TYPE ? (
+                {source && source !== TYPE_DOCUMENT.OTHER ? (
                     <img
                         src={source}
                         alt={alt}
                         width={width}
                         height={height}
                         className={`cursor-pointer ${className}`}
-                        onClick={() => setIsOpen(true)}
+                        onClick={() => setIsOpen(!isOpen)}
                     />
+                ) : source === TYPE_DOCUMENT.OTHER ? (
+                    <p
+                        className={`${classNameTextAvatar} rounded-full bg-green-1 grid place-items-center text-white text-14 font-semibold`}
+                    >
+                        {getInitials(source)}
+                    </p>
                 ) : (
                     <p
                         className={`${classNameTextAvatar} rounded-full bg-green-1 grid place-items-center text-white text-14 font-semibold`}
@@ -62,21 +71,18 @@ export const ImagePopup = ({
                     <span className='absolute bottom-0 right-0 p-0.5 bg-white rounded-full w-2.5 h-2.5 grid place-items-center'>
                         <span
                             className={`w-1.5 h-1.5 rounded-full bg-green-1 
-                                ${typeStatus === ACTIVE_STATUS && 'bg-green-1'} 
-                                ${typeStatus === BUSY_STATUS && 'bg-red-500'} 
-                                ${typeStatus === OFF_STATUS && 'bg-gray-1'}`}
+                                ${typeStatus === STATUS.ACTIVE && 'bg-green-1'} 
+                                ${typeStatus === STATUS.BUSY && 'bg-red-500'} 
+                                ${typeStatus === STATUS.OFF && 'bg-gray-1'}`}
                         />
                     </span>
                 )}
             </div>
 
-            {isOpen && source && source !== OTHER_TYPE && (
-                <div
-                    onClick={() => setIsOpen(false)}
-                    className='fixed top-0 left-0 w-screen h-screen bg-black-8 bg-opacity-10 flex flex-col items-center justify-center z-[4]'
-                >
+            {isShowAvatar && source && source !== TYPE_DOCUMENT.OTHER && (
+                <Modal isOpen={isOpen} handleClose={() => setIsOpen(false)}>
                     <img src={source} alt={alt} width={width} height={height} className='rounded-lg' />
-                </div>
+                </Modal>
             )}
         </>
     )

@@ -1,17 +1,17 @@
 import { ToggleItem } from '@/components/toggle-item'
 import { ProfileUser } from '../profile/components'
-import { SETTINGS_PAGE } from '@/constant'
+import { DATA_ACCOUNT, PAGE_KEYWORD } from '@/constant'
 
 export const Settings = () => {
     return (
         <div className='text-black-1'>
-            <ProfileUser title={SETTINGS_PAGE} displayStatus />
+            <ProfileUser title={PAGE_KEYWORD.SETTINGS} displayStatus />
             <ToggleItem title='Personal Info' icon='/images/profile/bxs-user.svg'>
                 <div className='flex flex-col gap-4 lg:gap-6 p-4 lg:p-5'>
                     <div className='flex items-start justify-between'>
                         <div className='flex-1'>
                             <p className='text-15 text-gray-1 dark:text-gray-4'>Name</p>
-                            <p className='text-15 text-black-1 font-medium dark:text-gray-3'>Adam Zampa</p>
+                            <p className='text-15 text-black-1 font-medium dark:text-gray-3'>{DATA_ACCOUNT.NAME}</p>
                         </div>
                         <img
                             src='/images/profile/icon-edit.svg'
@@ -26,17 +26,17 @@ export const Settings = () => {
                     <div className='flex flex-col'>
                         <p className='text-15 text-gray-1 dark:text-gray-4'>Email</p>
                         <a
-                            href='mailto:adc@123.com'
+                            href={`mailto:${DATA_ACCOUNT.EMAIL}`}
                             target='_blank'
-                            title='adc@123.com'
+                            title={DATA_ACCOUNT.EMAIL}
                             className='text-15 text-black-1 font-medium dark:text-gray-3 hover:text-green-1 transition-all duration-200'
                         >
-                            adc@123.com
+                            {DATA_ACCOUNT.EMAIL}
                         </a>
                     </div>
                     <div className='flex flex-col'>
                         <p className='text-15 text-gray-1 dark:text-gray-4'>Location</p>
-                        <p className='text-15 text-black-1 font-medium dark:text-gray-3'>California, USA</p>
+                        <p className='text-15 text-black-1 font-medium dark:text-gray-3'>{DATA_ACCOUNT.LOCATION}</p>
                     </div>
                 </div>
             </ToggleItem>

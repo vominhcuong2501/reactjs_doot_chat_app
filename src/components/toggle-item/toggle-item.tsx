@@ -10,7 +10,7 @@ export const ToggleItem = ({ title, icon, children }: { title?: string; icon?: s
     }
 
     return (
-        <div className=''>
+        <div>
             <div
                 className={`flex items-center justify-between cursor-pointer px-4 lg:px-6 py-[14px] hover:bg-green-1 transition-all duration-200 hover-white-icon group border-y border-gray-11 dark:border-black-2 ${
                     openStates ? 'bg-gray-10 dark:bg-black-2' : ''

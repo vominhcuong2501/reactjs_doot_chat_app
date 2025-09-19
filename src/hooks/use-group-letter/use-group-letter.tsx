@@ -1,4 +1,4 @@
-import { OTHER_TYPE } from '@/constant'
+import { TYPE_DOCUMENT } from '@/constant'
 import { ContactProps } from '@/types/contact'
 
 // Get initials from name for avatar display
@@ -20,10 +20,10 @@ export const normalizeName = (s = '') =>
         ?.replace(/Đ/g, 'D')
         ?.toLowerCase()
 
-// Get the first letter, if not A-Z then return OTHER_TYPE
+// Get the first letter, if not A-Z then return TYPE_DOCUMENT.OTHER
 export const getLetter = (name = '') => {
     const first = normalizeName(name)?.trim()?.charAt(0)?.toUpperCase()
-    return /[A-Z]/.test(first) ? first : OTHER_TYPE
+    return /[A-Z]/.test(first) ? first : TYPE_DOCUMENT.OTHER
 }
 
 // Compare A-Z, accent/uppercase-insensitive
@@ -46,11 +46,11 @@ export function groupUsersByFirstLetter(users: ContactProps[]) {
         map.get(key)!.push(u)
     }
 
-    // Sort groups A-Z, OTHER_TYPE at the end
+    // Sort groups A-Z, TYPE_DOCUMENT.OTHER at the end
     const letters = [...map.keys()].sort((a, b) => {
-        if (a === OTHER_TYPE && b === OTHER_TYPE) return 0
-        if (a === OTHER_TYPE) return 1
-        if (b === OTHER_TYPE) return -1
+        if (a === TYPE_DOCUMENT.OTHER && b === TYPE_DOCUMENT.OTHER) return 0
+        if (a === TYPE_DOCUMENT.OTHER) return 1
+        if (b === TYPE_DOCUMENT.OTHER) return -1
         return a < b ? -1 : a > b ? 1 : 0
     })
 

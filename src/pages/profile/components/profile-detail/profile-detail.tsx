@@ -1,3 +1,4 @@
+import { DATA_ACCOUNT } from '@/constant'
 import { Fragment } from 'react'
 
 export const ProfileDetail = () => {
@@ -13,41 +14,41 @@ export const ProfileDetail = () => {
                         src='/images/profile/bx-user.svg'
                         width={15}
                         height={15}
-                        alt='Adam Zampa'
-                        title='Adam Zampa'
+                        alt={DATA_ACCOUNT.NAME}
+                        title={DATA_ACCOUNT.NAME}
                         loading='lazy'
                         className='icon-dark-mode'
                     />
-                    Adam Zampa
+                    {DATA_ACCOUNT.NAME}
                 </p>
                 <a
-                    href='mailto:adc@123.com'
+                    href={`mailto:${DATA_ACCOUNT.EMAIL}`}
                     target='_blank'
-                    title='adc@123.com'
+                    title={DATA_ACCOUNT.EMAIL}
                     className='flex items-center gap-[15px] text-15 transition-al duration-200 hover:text-green-1'
                 >
                     <img
                         src='/images/profile/bx-message-rounded-dots.svg'
                         width={15}
                         height={15}
-                        alt='adc@123.com'
-                        title='adc@123.com'
+                        alt={DATA_ACCOUNT.EMAIL}
+                        title={DATA_ACCOUNT.EMAIL}
                         loading='lazy'
                         className='icon-dark-mode'
                     />
-                    adc@123.com
+                    {DATA_ACCOUNT.EMAIL}
                 </a>
                 <p className='flex items-center gap-[15px] text-15'>
                     <img
                         src='/images/profile/bx-location-plus.svg'
                         width={15}
                         height={15}
-                        alt='California, USA'
-                        title='California, USA'
+                        alt={DATA_ACCOUNT.LOCATION}
+                        title={DATA_ACCOUNT.LOCATION}
                         loading='lazy'
                         className='icon-dark-mode'
                     />
-                    California, USA
+                    {DATA_ACCOUNT.LOCATION}
                 </p>
             </div>
         </Fragment>

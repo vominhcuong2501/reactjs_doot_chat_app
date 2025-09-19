@@ -12,4 +12,6 @@ export * from './input'
 
 export * from './button'
 
-export * from './image-popup'
+export * from './image-avatar'
+
+export * from './modal'

@@ -1,4 +1,5 @@
 import { Button } from '@/components'
+import { LOGO, PAGE_KEYWORD, PAGE_NAME } from '@/constant'
 import { useNavigate } from 'react-router-dom'
 
 export const Logout = () => {
@@ -7,7 +8,7 @@ export const Logout = () => {
     return (
         <div className='max-w-[434px] mx-auto w-full relative z-[2] xl:min-h-[540px]'>
             <div className='flex flex-col items-center justify-center text-center'>
-                <h1 className='text-20 lg:text-26 font-medium text-black-1'>Change Password</h1>
+                <h1 className='text-20 lg:text-26 font-medium text-black-1'>{PAGE_NAME.CHANGE_PASSWORD}</h1>
                 <img
                     src='/images/change-password/icon-logout.png'
                     width={96}
@@ -19,10 +20,10 @@ export const Logout = () => {
                 />
                 <h2 className='text-18 font-medium text-black-1 mt-[30px]'>You are Logged Out</h2>
                 <p className='text-15 text-gray-1 mt-2.5'>
-                    Thank you for using <span className='text-black-1 font-medium'>Doot</span>
+                    Thank you for using <span className='text-black-1 font-medium'>{LOGO.NAME}</span>
                 </p>
                 <Button
-                    onClick={() => navigate('/login')}
+                    onClick={() => navigate(PAGE_KEYWORD.PROFILE)}
                     className='text-white text-15 rounded h-10 w-full border border-green-6 bg-green-6 transition-all duration-200 hover:bg-white hover:text-green-6 text-center cursor-pointer mt-6 max-w-[435px] w-full'
                 >
                     Sign In

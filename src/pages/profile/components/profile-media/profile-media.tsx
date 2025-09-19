@@ -1,5 +1,5 @@
-import { ImagePopup } from '@/components'
-import { IMAGE_TYPE } from '@/constant'
+import { ImageAvatar } from '@/components'
+import { TYPE_DOCUMENT } from '@/constant'
 import { LIST_IMAGES } from '@/mockup'
 import { useState } from 'react'
 
@@ -26,9 +26,9 @@ export const ProfileMedia = () => {
                     if (isToggleMedia ? index < LIST_IMAGES?.length : index <= LIMITS) {
                         return (
                             <div className='relative rounded h-full' key={`${item}-${index}`}>
-                                <ImagePopup
+                                <ImageAvatar
                                     source={item}
-                                    alt={IMAGE_TYPE}
+                                    alt={TYPE_DOCUMENT.IMAGE}
                                     className='w-full md:w-[76px] md:h-[76px] object-cover object-center rounded-lg'
                                 />
                                 {!isToggleMedia && LIMITS === index && (

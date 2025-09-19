@@ -31,7 +31,7 @@ export const MenuMobile = () => {
             })}
             <img
                 src='/images/sidebar/icon-burger.png'
-                alt='Icon'
+                alt='Show Menu'
                 title='Show Menu'
                 className='hover-green-icon cursor-pointer filter-gray-icon'
                 width={18}

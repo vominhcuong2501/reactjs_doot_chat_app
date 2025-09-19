@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import { UNDEFINED } from '@/constant'
 import { useCallback, useEffect, useRef, useState } from 'react'
 
 // Throttle function to limit how often a function can run
@@ -25,11 +26,11 @@ const throttle = (func: (...args: any[]) => void, limit: number) => {
 
 export const useDisplay = (param?: number) => {
     const [isMobile, setIsMobile] = useState<boolean>(false)
-    const innerWidth = useRef(typeof window !== 'undefined' ? window.innerWidth : 0)
+    const innerWidth = useRef(typeof window !== UNDEFINED ? window.innerWidth : 0)
 
     const handleResize = useCallback(
         throttle(() => {
-            if (typeof window !== 'undefined') {
+            if (typeof window !== UNDEFINED) {
                 innerWidth.current = window.innerWidth
                 setIsMobile(innerWidth.current < (param ?? 1280))
             }
@@ -38,7 +39,7 @@ export const useDisplay = (param?: number) => {
     )
 
     useEffect(() => {
-        if (typeof window !== 'undefined') {
+        if (typeof window !== UNDEFINED) {
             handleResize()
 
             window.addEventListener('resize', handleResize)

@@ -1,18 +1,22 @@
-import { ImagePopup } from '@/components'
-import { CALLS_PAGE } from '@/constant'
+import { ImageAvatar } from '@/components'
+import { PAGE_KEYWORD } from '@/constant'
+import { UserListsContext } from '@/contexts/user.context'
 import { useClickUser } from '@/hooks/use-click-user'
-import { LIST_CALLS } from '@/mockup'
+import { CallsProps } from '@/types'
+import { useContext } from 'react'
 
 export const Calls = () => {
     const handleClickUser = useClickUser()
 
+    const { callList } = useContext(UserListsContext) ?? {}
+
     return (
         <>
             <h1 className='p-4 lg:p-6 text-21 font-medium text-black-1 dark:text-gray-3 sticky top-0 bg-white dark:bg-black-3 z-[3] capitalize'>
-                {CALLS_PAGE}
+                {PAGE_KEYWORD.CALLS}
             </h1>
             <div className='flex flex-col pb-4 lg:pb-6'>
-                {LIST_CALLS?.map((user, index) => {
+                {callList?.map((user: CallsProps, index: number) => {
                     return (
                         <div
                             key={`${user?.id}-${index}`}
@@ -20,12 +24,13 @@ export const Calls = () => {
                             onClick={() => handleClickUser(user)}
                         >
                             <div className='flex items-center gap-2'>
-                                <ImagePopup
+                                <ImageAvatar
                                     source={user?.avatar}
                                     width={29}
                                     height={29}
                                     alt={user?.name}
                                     className='rounded-full'
+                                    isShowAvatar={false}
                                 />
                                 <div>
                                     <p className='capitalize group-hover:text-white font-medium'>{user?.name}</p>

@@ -1,26 +1,45 @@
-import { ImagePopup } from '@/components'
+import { ImageAvatar } from '@/components'
+import { AppContext } from '@/contexts/app.context'
+import { UserListsContext } from '@/contexts/user.context'
 import { getInitials, groupUsersByFirstLetter, normalizeName, useClickUser } from '@/hooks'
-import { LIST_CONTACTS } from '@/mockup'
-import { useDataUser } from '@/store'
-import { useMemo } from 'react'
+import { IconOption } from '@/pages/message/components'
+import { ContactProps } from '@/types'
+import { useContext, useMemo, useRef } from 'react'
 
-export const ListContact = ({ keySearch, isShowdot = true }: { keySearch?: string; isShowdot?: boolean }) => {
-    const { userData } = useDataUser()
+export const ListContact = ({
+    keySearch,
+    isShowDot = true,
+    handleClose
+}: {
+    keySearch?: string
+    isShowDot?: boolean
+    handleClose?: () => void
+}) => {
+    const { userData } = useContext(AppContext)
+
+    const { contactList } = useContext(UserListsContext) ?? {}
 
     const handleClickUser = useClickUser()
+
+    const handleClick = (contact: ContactProps) => {
+        handleClickUser(contact)
+        if (handleClose) handleClose()
+    }
+
+    const menuRef = useRef<HTMLDivElement>(null)
 
     const keyword = normalizeName(keySearch)
 
     const filtered = useMemo(() => {
-        if (!keyword) return LIST_CONTACTS
-        return LIST_CONTACTS.filter((key) => {
+        if (!keyword) return contactList
+        return contactList?.filter((key: ContactProps) => {
             const nameNorm = normalizeName(key?.name)
             const initials = getInitials(key?.name).toLowerCase()
             return nameNorm.includes(keyword) || initials.includes(keyword)
         })
-    }, [keyword])
+    }, [keyword, contactList])
 
-    const listContact = useMemo(() => groupUsersByFirstLetter(filtered), [filtered])
+    const listContact = useMemo(() => filtered && groupUsersByFirstLetter(filtered), [filtered])
 
     return (
         <div className='pb-4 lg:pb-6 flex flex-col gap-5 lg:gap-[30px]'>
@@ -44,29 +63,26 @@ export const ListContact = ({ keySearch, isShowdot = true }: { keySearch?: strin
                                     >
                                         <div
                                             className='flex items-center gap-2 flex-1'
-                                            onClick={() => contact?.id && handleClickUser(contact)}
+                                            onClick={() => contact?.id && handleClick(contact)}
                                         >
-                                            <ImagePopup
+                                            <ImageAvatar
                                                 source={contact?.avatar}
                                                 width={29}
                                                 height={29}
                                                 alt={contact?.name}
                                                 isStatus
+                                                isShowAvatar={false}
                                                 className='rounded-full'
                                             />
-                                            <p className='capitalize group-hover:text-white font-medium'>
+                                            <p className='capitalize group-hover:text-white font-medium flex-1'>
                                                 {contact?.name}
                                             </p>
                                         </div>
-                                        {isShowdot && (
-                                            <img
-                                                src='/images/chats/bx-dots-vertical-rounded.svg'
-                                                alt='Icon'
-                                                title='Icon'
-                                                width={15}
-                                                height={15}
-                                                loading='lazy'
-                                                className='cursor-pointer icon-hover icon-dark-mode'
+                                        {isShowDot && (
+                                            <IconOption
+                                                menuRef={menuRef}
+                                                className='icon-hover'
+                                                idDelete={contact?.id}
                                             />
                                         )}
                                     </div>

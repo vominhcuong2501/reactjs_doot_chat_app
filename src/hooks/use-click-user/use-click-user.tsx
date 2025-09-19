@@ -1,19 +1,20 @@
-import { useDataUser } from '@/store'
 import { useDisplay } from '../use-display'
 import { useNavigate } from 'react-router-dom'
 import { ContactProps } from '@/types'
-import { MESSAGE_PAGE, MOBILE_SCREEN } from '@/constant'
+import { useContext } from 'react'
+import { AppContext } from '@/contexts/app.context'
+import { PAGE_KEYWORD, SCREEN_DEVICE } from '@/constant'
 
 export const useClickUser = () => {
-    const { updateUserData } = useDataUser()
+    const { updateUserData } = useContext(AppContext)
 
-    const isMobile = useDisplay(MOBILE_SCREEN)
+    const isMobile = useDisplay(SCREEN_DEVICE.MOBILE)
 
     const navigate = useNavigate()
 
     const handleClickUser = (user: ContactProps) => {
         if (isMobile) {
-            navigate(`/${MESSAGE_PAGE}/${user?.id}`)
+            navigate(`/${PAGE_KEYWORD.MESSAGE}/${user?.id}`)
             updateUserData(user)
         } else {
             updateUserData(user)

@@ -1,8 +1,10 @@
-import { useDataUser } from '@/store'
+import { useContext } from 'react'
 import { MessageDetail, MessageFooter, MessageHeader } from './components'
+import { AppContext } from '@/contexts/app.context'
 
 export const Message = () => {
-    const { userData } = useDataUser()
+    const { userData } = useContext(AppContext)
+
     return (
         <>
             {userData?.id ? (
