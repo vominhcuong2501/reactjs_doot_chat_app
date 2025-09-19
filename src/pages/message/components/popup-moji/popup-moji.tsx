@@ -8,6 +8,7 @@ export const PopupMoji = () => {
     const pickerRef = useRef<HTMLDivElement>(null)
 
     const [inputValue, setInputValue] = useState('')
+
     const addEmoji = (emoji: string) => {
         setInputValue((prev) => prev + emoji)
     }

@@ -40,7 +40,6 @@ export const TYPE_DOCUMENT = {
   OTHER: '#'
 }
 
-
 // TYPE CHATS
 export const TYPE_CHAT = {
   FAVORITE: 'favorite',
@@ -49,14 +48,13 @@ export const TYPE_CHAT = {
 }
 
 // STATUS USER
-
 export const STATUS = {
   ACTIVE: 'active',
   BUSY: 'busy',
   OFF: 'off'
 }
 
-// STORAGE
+// LOCAL STORAGE
 export const STORAGE = {
   USER: 'user-data',
   LIST_USER: 'list-user',
@@ -65,6 +63,7 @@ export const STORAGE = {
 
 export const UNDEFINED = 'undefined'
 
+// INFORMATION ACCOUNT
 export const DATA_ACCOUNT = {
   NAME: 'Adam Zampa',
   EMAIL: 'adc@123.com',
@@ -73,8 +72,8 @@ export const DATA_ACCOUNT = {
   POSITION: 'Front end Developer'
 }
 
+// LOGO
 export const LOGO = {
   IMAGE: '/images/sidebar/bxs-message-alt-detail.png',
   NAME: 'Doot'
-
 }

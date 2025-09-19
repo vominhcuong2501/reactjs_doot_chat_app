@@ -1,10 +1,36 @@
-import { ImageAvatar } from '@/components'
+import { Button, ImageAvatar, Input } from '@/components'
 import { CloseIcon } from '@/components/icons/close-icon'
 import { AppContext } from '@/contexts/app.context'
-import { useContext } from 'react'
+import { UserListsContext } from '@/contexts/user.context'
+import { useContext, useState } from 'react'
 
-export const PopupInfo = ({ handleClose }: { handleClose?: () => void }) => {
-    const { userData } = useContext(AppContext)
+export const PopupInfo = ({
+    handleClose,
+    isEdit = false,
+    nameUser
+}: {
+    handleClose?: () => void
+    isEdit?: boolean
+    nameUser?: string
+}) => {
+    const { userData, updateUserData } = useContext(AppContext)
+
+    const contextUser = useContext(UserListsContext)
+
+    const [inputValue, setInputValue] = useState(nameUser || '')
+
+    const handleSubmit = (e: React.FormEvent) => {
+        e.preventDefault()
+
+        if (inputValue.trim()) {
+            updateUserData({ name: inputValue })
+
+            if (userData?.id !== undefined) {
+                contextUser?.updateUser(userData.id, { name: inputValue })
+            }
+        }
+        if (handleClose) handleClose()
+    }
 
     return (
         <div className='max-w-[343px] w-full bg-white text-center rounded-xl overflow-hidden pb-6'>
@@ -32,7 +58,31 @@ export const PopupInfo = ({ handleClose }: { handleClose?: () => void }) => {
                     className='rounded-full'
                     classNameTextAvatar='w-20 h-20 text-24'
                 />
-                <h2 className='text-16 font-medium dark:text-gray-3 mt-[15px]'>{userData?.name}</h2>
+                {isEdit ? (
+                    <form onSubmit={handleSubmit} className='flex items-center w-full px-4 gap-1 mt-2'>
+                        <Input
+                            value={inputValue}
+                            onChange={(e) => setInputValue(e.target.value)}
+                            type='text'
+                            name='username'
+                            className='flex-1'
+                            classNameInput='text-black-1 dark:text-gray-4 text-14 rounded-md border border-gray-6 p-2'
+                        />
+                        <Button type='submit'>
+                            <img
+                                src='/images/message/bx-sent.svg'
+                                alt='Submit'
+                                title='Submit'
+                                width={43}
+                                height={43}
+                                loading='lazy'
+                                className='cursor-pointer w-7 h-7 lg:w-10 lg:h-10 rounded'
+                            />
+                        </Button>
+                    </form>
+                ) : (
+                    <h2 className='text-16 font-medium dark:text-gray-3 mt-[15px]'>{userData?.name}</h2>
+                )}
             </div>
             <div className='flex flex-col gap-3 lg:gap-[18px] text-black-1 dark:text-gray-4 mt-6 px-4'>
                 <p className='flex items-center gap-[15px] text-15'>

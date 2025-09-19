@@ -12,6 +12,7 @@ interface UserLists {
 
 interface UserListsContextProps extends UserLists {
     deleteUser: (id: number) => void
+    updateUser: (id: number, value: Partial<ContactProps>) => void
 }
 
 // eslint-disable-next-line react-refresh/only-export-components
@@ -35,17 +36,34 @@ export const UserListsProvider = ({ children }: { children: React.ReactNode }) =
 
     const deleteUser = useCallback((id: number) => {
         setLists((prev) => {
-            const newLists = {
-                contactList: prev.contactList.filter((u) => u.id !== id),
-                callList: prev.callList.filter((u) => u.id !== id),
-                chatList: prev.chatList.filter((u) => u.id !== id)
+            const newLists: UserLists = {
+                contactList: prev.contactList.filter((user) => user.id !== id),
+                callList: prev.callList.filter((user) => user.id !== id),
+                chatList: prev.chatList.filter((user) => user.id !== id)
             }
 
             localStorage.setItem(STORAGE.LIST_USER, JSON.stringify(newLists))
-
             return newLists
         })
     }, [])
 
-    return <UserListsContext.Provider value={{ ...lists, deleteUser }}>{children}</UserListsContext.Provider>
+    const updateUser = useCallback((id: number, value: Partial<ContactProps>) => {
+        setLists((prev) => {
+            const updateList = <T extends ContactProps | CallsProps | ChatsProps>(list: T[]): T[] =>
+                list.map((user) => (user.id === id ? { ...user, ...value } : user))
+
+            const newLists: UserLists = {
+                contactList: updateList(prev.contactList),
+                callList: updateList(prev.callList),
+                chatList: updateList(prev.chatList)
+            }
+
+            localStorage.setItem(STORAGE.LIST_USER, JSON.stringify(newLists))
+            return newLists
+        })
+    }, [])
+
+    return (
+        <UserListsContext.Provider value={{ ...lists, deleteUser, updateUser }}>{children}</UserListsContext.Provider>
+    )
 }

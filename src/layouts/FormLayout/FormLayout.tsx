@@ -1,3 +1,4 @@
+import { LOGO } from '@/constant'
 import { useEffect } from 'react'
 import { Outlet } from 'react-router-dom'
 
@@ -13,8 +14,14 @@ export default function FormLayout() {
         <div className='h-full relative px-4 pb-10 lg:pb-[134px] flex flex-col items-center justify-center lg:justify-start lg:items-start'>
             <div className='pt-5 lg:pl-12 lg:pt-12 max-w-[500px] w-full'>
                 <div className='flex items-center gap-4'>
-                    <img src='/images/change-password/icon-logo.svg' alt='Doot' title='Doot' width={26} height={26} />
-                    <p className='text-[26px] font-semibold text-white'>Doot</p>
+                    <img
+                        src='/images/change-password/icon-logo.svg'
+                        alt={LOGO.NAME}
+                        title={LOGO.NAME}
+                        width={26}
+                        height={26}
+                    />
+                    <p className='text-[26px] font-semibold text-white'>{LOGO.NAME}</p>
                 </div>
                 <p className='text-white-5 text-16 lg:mt-3'>Responsive Bootstrap 5 Chat App</p>
             </div>
@@ -37,8 +44,8 @@ export default function FormLayout() {
 
                 <img
                     src='/images/change-password/img-bg-change-password.png'
-                    alt='Doot'
-                    title='Doot'
+                    alt={LOGO.NAME}
+                    title={LOGO.NAME}
                     width={760}
                     height={541}
                     className='absolute bottom-0 left-0 hidden lg:block lg:max-w-[500px] 2xl:max-w-[760px] z-[1]'

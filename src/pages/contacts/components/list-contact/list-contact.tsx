@@ -37,7 +37,7 @@ export const ListContact = ({
             const initials = getInitials(key?.name).toLowerCase()
             return nameNorm.includes(keyword) || initials.includes(keyword)
         })
-    }, [keyword, contactList])
+    }, [keyword, contactList, userData.name])
 
     const listContact = useMemo(() => filtered && groupUsersByFirstLetter(filtered), [filtered])
 
@@ -83,6 +83,7 @@ export const ListContact = ({
                                                 menuRef={menuRef}
                                                 className='icon-hover'
                                                 idDelete={contact?.id}
+                                                nameUser={contact?.name}
                                             />
                                         )}
                                     </div>
