@@ -60,7 +60,6 @@ export const MessageHeader = () => {
                     />
                     <IconInformation />
                     <IconOption
-                        menuRef={menuRef}
                         className='filter-green-icon hover-green-icon'
                         idDelete={userData?.id}
                         nameUser={userData?.name}

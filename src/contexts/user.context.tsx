@@ -43,6 +43,7 @@ export const UserListsProvider = ({ children }: { children: React.ReactNode }) =
             }
 
             localStorage.setItem(STORAGE.LIST_USER, JSON.stringify(newLists))
+
             return newLists
         })
     }, [])
@@ -59,6 +60,7 @@ export const UserListsProvider = ({ children }: { children: React.ReactNode }) =
             }
 
             localStorage.setItem(STORAGE.LIST_USER, JSON.stringify(newLists))
+
             return newLists
         })
     }, [])

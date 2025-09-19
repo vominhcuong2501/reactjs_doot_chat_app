@@ -7,11 +7,13 @@ import { useContext, useState } from 'react'
 export const PopupInfo = ({
     handleClose,
     isEdit = false,
-    nameUser
+    nameUser,
+    handleCloseOption
 }: {
     handleClose?: () => void
     isEdit?: boolean
     nameUser?: string
+    handleCloseOption?: () => void
 }) => {
     const { userData, updateUserData } = useContext(AppContext)
 
@@ -29,7 +31,10 @@ export const PopupInfo = ({
                 contextUser?.updateUser(userData.id, { name: inputValue })
             }
         }
-        if (handleClose) handleClose()
+        if (handleClose && handleCloseOption) {
+            handleClose()
+            handleCloseOption()
+        }
     }
 
     return (

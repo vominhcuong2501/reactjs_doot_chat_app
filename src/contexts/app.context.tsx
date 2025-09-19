@@ -29,6 +29,7 @@ export const AppProvider = ({ children }: { children: React.ReactNode }) => {
     const [userData, setUserData] = useState<ContactProps>(() => {
         if (typeof window !== UNDEFINED) {
             const stored = localStorage.getItem(STORAGE.USER)
+
             if (stored) {
                 try {
                     return JSON.parse(stored)
@@ -43,7 +44,9 @@ export const AppProvider = ({ children }: { children: React.ReactNode }) => {
     const updateUserData = useCallback((value: { id?: number; name?: string; avatar?: string }) => {
         setUserData((prev) => {
             const newUser = { ...prev, ...value }
+
             localStorage.setItem(STORAGE.USER, JSON.stringify(newUser))
+
             return newUser
         })
     }, [])

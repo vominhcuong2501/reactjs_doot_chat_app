@@ -1,17 +1,17 @@
-import { useContext, useEffect, useState } from 'react'
+import { useContext, useEffect, useRef, useState } from 'react'
 import { AppContext } from '@/contexts/app.context'
 import { UserListsContext } from '@/contexts/user.context'
 import { PopupInfo } from '../popup-info'
 import { Modal } from '@/components'
 
 type IconOptionProps = {
-    menuRef: React.RefObject<HTMLDivElement | null>
     className?: string
     idDelete?: number
     nameUser?: string
+    avatarUser?: string
 }
 
-export const IconOption = ({ menuRef, className, idDelete, nameUser }: IconOptionProps) => {
+export const IconOption = ({ className, idDelete, nameUser }: IconOptionProps) => {
     const { updateUserData } = useContext(AppContext)
 
     const userContact = useContext(UserListsContext)
@@ -20,24 +20,38 @@ export const IconOption = ({ menuRef, className, idDelete, nameUser }: IconOptio
 
     const [isOpen, setIsOpen] = useState(false)
 
+    const menuRef = useRef<HTMLDivElement>(null)
+
     useEffect(() => {
         function handleClickOutside(event: MouseEvent) {
             if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
                 setIsOption(false)
             }
         }
+
         if (isOption) document.addEventListener('mousedown', handleClickOutside)
+
         return () => document.removeEventListener('mousedown', handleClickOutside)
     }, [isOption])
 
     const handleDelete = () => {
-        userContact?.deleteUser(idDelete || 0)
+        if (!idDelete) return
+
+        userContact?.deleteUser(idDelete)
 
         updateUserData({ id: 0, name: '', avatar: '' })
+
+        setIsOption(false)
+    }
+
+    const handleEdit = () => {
+        setIsOption(false)
+
+        setIsOpen(true)
     }
 
     return (
-        <div className='relative'>
+        <div className='relative' ref={menuRef}>
             <img
                 src='/images/message/bx-dots-vertical-rounded.svg'
                 alt='More'
@@ -48,17 +62,18 @@ export const IconOption = ({ menuRef, className, idDelete, nameUser }: IconOptio
                 className={`cursor-pointer icon-dark-mode ${isOption && className}`}
                 onClick={() => setIsOption((v) => !v)}
             />
+
             {isOption && (
-                <div className='absolute right-0 top-full mt-2 w-36 bg-white rounded shadow z-50'>
+                <div className='absolute right-0 top-full mt-2 w-36 bg-white rounded shadow z-[2]'>
                     <button
-                        className='block w-full text-left px-4 py-2 cursor-pointer text-black-1 dark:text-white hover:text-white hover:bg-green-1 transition-all duration-200'
+                        className='block w-full text-left px-4 py-2 cursor-pointer text-black-1 hover:text-white hover:bg-green-1 transition-all duration-200'
                         onClick={handleDelete}
                     >
                         Delete user
                     </button>
                     <button
-                        className='block w-full text-left px-4 py-2 cursor-pointer text-black-1 dark:text-white hover:text-white hover:bg-green-1 transition-all duration-200'
-                        onClick={() => setIsOpen(true)}
+                        className='block w-full text-left px-4 py-2 cursor-pointer text-black-1 hover:text-white hover:bg-green-1 transition-all duration-200'
+                        onClick={handleEdit}
                     >
                         Edit User
                     </button>
@@ -66,7 +81,12 @@ export const IconOption = ({ menuRef, className, idDelete, nameUser }: IconOptio
             )}
 
             <Modal isOpen={isOpen} handleClose={() => setIsOpen(false)} isIconClose={false}>
-                <PopupInfo handleClose={() => setIsOpen(false)} isEdit nameUser={nameUser} />
+                <PopupInfo
+                    handleClose={() => setIsOpen(false)}
+                    isEdit
+                    nameUser={nameUser}
+                    handleCloseOption={() => setIsOption(false)}
+                />
             </Modal>
         </div>
     )

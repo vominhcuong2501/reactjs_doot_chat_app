@@ -4,7 +4,7 @@ import { UserListsContext } from '@/contexts/user.context'
 import { getInitials, groupUsersByFirstLetter, normalizeName, useClickUser } from '@/hooks'
 import { IconOption } from '@/pages/message/components'
 import { ContactProps } from '@/types'
-import { useContext, useMemo, useRef } from 'react'
+import { useContext, useMemo } from 'react'
 
 export const ListContact = ({
     keySearch,
@@ -23,18 +23,20 @@ export const ListContact = ({
 
     const handleClick = (contact: ContactProps) => {
         handleClickUser(contact)
+
         if (handleClose) handleClose()
     }
-
-    const menuRef = useRef<HTMLDivElement>(null)
 
     const keyword = normalizeName(keySearch)
 
     const filtered = useMemo(() => {
         if (!keyword) return contactList
+
         return contactList?.filter((key: ContactProps) => {
             const nameNorm = normalizeName(key?.name)
+
             const initials = getInitials(key?.name).toLowerCase()
+
             return nameNorm.includes(keyword) || initials.includes(keyword)
         })
     }, [keyword, contactList, userData.name])
@@ -80,7 +82,6 @@ export const ListContact = ({
                                         </div>
                                         {isShowDot && (
                                             <IconOption
-                                                menuRef={menuRef}
                                                 className='icon-hover'
                                                 idDelete={contact?.id}
                                                 nameUser={contact?.name}
