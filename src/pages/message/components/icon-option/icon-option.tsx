@@ -3,15 +3,16 @@ import { AppContext } from '@/contexts/app.context'
 import { UserListsContext } from '@/contexts/user.context'
 import { PopupInfo } from '../popup-info'
 import { Modal } from '@/components'
+import { IMAGE_LAZY } from '@/constant'
+import { ContactProps } from '@/types'
+import config from './../../../../config/config.json'
 
 type IconOptionProps = {
     className?: string
-    idDelete?: number
-    nameUser?: string
-    avatarUser?: string
+    infoUser?: ContactProps
 }
 
-export const IconOption = ({ className, idDelete, nameUser }: IconOptionProps) => {
+export const IconOption = ({ className, infoUser }: IconOptionProps) => {
     const { updateUserData } = useContext(AppContext)
 
     const userContact = useContext(UserListsContext)
@@ -35,9 +36,9 @@ export const IconOption = ({ className, idDelete, nameUser }: IconOptionProps) =
     }, [isOption])
 
     const handleDelete = () => {
-        if (!idDelete) return
+        if (!infoUser?.id) return
 
-        userContact?.deleteUser(idDelete)
+        userContact?.deleteUser(infoUser?.id)
 
         updateUserData({ id: 0, name: '', avatar: '' })
 
@@ -58,7 +59,7 @@ export const IconOption = ({ className, idDelete, nameUser }: IconOptionProps) =
                 title='More'
                 width={22}
                 height={22}
-                loading='lazy'
+                loading={IMAGE_LAZY}
                 className={`cursor-pointer icon-dark-mode ${isOption && className}`}
                 onClick={() => setIsOption((v) => !v)}
             />
@@ -69,13 +70,13 @@ export const IconOption = ({ className, idDelete, nameUser }: IconOptionProps) =
                         className='block w-full text-left px-4 py-2 cursor-pointer text-black-1 hover:text-white hover:bg-green-1 transition-all duration-200'
                         onClick={handleDelete}
                     >
-                        Delete user
+                        {config.txt_delete_user}
                     </button>
                     <button
                         className='block w-full text-left px-4 py-2 cursor-pointer text-black-1 hover:text-white hover:bg-green-1 transition-all duration-200'
                         onClick={handleEdit}
                     >
-                        Edit User
+                        {config.txt_edit_name}
                     </button>
                 </div>
             )}
@@ -84,7 +85,7 @@ export const IconOption = ({ className, idDelete, nameUser }: IconOptionProps) =
                 <PopupInfo
                     handleClose={() => setIsOpen(false)}
                     isEdit
-                    nameUser={nameUser}
+                    infoUser={infoUser}
                     handleCloseOption={() => setIsOption(false)}
                 />
             </Modal>

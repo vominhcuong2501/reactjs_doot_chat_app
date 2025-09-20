@@ -1,14 +1,15 @@
+import { STORAGE, THEME } from '@/constant'
 import { useEffect, useState, useCallback } from 'react'
 
 export const useDarkMode = () => {
     // get initial theme from localStorage or system preference
     const getInitialTheme = () => {
         try {
-            const stored = localStorage.getItem('theme')
-            if (stored === 'dark' || stored === 'light') return stored
-            return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+            const stored = localStorage.getItem(STORAGE.THEME)
+            if (stored === THEME.DARK || stored === THEME.LIGHT) return stored
+            return window.matchMedia(`(prefers-color-scheme: ${THEME.DARK})`).matches ? THEME.DARK : THEME.LIGHT
         } catch {
-            return 'light'
+            return THEME.LIGHT
         }
     }
 
@@ -17,9 +18,9 @@ export const useDarkMode = () => {
     // apply theme to document and save to localStorage
     useEffect(() => {
         const root = document.documentElement
-        root.classList.toggle('dark', currentTheme === 'dark')
+        root.classList.toggle(THEME.DARK, currentTheme === THEME.DARK)
         try {
-            localStorage.setItem('theme', currentTheme)
+            localStorage.setItem(STORAGE.THEME, currentTheme)
         } catch {
             // Ignore localStorage errors
         }
@@ -27,10 +28,10 @@ export const useDarkMode = () => {
 
     // listen to system theme changes
     useEffect(() => {
-        const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
+        const mediaQuery = window.matchMedia(`(prefers-color-scheme: ${THEME.DARK})`)
         const handleChange = (e: MediaQueryListEvent) => {
-            const stored = localStorage.getItem('theme')
-            if (!stored) setCurrentTheme(e.matches ? 'dark' : 'light')
+            const stored = localStorage.getItem(STORAGE.THEME)
+            if (!stored) setCurrentTheme(e.matches ? THEME.DARK : THEME.LIGHT)
         }
 
         mediaQuery.addEventListener('change', handleChange)
@@ -39,13 +40,13 @@ export const useDarkMode = () => {
 
     // toggle theme
     const toggle = useCallback(() => {
-        setCurrentTheme((prev) => (prev === 'dark' ? 'light' : 'dark'))
+        setCurrentTheme((prev) => (prev === THEME.DARK ? THEME.LIGHT : THEME.DARK))
     }, [])
 
     return {
         theme: currentTheme,
         setTheme: setCurrentTheme,
         toggle,
-        isDark: currentTheme === 'dark'
+        isDark: currentTheme === THEME.DARK
     }
 }

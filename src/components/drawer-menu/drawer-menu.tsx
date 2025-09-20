@@ -4,7 +4,9 @@ import { useContext } from 'react'
 import { AppContext } from '@/contexts/app.context'
 import { useSidebar } from '@/store'
 import { SIDEBAR } from '@/mockup'
-import { LOGO } from '@/constant'
+import { IMAGE_LAZY, LOGO } from '@/constant'
+import config from './../../config/config.json'
+
 
 export const DrawerMenu = () => {
     const { isOpen, setIsOpen } = useContext(AppContext)
@@ -28,7 +30,7 @@ export const DrawerMenu = () => {
                             src={LOGO.IMAGE}
                             width={26}
                             height={26}
-                            loading='lazy'
+                            loading={IMAGE_LAZY}
                             alt={LOGO.NAME}
                             title={LOGO.NAME}
                             className='filter-green-icon'
@@ -43,11 +45,11 @@ export const DrawerMenu = () => {
                         >
                             <img
                                 src='/images/sidebar/icon-close.png'
-                                alt='Close'
-                                title='Close'
+                                alt={config.txt_close}
+                                title={config.txt_close}
                                 width={14}
                                 height={14}
-                                loading='lazy'
+                                loading={IMAGE_LAZY}
                                 className='filter-white-icon'
                             />
                         </p>
@@ -71,7 +73,7 @@ export const DrawerMenu = () => {
                                     title={item.key}
                                     width={28}
                                     height={28}
-                                    loading='lazy'
+                                    loading={IMAGE_LAZY}
                                     className={`${
                                         keyword === item.key ? 'filter-white-icon' : 'filter-gray-icon icon-hover'
                                     }`}

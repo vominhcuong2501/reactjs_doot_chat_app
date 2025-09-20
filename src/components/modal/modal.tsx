@@ -1,5 +1,6 @@
 import React from 'react'
 import { CloseIcon } from '../icons/close-icon'
+import config from './../../config/config.json'
 
 interface ModalProps {
     children?: React.ReactNode
@@ -15,7 +16,7 @@ export const Modal = ({ children, className, isOpen, handleClose, isIconClose = 
             {isOpen && (
                 <div
                     className='fixed inset-0 w-screen h-screen bg-black-8 bg-opacity-10 z-[3] cursor-pointer'
-                    title='Close'
+                    title={config.txt_close}
                     onClick={handleClose}
                 ></div>
             )}

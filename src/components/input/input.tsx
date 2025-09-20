@@ -4,6 +4,7 @@
 import type { ChangeEvent, InputHTMLAttributes } from 'react'
 import { forwardRef, useState } from 'react'
 import { HideIcon, ViewIcon } from '../icons'
+import { INPUT_TYPE } from '@/constant'
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
     errorMessage?: string
@@ -13,14 +14,6 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
     id?: string
     nameLabel?: string
     classNameLabel?: string
-}
-
-enum INPUT_TYPES {
-    text = 'text',
-    password = 'password',
-    email = 'email',
-    number = 'number',
-    tel = 'tel'
 }
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
@@ -48,8 +41,8 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
     const toggleVisible = () => setVisible((prev) => !prev)
 
     const handleType = () => {
-        if (type === INPUT_TYPES.password) {
-            return visible ? INPUT_TYPES.text : INPUT_TYPES.password
+        if (type === INPUT_TYPE.PASSWORD) {
+            return visible ? INPUT_TYPE.TEXT : INPUT_TYPE.PASSWORD
         }
 
         return type
@@ -58,7 +51,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         const rawValue = e.target.value.replace(/ {2,}/g, ' ')
         const formattedValue = formatNumber(rawValue)
-        e.target.value = type === 'number' || type === 'tel' ? formattedValue : rawValue
+        e.target.value = type === INPUT_TYPE.NUMBER || type === INPUT_TYPE.TEL ? formattedValue : rawValue
     }
 
     return (
@@ -110,7 +103,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
                     />
                 )}
 
-                {type === INPUT_TYPES.password &&
+                {type === INPUT_TYPE.PASSWORD &&
                     (visible ? (
                         <ViewIcon onClick={toggleVisible} className={classNameIcon} />
                     ) : (

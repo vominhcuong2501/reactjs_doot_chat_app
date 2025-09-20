@@ -83,8 +83,7 @@ export const ListContact = ({
                                         {isShowDot && (
                                             <IconOption
                                                 className='icon-hover'
-                                                idDelete={contact?.id}
-                                                nameUser={contact?.name}
+                                                infoUser={contact}
                                             />
                                         )}
                                     </div>

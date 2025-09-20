@@ -1,7 +1,8 @@
 import { ImageAvatar } from '@/components'
-import { DATA_ACCOUNT } from '@/constant'
+import { DATA_ACCOUNT, IMAGE_LAZY } from '@/constant'
 import { LIST_STATUS } from '@/mockup'
 import { useState } from 'react'
+import config from './../../../../config/config.json'
 
 export const ProfileUser = ({
     title,
@@ -25,23 +26,23 @@ export const ProfileUser = ({
             <div className='relative z-[1]'>
                 <img
                     src='/images/profile/bg-profile.jpg'
-                    alt='Background'
-                    title='Background'
+                    alt={config.txt_background}
+                    title={config.txt_background}
                     width={300}
                     height={160}
                     className='w-full max-h-[160px] object-cover object-center'
-                    loading='lazy'
+                    loading={IMAGE_LAZY}
                 />
                 <div className='flex items-center justify-between gap-5 absolute top-[15px] left-4 right-4'>
                     <h1 className='text-18 font-medium text-white capitalize'>{title}</h1>
                     <img
                         src='/images/profile/bx-dots-vertical-rounded.svg'
-                        alt='Icon'
-                        title='Icon'
+                        alt={config.txt_icon}
+                        title={config.txt_icon}
                         width={22}
                         height={22}
                         className='cursor-pointer'
-                        loading='lazy'
+                        loading={IMAGE_LAZY}
                     />
                 </div>
             </div>
@@ -58,11 +59,11 @@ export const ProfileUser = ({
                         <p className='text-15 text-gray-1 capitalize dark:text-gray-4'>{status}</p>
                         <img
                             src='/images/profile/chevron-down.svg'
-                            alt='Avatar'
-                            title='Avatar'
+                            alt={config.txt_icon}
+                            title={config.txt_icon}
                             width={15}
                             height={15}
-                            loading='lazy'
+                            loading={IMAGE_LAZY}
                             className={`${isStatus && 'rotate-180'} transition-all duration-200 icon-dark-mode`}
                         />
                         {isStatus && (

@@ -2,6 +2,7 @@ import { ImageAvatar } from '@/components'
 import { TYPE_DOCUMENT } from '@/constant'
 import { LIST_IMAGES } from '@/mockup'
 import { useState } from 'react'
+import config from './../../../../config/config.json'
 
 const LIMITS = 2
 
@@ -11,14 +12,14 @@ export const ProfileMedia = () => {
     return (
         <div className='py-4 lg:py-6 border-t border-b border-gray-5 dark:border-black-2'>
             <div className='flex items-center justify-between gap-5'>
-                <p className='text-11 font-medium text-gray-1 dark:text-gray-4'>Media</p>
+                <p className='text-11 font-medium text-gray-1 dark:text-gray-4'>{config.txt_media}</p>
                 <p
                     className='text-12 text-green-1 cursor-pointer hover:underline'
                     onClick={() => {
                         setIsToggleMedia(!isToggleMedia)
                     }}
                 >
-                    {isToggleMedia ? 'Show Less' : 'Show All'}
+                    {isToggleMedia ? config.txt_show_less : config.txt_show_all}
                 </p>
             </div>
             <div className='grid grid-cols-3 items-center gap-2 md:gap-3 mt-3'>

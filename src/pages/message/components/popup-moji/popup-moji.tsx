@@ -1,6 +1,8 @@
 import { Input } from '@/components'
+import { IMAGE_LAZY, INPUT_TYPE } from '@/constant'
 import { LIST_MOJI } from '@/mockup'
 import { useEffect, useRef, useState } from 'react'
+import config from './../../../../config/config.json'
 
 export const PopupMoji = () => {
     const [showPicker, setShowPicker] = useState(false)
@@ -35,20 +37,20 @@ export const PopupMoji = () => {
         <>
             <img
                 src='/images/message/bx-smile.svg'
-                alt='Moji'
-                title='Moji'
+                alt={config.txt_icon}
+                title={config.txt_icon}
                 width={22}
                 height={22}
-                loading='lazy'
+                loading={IMAGE_LAZY}
                 className={`cursor-pointer hover-green-icon icon-dark-mode ${showPicker && 'filter-green-icon'}`}
                 onClick={() => setShowPicker(!showPicker)}
             />
             <Input
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
-                type='text'
+                type={INPUT_TYPE.TEXT}
                 name='message'
-                placeholder='Type your message...'
+                placeholder={config.txt_type_message}
                 className='flex-1'
                 classNameInput=' text-gray-2 dark:text-gray-4 text-14 rounded-md border border-gray-6 p-2 md:px-4 md:py-3'
             />

@@ -1,6 +1,8 @@
 import { Modal } from '@/components'
 import { useState } from 'react'
 import { PopupInfo } from '../popup-info'
+import { IMAGE_LAZY } from '@/constant'
+import config from './../../../../config/config.json'
 
 export const IconInformation = () => {
     const [isOpen, setIsOpen] = useState(false)
@@ -9,11 +11,11 @@ export const IconInformation = () => {
         <>
             <img
                 src='/images/message/bxs-info-circle.svg'
-                alt='Icon'
-                title='Icon'
+                alt={config.txt_icon}
+                title={config.txt_icon}
                 width={22}
                 height={22}
-                loading='lazy'
+                loading={IMAGE_LAZY}
                 className='cursor-pointer hover-green-icon icon-dark-mode'
                 onClick={() => setIsOpen(!isOpen)}
             />

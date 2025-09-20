@@ -1,8 +1,10 @@
+import { IMAGE_LAZY } from '@/constant'
 import { AppContext } from '@/contexts/app.context'
 import { MENU_MOBILE } from '@/mockup'
 import { useSidebar } from '@/store'
 import { useContext } from 'react'
 import { Link } from 'react-router-dom'
+import config from './../../config/config.json'
 
 export const MenuMobile = () => {
     const { isOpen, setIsOpen } = useContext(AppContext)
@@ -24,20 +26,20 @@ export const MenuMobile = () => {
                             width={28}
                             height={28}
                             onClick={() => updateKeyword(item.key)}
-                            loading='lazy'
+                            loading={IMAGE_LAZY}
                         />
                     </Link>
                 )
             })}
             <img
                 src='/images/sidebar/icon-burger.png'
-                alt='Show Menu'
-                title='Show Menu'
+                alt={config.txt_show_menu}
+                title={config.txt_show_menu}
                 className='hover-green-icon cursor-pointer filter-gray-icon'
                 width={18}
                 height={19}
                 onClick={() => setIsOpen(!isOpen)}
-                loading='lazy'
+                loading={IMAGE_LAZY}
             />
         </div>
     )

@@ -2,6 +2,9 @@ import { ListContact } from '@/pages/contacts/components/list-contact'
 import React, { useState } from 'react'
 import { Modal } from '../modal'
 
+import config from './../../config/config.json'
+import { IMAGE_LAZY } from '@/constant'
+
 export const AddNewChat = () => {
     const [isOpen, setIsOpen] = useState(false)
 
@@ -9,10 +12,11 @@ export const AddNewChat = () => {
         <>
             <img
                 src='/images/chats/icon-plus.svg'
-                alt='Add'
+                alt={config.txt_add}
+                title={config.txt_add}
                 width={31}
                 height={30}
-                loading='lazy'
+                loading={IMAGE_LAZY}
                 className='cursor-pointer'
                 onClick={() => setIsOpen(!isOpen)}
             />

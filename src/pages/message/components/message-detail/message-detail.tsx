@@ -1,6 +1,8 @@
 import { ImageAvatar } from '@/components'
+import { IMAGE_LAZY } from '@/constant'
 import { AppContext } from '@/contexts/app.context'
 import { useContext } from 'react'
+import config from './../../../../config/config.json'
 
 export const MessageDetail = () => {
     const { userData } = useContext(AppContext)
@@ -34,11 +36,11 @@ export const MessageDetail = () => {
                     <p className='flex items-center gap-2 text-12 font-medium text-gray-1 dark:text-gray-4'>
                         <img
                             src='/images/message/bx-check-double.svg'
-                            alt='Icon'
-                            title='Icon'
+                            alt={config.txt_icon}
+                            title={config.txt_icon}
                             width={14}
                             height={14}
-                            loading='lazy'
+                            loading={IMAGE_LAZY}
                             className='rounded-full'
                         />
                         10:12 am
@@ -73,11 +75,11 @@ export const MessageDetail = () => {
                     <p className='flex items-center gap-2 text-12 font-medium text-gray-1 dark:text-gray-4 mt-2'>
                         <img
                             src='/images/message/bx-check-double.svg'
-                            alt='Icon'
-                            title='Icon'
+                            alt={config.txt_icon}
+                            title={config.txt_icon}
                             width={14}
                             height={14}
-                            loading='lazy'
+                            loading={IMAGE_LAZY}
                             className='rounded-full'
                         />
                         10:14 am
@@ -122,7 +124,7 @@ export const MessageDetail = () => {
                                     height={29}
                                     alt='design-phase-1-approved.pdf'
                                     title='design-phase-1-approved.pdf'
-                                    loading='lazy'
+                                    loading={IMAGE_LAZY}
                                 />
                                 <div className='flex-1'>
                                     <p className='text-14 font-medium text-black-1 dark:text-gray-3'>
@@ -143,7 +145,7 @@ export const MessageDetail = () => {
                                         height={15}
                                         alt='design-phase-1-approved.pdf'
                                         title='design-phase-1-approved.pdf'
-                                        loading='lazy'
+                                        loading={IMAGE_LAZY}
                                         className='icon-dark-mode'
                                     />
                                 </a>
@@ -153,11 +155,11 @@ export const MessageDetail = () => {
                     <p className='flex items-center gap-2 text-12 font-medium text-gray-1 dark:text-gray-4'>
                         <img
                             src='/images/message/bx-check-double.svg'
-                            alt='Icon'
-                            title='Icon'
+                            alt={config.txt_icon}
+                            title={config.txt_icon}
                             width={14}
                             height={14}
-                            loading='lazy'
+                            loading={IMAGE_LAZY}
                             className='rounded-full'
                         />
                         10:17 am

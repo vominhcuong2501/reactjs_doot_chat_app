@@ -1,5 +1,6 @@
 'use client'
 
+import { IMAGE_LAZY } from '@/constant'
 import { ReactNode, useState } from 'react'
 
 export const ToggleItem = ({ title, icon, children }: { title?: string; icon?: string; children?: ReactNode }) => {
@@ -22,7 +23,7 @@ export const ToggleItem = ({ title, icon, children }: { title?: string; icon?: s
                         src={icon || '/'}
                         alt={title || ''}
                         title={title}
-                        loading='lazy'
+                        loading={IMAGE_LAZY}
                         width='14'
                         height='14'
                         className='icon-hover icon-dark-mode'
@@ -33,7 +34,7 @@ export const ToggleItem = ({ title, icon, children }: { title?: string; icon?: s
                     src='/images/profile/icon-toggle-dropdown.svg'
                     alt={title || ''}
                     title={title}
-                    loading='lazy'
+                    loading={IMAGE_LAZY}
                     width='12'
                     height='12'
                     className={`transition-all duration-200 icon-hover icon-dark-mode ${

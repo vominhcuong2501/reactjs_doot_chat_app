@@ -1,11 +1,12 @@
-import { PAGE_KEYWORD, TYPE_DOCUMENT } from '@/constant'
+import { IMAGE_LAZY, TYPE_DOCUMENT } from '@/constant'
 import { LIST_BOOKMARK } from '@/mockup'
+import config from './../../config/config.json'
 
 export const Bookmark = () => {
     return (
         <>
             <h1 className='p-4 lg:p-6 text-21 font-medium text-black-1 dark:text-gray-3 sticky top-0 bg-white dark:bg-black-3 capitalize'>
-                {PAGE_KEYWORD.BOOKMARK}
+                {config.txt_bookmark}
             </h1>
             <div className='flex flex-col pb-4 lg:pb-6'>
                 {LIST_BOOKMARK?.map((file) => {
@@ -22,7 +23,7 @@ export const Bookmark = () => {
                                         height={29}
                                         alt={file?.fileName}
                                         title={file?.fileName}
-                                        loading='lazy'
+                                        loading={IMAGE_LAZY}
                                         className='icon-hover'
                                     />
                                 )}
@@ -33,7 +34,7 @@ export const Bookmark = () => {
                                         height={29}
                                         alt={file?.fileName}
                                         title={file?.fileName}
-                                        loading='lazy'
+                                        loading={IMAGE_LAZY}
                                         className='icon-hover'
                                     />
                                 )}
@@ -44,7 +45,7 @@ export const Bookmark = () => {
                                         height={29}
                                         alt={file?.fileName}
                                         title={file?.fileName}
-                                        loading='lazy'
+                                        loading={IMAGE_LAZY}
                                         className='icon-hover'
                                     />
                                 )}
@@ -63,7 +64,7 @@ export const Bookmark = () => {
                                 height={15}
                                 alt={file?.fileName}
                                 title={file?.fileName}
-                                loading='lazy'
+                                loading={IMAGE_LAZY}
                                 className='cursor-pointer icon-hover icon-dark-mode'
                             />
                         </div>

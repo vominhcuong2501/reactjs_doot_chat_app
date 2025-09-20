@@ -11,19 +11,6 @@ export const PAGE_KEYWORD = {
   MESSAGE: 'message'
 }
 
-// PAGE NAME
-export const PAGE_NAME = {
-  PROFILE: 'My Profile',
-  CHATS: 'Chats',
-  CONTACTS: 'Contacts',
-  CALLS: 'Calls',
-  BOOKMARK: 'Bookmark',
-  SETTINGS: 'Settings',
-  LOGOUT: 'Logout',
-  CHANGE_PASSWORD: 'Change Password',
-  MESSAGE: 'Message'
-}
-
 // SCREEN
 export const SCREEN_DEVICE = {
   MOBILE: 768,
@@ -58,10 +45,13 @@ export const STATUS = {
 export const STORAGE = {
   USER: 'user-data',
   LIST_USER: 'list-user',
-  SIDEBAR: 'keyword-sidebar'
+  SIDEBAR: 'keyword-sidebar',
+  THEME: 'theme'
 }
 
+// OTHER
 export const UNDEFINED = 'undefined'
+export const IMAGE_LAZY = 'lazy'
 
 // INFORMATION ACCOUNT
 export const DATA_ACCOUNT = {
@@ -69,7 +59,8 @@ export const DATA_ACCOUNT = {
   EMAIL: 'adc@123.com',
   AVATAR: '/images/profile/img-avatar-user.png',
   LOCATION: 'California, USA',
-  POSITION: 'Front end Developer'
+  POSITION: 'Front end Developer',
+  DESCRIPTION: 'If several languages coalesce, the grammar of the resulting language is more simple.'
 }
 
 // LOGO
@@ -77,3 +68,25 @@ export const LOGO = {
   IMAGE: '/images/sidebar/bxs-message-alt-detail.png',
   NAME: 'Doot'
 }
+
+// THEME
+export const THEME = {
+  LIGHT: 'light',
+  DARK: 'dark'
+}
+
+// USER DEMO
+export const DATA_USER_DEMO = {
+  EMAIL: "adc@123.com",
+  LOCATION: "California, USA",
+}
+
+// TYPE INPUT
+export const INPUT_TYPE = {
+  TEXT: 'text',
+  PASSWORD: 'password',
+  EMAIL: 'email',
+  NUMBER: 'number',
+  TEL: 'tel'
+}
+

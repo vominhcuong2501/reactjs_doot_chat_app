@@ -1,11 +1,14 @@
-import { TYPE_DOCUMENT } from '@/constant'
+import { IMAGE_LAZY, TYPE_DOCUMENT } from '@/constant'
 import { LIST_ATTACHED_FILES } from '@/mockup'
 import { Fragment } from 'react'
+import config from './../../../../config/config.json'
 
 export const ProfileAttachedFile = () => {
     return (
         <Fragment>
-            <p className='mt-6 text-11 font-medium text-gray-1 dark:text-gray-4'>ATTACHED FILES</p>
+            <p className='mt-6 text-11 font-medium text-gray-1 dark:text-gray-4 uppercase'>
+                {config.txt_attached_files}
+            </p>
             <div className='flex flex-col gap-2 mt-4'>
                 {LIST_ATTACHED_FILES?.map((file, index) => {
                     return (
@@ -21,7 +24,7 @@ export const ProfileAttachedFile = () => {
                                         height={29}
                                         alt={file?.fileName}
                                         title={file?.fileName}
-                                        loading='lazy'
+                                        loading={IMAGE_LAZY}
                                     />
                                 )}
                                 {file.fileType === TYPE_DOCUMENT.IMAGE && (
@@ -31,7 +34,7 @@ export const ProfileAttachedFile = () => {
                                         height={29}
                                         alt={file?.fileName}
                                         title={file?.fileName}
-                                        loading='lazy'
+                                        loading={IMAGE_LAZY}
                                     />
                                 )}
                                 <div className='flex-1 text-gray-1 dark:text-gray-4'>
@@ -51,7 +54,7 @@ export const ProfileAttachedFile = () => {
                                         height={15}
                                         alt={file?.fileName}
                                         title={file?.fileName}
-                                        loading='lazy'
+                                        loading={IMAGE_LAZY}
                                         className='icon-dark-mode'
                                     />
                                 </a>
@@ -61,7 +64,7 @@ export const ProfileAttachedFile = () => {
                                     height={15}
                                     alt={file?.fileName}
                                     title={file?.fileName}
-                                    loading='lazy'
+                                    loading={IMAGE_LAZY}
                                     className='cursor-pointer icon-dark-mode'
                                 />
                             </div>

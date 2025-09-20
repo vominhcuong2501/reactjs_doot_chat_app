@@ -6,6 +6,8 @@ import { DataFormChangePassword } from '@/types'
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 import { useSidebar } from '@/store'
+import config from './../../../../config/config.json'
+import { PAGE_KEYWORD } from '@/constant'
 
 export const FormChangePassword = () => {
     const [isLoading, setIsLoading] = useState(false)
@@ -37,7 +39,7 @@ export const FormChangePassword = () => {
 
             clearInterval(isSuccess)
 
-            navigate('/logout')
+            navigate(`/${PAGE_KEYWORD.LOGOUT}`)
         }, 3000)
     })
 
@@ -51,38 +53,38 @@ export const FormChangePassword = () => {
             <Input
                 type='password'
                 id='current_password'
-                nameLabel='Old Password'
+                nameLabel={config.txt_old_password}
                 errorMessage={errors.current_password?.message}
                 {...register('current_password')}
                 required
                 maxLength={20}
                 minLength={6}
                 autoComplete='current-password'
-                placeholder='Enter Old Password'
+                placeholder={config.txt_enter_old_password}
             />
             <Input
                 type='password'
                 id='new_password'
-                nameLabel='New Password'
+                nameLabel={config.txt_new_password}
                 errorMessage={errors.new_password?.message}
                 {...register('new_password')}
                 required
                 maxLength={20}
                 minLength={6}
                 autoComplete='current-password'
-                placeholder='Enter New Password'
+                placeholder={config.txt_enter_new_password}
             />
             <Input
                 type='password'
                 id='confirm_password'
-                nameLabel='Confirm New Password'
+                nameLabel={config.txt_confirm_password}
                 errorMessage={errors.confirm_password?.message}
                 {...register('confirm_password')}
                 required
                 maxLength={20}
                 minLength={6}
                 autoComplete='confirm-password'
-                placeholder='Enter Confirm Password'
+                placeholder={config.txt_enter_confirm_password}
             />
             <div className='grid grid-cols-2 gap-5 mt-2'>
                 <Button
@@ -91,7 +93,7 @@ export const FormChangePassword = () => {
                     onClick={(e) => handleFormSubmit(e)}
                     className='text-white text-15 rounded h-10 w-full border border-green-6 bg-green-6 transition-all duration-200 hover:bg-white hover:text-green-6 text-center cursor-pointer'
                 >
-                    Save
+                    {config.txt_save}
                 </Button>
                 <Button
                     className='text-black-6 text-15 rounded h-10 w-full bg-gray-5 border border-transparent hover:border-gray-1 transition-all duration-200 text-center cursor-pointer'
@@ -100,7 +102,7 @@ export const FormChangePassword = () => {
                         updateKeyword('')
                     }}
                 >
-                    Cancel
+                    {config.txt_cancel}
                 </Button>
             </div>
         </form>

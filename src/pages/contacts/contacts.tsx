@@ -2,7 +2,7 @@ import { InputSearch } from '@/components'
 import { useState } from 'react'
 import { ListContact } from './components/list-contact'
 import { AddNewChat } from '@/components/add-new-chat'
-import { PAGE_KEYWORD } from '@/constant'
+import config from './../../config/config.json'
 
 export const Contacts = () => {
     const [keySearch, setKeySearch] = useState('')
@@ -12,7 +12,7 @@ export const Contacts = () => {
             <div className='p-4 lg:p-6 sticky top-0 bg-white dark:bg-black-3 z-[3]'>
                 <div className='flex items-center justify-between'>
                     <h1 className='text-21 font-medium text-black-1 dark:text-gray-3 capitalize'>
-                        {PAGE_KEYWORD.CONTACTS}
+                        {config.txt_contacts}
                     </h1>
                     <AddNewChat />
                 </div>

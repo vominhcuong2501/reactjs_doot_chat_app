@@ -1,7 +1,8 @@
 import { getInitials } from '@/hooks'
 import React, { useState } from 'react'
 import { Modal } from '../modal'
-import { STATUS, TYPE_DOCUMENT } from '@/constant'
+import { IMAGE_LAZY, STATUS, TYPE_DOCUMENT } from '@/constant'
+import config from './../../config/config.json'
 
 interface ImageAvatarProps {
     source?: string
@@ -59,11 +60,11 @@ export const ImageAvatar = ({
                 {isDot && (
                     <img
                         src='/images/message/icon-dots.svg'
-                        alt='Icon'
-                        title='Icon'
+                        alt={config.txt_icon}
+                        title={config.txt_icon}
                         width={26}
                         height={24}
-                        loading='lazy'
+                        loading={IMAGE_LAZY}
                         className='absolute right-2 bottom-3 cursor-pointer '
                     />
                 )}

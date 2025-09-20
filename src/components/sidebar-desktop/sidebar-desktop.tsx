@@ -2,7 +2,8 @@ import { ButtonTheme } from '../button-theme'
 import { Link, useNavigate } from 'react-router-dom'
 import { useSidebar } from '@/store'
 import { SIDEBAR } from '@/mockup'
-import { LOGO, PAGE_NAME } from '@/constant'
+import { IMAGE_LAZY, LOGO } from '@/constant'
+import config from './../../config/config.json'
 
 export const SidebarDesktop = () => {
     const { keyword, updateKeyword } = useSidebar()
@@ -12,7 +13,7 @@ export const SidebarDesktop = () => {
     return (
         <div className='fixed top-0 left-0 min-h-screen bg-black-2 dark:bg-black-3 flex flex-col items-center justify-between py-5'>
             <div className='flex flex-col items-center justify-between gap-10'>
-                <img src={LOGO.IMAGE} alt={LOGO.NAME} title={LOGO.NAME} width={28} height={28} loading='lazy' />
+                <img src={LOGO.IMAGE} alt={LOGO.NAME} title={LOGO.NAME} width={28} height={28} loading={IMAGE_LAZY} />
                 {SIDEBAR?.map((item) => {
                     return (
                         <Link
@@ -23,6 +24,7 @@ export const SidebarDesktop = () => {
                                 keyword === item.key ? 'before:opacity-100' : 'before:opacity-0 hover:before:opacity-30'
                             }`}
                             onClick={() => updateKeyword(item.key)}
+                            title={item.name}
                         >
                             <img
                                 key={item.key}
@@ -34,7 +36,7 @@ export const SidebarDesktop = () => {
                                 }`}
                                 width={28}
                                 height={28}
-                                loading='lazy'
+                                loading={IMAGE_LAZY}
                             />
                         </Link>
                     )
@@ -44,11 +46,11 @@ export const SidebarDesktop = () => {
                 <ButtonTheme />
                 <img
                     src='/images/sidebar/img-user.png'
-                    alt={PAGE_NAME.CHANGE_PASSWORD}
-                    title={PAGE_NAME.CHANGE_PASSWORD}
+                    alt={config.txt_change_password}
+                    title={config.txt_change_password}
                     width={36}
                     height={36}
-                    loading='lazy'
+                    loading={IMAGE_LAZY}
                     onClick={() => {
                         navigate('/')
                         updateKeyword('')

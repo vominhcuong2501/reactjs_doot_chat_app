@@ -1,9 +1,10 @@
 import { ImageAvatar } from '@/components'
-import { PAGE_KEYWORD } from '@/constant'
+import { IMAGE_LAZY } from '@/constant'
 import { UserListsContext } from '@/contexts/user.context'
 import { useClickUser } from '@/hooks/use-click-user'
 import { CallsProps } from '@/types'
 import { useContext } from 'react'
+import config from './../../config/config.json'
 
 export const Calls = () => {
     const handleClickUser = useClickUser()
@@ -13,7 +14,7 @@ export const Calls = () => {
     return (
         <>
             <h1 className='p-4 lg:p-6 text-21 font-medium text-black-1 dark:text-gray-3 sticky top-0 bg-white dark:bg-black-3 z-[3] capitalize'>
-                {PAGE_KEYWORD.CALLS}
+                {config.txt_calls}
             </h1>
             <div className='flex flex-col pb-4 lg:pb-6'>
                 {callList?.map((user: CallsProps, index: number) => {
@@ -38,20 +39,20 @@ export const Calls = () => {
                                         {user?.isCalled ? (
                                             <img
                                                 src='/images/calls/arrow-left-down-fill.svg'
-                                                alt='Icon'
-                                                title='Icon'
+                                                alt={config.txt_icon}
+                                                title={config.txt_icon}
                                                 width={12}
                                                 height={12}
-                                                loading='lazy'
+                                                loading={IMAGE_LAZY}
                                             />
                                         ) : (
                                             <img
                                                 src='/images/calls/arrow-right-up-fill.svg'
-                                                alt='Icon'
-                                                title='Icon'
+                                                alt={config.txt_icon}
+                                                title={config.txt_icon}
                                                 width={12}
                                                 height={12}
-                                                loading='lazy'
+                                                loading={IMAGE_LAZY}
                                             />
                                         )}
                                         {user?.day}
@@ -62,21 +63,21 @@ export const Calls = () => {
                             {user?.isVideo ? (
                                 <img
                                     src='/images/calls/bx-video.svg'
-                                    alt='Video'
-                                    title='Video'
+                                    alt={config.txt_video}
+                                    title={config.txt_video}
                                     width={20}
                                     height={20}
-                                    loading='lazy'
+                                    loading={IMAGE_LAZY}
                                     className='icon-hover'
                                 />
                             ) : (
                                 <img
                                     src='/images/calls/bxs-phone-call.svg'
-                                    alt='Call'
-                                    title='Call'
+                                    alt={config.txt_call}
+                                    title={config.txt_call}
                                     width={20}
                                     height={20}
-                                    loading='lazy'
+                                    loading={IMAGE_LAZY}
                                     className='icon-hover'
                                 />
                             )}

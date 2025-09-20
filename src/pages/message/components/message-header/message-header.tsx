@@ -3,6 +3,8 @@ import { IconInformation } from '../icon-info'
 import { ImageAvatar } from '@/components'
 import { IconOption } from '../icon-option'
 import { AppContext } from '@/contexts/app.context'
+import { IMAGE_LAZY } from '@/constant'
+import config from './../../../../config/config.json'
 
 export const MessageHeader = () => {
     const { userData } = useContext(AppContext)
@@ -33,37 +35,33 @@ export const MessageHeader = () => {
                 <div className='flex items-center gap-3 xl:gap-[30px]'>
                     <img
                         src='/images/message/bx-search.svg'
-                        alt='Search'
-                        title='Search'
+                        alt={config.txt_search}
+                        title={config.txt_search}
                         width={22}
                         height={22}
-                        loading='lazy'
+                        loading={IMAGE_LAZY}
                         className='cursor-pointer hover-green-icon icon-dark-mode'
                     />
                     <img
                         src='/images/message/bxs-phone-call.svg'
-                        alt='Call'
-                        title='Call'
+                        alt={config.txt_call}
+                        title={config.txt_call}
                         width={22}
                         height={22}
-                        loading='lazy'
+                        loading={IMAGE_LAZY}
                         className='cursor-pointer hover-green-icon icon-dark-mode'
                     />
                     <img
                         src='/images/message/bx-video.svg'
-                        alt='Video'
-                        title='Video'
+                        alt={config.txt_video}
+                        title={config.txt_video}
                         width={22}
                         height={22}
-                        loading='lazy'
+                        loading={IMAGE_LAZY}
                         className='cursor-pointer hover-green-icon icon-dark-mode'
                     />
                     <IconInformation />
-                    <IconOption
-                        className='filter-green-icon hover-green-icon'
-                        idDelete={userData?.id}
-                        nameUser={userData?.name}
-                    />
+                    <IconOption className='filter-green-icon hover-green-icon' infoUser={userData} />
                 </div>
             </div>
         </div>

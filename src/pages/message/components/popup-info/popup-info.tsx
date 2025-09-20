@@ -1,35 +1,36 @@
 import { Button, ImageAvatar, Input } from '@/components'
 import { CloseIcon } from '@/components/icons/close-icon'
+import { DATA_USER_DEMO, IMAGE_LAZY, INPUT_TYPE } from '@/constant'
 import { AppContext } from '@/contexts/app.context'
 import { UserListsContext } from '@/contexts/user.context'
+import { ContactProps } from '@/types'
 import { useContext, useState } from 'react'
+import config from './../../../../config/config.json'
 
 export const PopupInfo = ({
     handleClose,
     isEdit = false,
-    nameUser,
+    infoUser,
     handleCloseOption
 }: {
     handleClose?: () => void
     isEdit?: boolean
-    nameUser?: string
+    infoUser?: ContactProps
     handleCloseOption?: () => void
 }) => {
     const { userData, updateUserData } = useContext(AppContext)
 
     const contextUser = useContext(UserListsContext)
 
-    const [inputValue, setInputValue] = useState(nameUser || '')
+    const [inputValue, setInputValue] = useState(infoUser?.name || '')
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault()
 
         if (inputValue.trim()) {
-            updateUserData({ name: inputValue })
+            if (infoUser?.id === userData?.id) updateUserData({ name: inputValue })
 
-            if (userData?.id !== undefined) {
-                contextUser?.updateUser(userData.id, { name: inputValue })
-            }
+            if (infoUser?.id !== undefined) contextUser?.updateUser(infoUser.id, { name: inputValue })
         }
         if (handleClose && handleCloseOption) {
             handleClose()
@@ -46,20 +47,20 @@ export const PopupInfo = ({
             <div className='relative z-[5]'>
                 <img
                     src='/images/profile/bg-profile.jpg'
-                    alt='Background'
-                    title='Background'
+                    alt={config.txt_background}
+                    title={config.txt_background}
                     width={300}
                     height={160}
                     className='w-full max-h-[160px] object-cover object-center'
-                    loading='lazy'
+                    loading={IMAGE_LAZY}
                 />
             </div>
             <div className='-mt-10 relative z-[6] text-center flex flex-col items-center justify-center'>
                 <ImageAvatar
-                    source={userData?.avatar}
+                    source={infoUser?.avatar}
                     width={80}
                     height={80}
-                    alt={userData?.name}
+                    alt={infoUser?.name}
                     className='rounded-full'
                     classNameTextAvatar='w-20 h-20 text-24'
                 />
@@ -68,7 +69,7 @@ export const PopupInfo = ({
                         <Input
                             value={inputValue}
                             onChange={(e) => setInputValue(e.target.value)}
-                            type='text'
+                            type={INPUT_TYPE.TEXT}
                             name='username'
                             className='flex-1'
                             classNameInput='text-black-1 dark:text-gray-4 text-14 rounded-md border border-gray-6 p-2'
@@ -76,17 +77,17 @@ export const PopupInfo = ({
                         <Button type='submit'>
                             <img
                                 src='/images/message/bx-sent.svg'
-                                alt='Submit'
-                                title='Submit'
+                                alt={config.txt_submit}
+                                title={config.txt_submit}
                                 width={43}
                                 height={43}
-                                loading='lazy'
+                                loading={IMAGE_LAZY}
                                 className='cursor-pointer w-7 h-7 lg:w-10 lg:h-10 rounded'
                             />
                         </Button>
                     </form>
                 ) : (
-                    <h2 className='text-16 font-medium dark:text-gray-3 mt-[15px]'>{userData?.name}</h2>
+                    <h2 className='text-16 font-medium dark:text-gray-3 mt-[15px]'>{infoUser?.name}</h2>
                 )}
             </div>
             <div className='flex flex-col gap-3 lg:gap-[18px] text-black-1 dark:text-gray-4 mt-6 px-4'>
@@ -95,41 +96,41 @@ export const PopupInfo = ({
                         src='/images/profile/bx-user.svg'
                         width={15}
                         height={15}
-                        alt={userData?.name}
-                        title={userData?.name}
-                        loading='lazy'
+                        alt={infoUser?.name}
+                        title={infoUser?.name}
+                        loading={IMAGE_LAZY}
                         className='icon-dark-mode'
                     />
-                    {userData?.name}
+                    {infoUser?.name}
                 </p>
                 <a
-                    href='mailto:adc@123.com'
+                    href={`mailto:${DATA_USER_DEMO.EMAIL}`}
                     target='_blank'
-                    title='adc@123.com'
+                    title={DATA_USER_DEMO.EMAIL}
                     className='flex items-center gap-[15px] text-15 transition-al duration-200 hover:text-green-1'
                 >
                     <img
                         src='/images/profile/bx-message-rounded-dots.svg'
                         width={15}
                         height={15}
-                        alt='adc@123.com'
-                        title='adc@123.com'
-                        loading='lazy'
+                        alt={DATA_USER_DEMO.EMAIL}
+                        title={DATA_USER_DEMO.EMAIL}
+                        loading={IMAGE_LAZY}
                         className='icon-dark-mode'
                     />
-                    adc@123.com
+                    {DATA_USER_DEMO.EMAIL}
                 </a>
                 <p className='flex items-center gap-[15px] text-15'>
                     <img
                         src='/images/profile/bx-location-plus.svg'
                         width={15}
                         height={15}
-                        alt='California, USA'
-                        title='California, USA'
-                        loading='lazy'
+                        alt={DATA_USER_DEMO.LOCATION}
+                        title={DATA_USER_DEMO.LOCATION}
+                        loading={IMAGE_LAZY}
                         className='icon-dark-mode'
                     />
-                    California, USA
+                    {DATA_USER_DEMO.LOCATION}
                 </p>
             </div>
         </div>
