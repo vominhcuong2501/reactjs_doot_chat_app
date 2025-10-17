@@ -6,7 +6,7 @@ export const Bookmark = () => {
     return (
         <>
             <h1 className='p-4 lg:p-6 text-21 font-medium text-black-1 dark:text-gray-3 sticky top-0 bg-white dark:bg-black-3 capitalize'>
-                {config.txt_bookmark}
+                {config.txt_bookmarks}
             </h1>
             <div className='flex flex-col pb-4 lg:pb-6'>
                 {LIST_BOOKMARK?.map((file) => {
