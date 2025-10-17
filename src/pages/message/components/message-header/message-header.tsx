@@ -60,7 +60,7 @@ export const MessageHeader = () => {
                         loading={IMAGE_LAZY}
                         className='cursor-pointer hover-green-icon icon-dark-mode'
                     />
-                    <IconInformation />
+                    <IconInformation infoUser={userData} />
                     <IconOption className='filter-green-icon hover-green-icon' infoUser={userData} />
                 </div>
             </div>

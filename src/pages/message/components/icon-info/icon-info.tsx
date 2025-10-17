@@ -3,8 +3,9 @@ import { useState } from 'react'
 import { PopupInfo } from '../popup-info'
 import { IMAGE_LAZY } from '@/constant'
 import config from './../../../../config/config.json'
+import { ContactProps } from '@/types'
 
-export const IconInformation = () => {
+export const IconInformation = ({infoUser}: {infoUser?: ContactProps}) => {
     const [isOpen, setIsOpen] = useState(false)
 
     return (
@@ -20,7 +21,7 @@ export const IconInformation = () => {
                 onClick={() => setIsOpen(!isOpen)}
             />
             <Modal isOpen={isOpen} handleClose={() => setIsOpen(false)} isIconClose={false}>
-                <PopupInfo handleClose={() => setIsOpen(false)} />
+                <PopupInfo handleClose={() => setIsOpen(false)} infoUser={infoUser} />
             </Modal>
         </>
     )
